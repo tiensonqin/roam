@@ -1,0 +1,33 @@
+#+TITLE: elfeed
+#+DATE: 2020-05-16
+
+YouTube Subscriptions in Emacs with elfeed
+http://codingquark.com/emacs/2019/05/16/emacs-elfeed-youtube.html
+#+BEGIN_SRC elisp
+;; Set executable path
+(setq youtube-dl-path "/usr/local/bin/youtube-dl")
+;; Set video storage path
+(setq youtube-dl-output-dir "~/Downloads/youtube")
+
+(defun elfeed-download-video ()
+  "Download a video using youtube-dl."
+  (interactive)
+  (async-shell-command (format "%s -o \"%s%s\" -f bestvideo+bestaudio %s"
+                               youtube-dl-path
+                               youtube-dl-output-dir
+                               "%(title)s.%(ext)s"
+                               (elfeed-entry-link elfeed-show-entry))))
+
+;; Add `youtube` tag to all videos
+(add-hook 'elfeed-new-entry-hook
+          (elfeed-make-tagger :feed-url "youtube\\.com"
+                              :add '(video youtube)))
+#+END_SRC
+
+https://kitchingroup.cheme.cmu.edu/blog/category/elfeed/
+
+http://blog.lujun9972.win/emacs-document/blog/2016/09/06/%E5%9C%A8emacs%E4%B8%AD%E7%94%A8elfeed%E9%98%85%E8%AF%BB%E4%BD%A0%E7%9A%84rss-feeds/index.html
+
+https://www.unwoundstack.com/blog/scoring-elfeed-entries.html
+
+https://punchagan.muse-amuse.in/blog/elfeed-hook-to-fetch-full-content/

@@ -1,0 +1,24 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: decorator (Python)
+
+- reference :: [[file:fluent_python.org][Fluent Python]]
+ 
+decorator is a [[file:callable.org][Callable]] that takes another function as argument (the decorated
+function)
+
+decorator is executed at [[file:import_time.org][import time]].
+
+Syntax is put ~@decorator~ above the decorated function.
+
+#+BEGIN_SRC python
+registry = []
+def register(func):
+    print('running register(%s)' % func)
+    registry.append(func)
+    return func
+
+@register
+def f1():
+    print('running f1()')
+#+END_SRC

@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Learn Better
+
+- author :: Ulrich Boser
+- tags :: [[file:learning.org][Learning]] [[file:book.org][book]] [[file:toread.org][ToRead]]

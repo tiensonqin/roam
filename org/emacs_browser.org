@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs Browser
+
+http://beatofthegeek.com/2014/02/my-setup-for-using-emacs-as-web-browser.html

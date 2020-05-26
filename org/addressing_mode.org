@@ -1,0 +1,24 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: addressing mode
+
+- reference :: [[file:programming_from_the_ground_up.org][Programming from the Ground Up]]
+ 
+Processors have a number of different ways of accessing data, known as
+addressing modes.
+
+[[file:immediate_mode_addressing.org][immediate mode addressing]]
+
+The general form of memory address references:
+
+#+begin_example
+ADDRESS_OR_OFFSET(%BASE_OR_OFFSET, %工NDEX, MULTIPLIER)
+#+end_example
+
+#+begin_example
+FINAL ADDRESS = ADDRESS_OR_OFFSET + %BASE_OR_OFFSET + MULTIPLIER * %INDEX
+#+end_example
+
+ADDRESS_OR_OFFSET and MULTIPLIER must both be constants, while the other two
+must be registers. If any of the pieces is left out, it is just substituted with
+zero in the equation.

@@ -1,0 +1,66 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Function Argument Unpacking
+
+- related :: [[file:function_argument_packing.org][Function Argument Packing]]
+- reference :: [[file:python_tricks.org][Python Tricks]] 3.5
+
+* unpack positional argument
+Put ~*~ before iterable which unpacks [[file:iterable.org][iterable]]  --> [[file:positional_argument.org][positional argument]].
+
+#+BEGIN_SRC python
+def print_vector(x, y, z):
+    print('<%s, %s, %s>' % (x, y, z))
+#+END_SRC
+
+#+BEGIN_SRC python
+tuple_vec = (1, 0, 1)
+list_vec = [1, 0, 1]
+print_vector(*tuple_vec) # output: <1, 0, 1>
+print_vector(*list_vec)  # output: <1, 0, 1>
+#+END_SRC
+
+Without using ~*~ operator, it will be error with following call:
+#+BEGIN_SRC python
+print_vector(list_vec)   # Error: y() takes exactly 2 arguments (1 given)
+#+END_SRC
+
+Also works for [[file:generator_expression.org][generator expression]]
+
+In the case function be called has [[file:function_argument_packing.org][Function Argument Packing]], this example shows
+the difference with or without unpacking operator:
+#+BEGIN_SRC python :results output
+def x(*rest):
+    print(type(rest))
+    print(rest)
+
+v = [4, 5, 6]
+x(v)  # without unpacking
+# output: : <type 'tuple'>
+# rest is ([4, 5, 6],)
+
+x(*v) # with unpacking
+# output: <type 'tuple'>
+# rest is (4, 5, 6)
+#+END_SRC
+
+* unpack keyword argument
+Use ~**~ operator which unpacks [[file:dict.org][dict]] --> [[file:keyword_argument.org][keyword argument]]
+
+#+BEGIN_SRC python
+dict_vec = {'y': 0, 'z': 2, 'x': 1}
+print_vector(**dict_vec)  # output:  <1, 0, 2>
+#+END_SRC
+
+Use the single asterisk ~*~ operator to unpack the dictionary, keys would be
+passed to the function in *random order*.
+#+BEGIN_SRC python
+print_vector(*dict_vec) # output: <y, x, z>
+#+END_SRC
+
+* forward positional/keyword argument
+To pass optional or keyword parameters from one function to
+another, using the argument-unpacking operators ~*~ and ~**~ when
+calling the forwareded function.
+
+It's helpful for writing wrapper functions such as [[file:decorator_python.org][decorator]] (Python Tricks 3.4)

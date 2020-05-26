@@ -1,0 +1,16 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: default parameter cpp
+
+* where the function default parameter is stored?
+The default parameter will always be resolved at the *calling location*.
+
+Few possibilities:
+- A temporary will be created
+- compiler may opt to put a const in the data segment.
+- immediate argument to a machine instruction to load the value into a register or to push the value onto the stack (for something like int)
+
+I'm not sure you could say "where the default parameter is stored" other than to
+say that the description of it's value is in the function declaration. You might
+want to compile some code that uses default parameters and look at the resulting
+assembly. I'm fairly certain the answer is that it's *implementation specific*.

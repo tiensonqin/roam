@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: 2020-03-14
+
+- read [[file:how_to_make_yourself_into_a_learning_machine.org][How to Make Yourself Into a Learning Machine]], good to know how he built
+  his own [[file:zettelkasten.org][Zettelkasten]] system. I think [[file:org_roam.org][Org Roam]] is not bad compared to what
+  author has built.

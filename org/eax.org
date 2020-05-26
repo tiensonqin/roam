@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: eax
+
+- holds [[file:return_value.org][return value]] of a [[file:function_call.org][function call]]
+- holds [[file:system_call.org][System Call]] number

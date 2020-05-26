@@ -1,0 +1,14 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs backup file
+
+Emacs creates backup file ends with =~= at the end like this:
+
+#+begin_example
+environment_variable.md~
+#+end_example
+
+To prevent Emacs from doing that, put this:
+#+BEGIN_SRC elisp
+(setq make-backup-files nil)
+#+END_SRC

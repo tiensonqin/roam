@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: CPU Time
+
+- reference :: [[file:the_linux_programming_interface.org][The Linux Programming Interface]]
+
+Also called ~Process time~ is the total amount of CPU time a
+process has used since starting.
+
+CPU time divided into:
+- system CPU time :: time spent executing code in [[file:kernel_mode.org][kernel mode]]
+- user CPU time :: time spent executing code in [[file:user_mode.org][user mode]]

@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: A Little Java, A Few Patterns
+
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]]
+- source :: https://catonmat.net/top-100-books-part-six

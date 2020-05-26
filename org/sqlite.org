@@ -1,0 +1,98 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: sqlite
+
+#+BEGIN_SRC elisp
+(setq db (emacsql-sqlite "~/Documents/ESV.db"))
+#+END_SRC
+
+#+RESULTS:
+: #s(emacsql-sqlite-connection #<process emacsql-sqlite<1>> nil #<finalizer> "~/Documents/ESV.db")
+
+#+BEGIN_SRC elisp
+(setq text (emacsql db [:select [scripture]
+             :from bible
+             :where (and (= book 1) (= chapter 1) (= verse 1))]))
+#+END_SRC
+
+#+RESULTS:
+| In | the | beginning | (, God) | created | the | heavens | and | the | earth. |
+| <  |     |           |         |         |     |         |     |     |        |
+
+
+#+BEGIN_SRC elisp :results raw
+(length (car text))
+#+END_SRC
+
+#+RESULTS:
+10
+((In the beginning (, God) created the heavens and the earth.))
+
+#+BEGIN_SRC elisp
+(defun flatten (list-of-lists)
+  (apply #'append list-of-lists))
+#+END_SRC
+
+#+RESULTS:
+: flatten
+
+#+BEGIN_SRC elisp :results raw
+(setq new-text (flatten text))
+(type-of new-text)
+#+END_SRC
+
+#+RESULTS:
+cons
+(In the beginning (, God) created the heavens and the earth.)
+
+#+BEGIN_SRC elisp
+(dolist (te (car text) nil)
+  (message "now: %s" te)
+  (message "type: %s" (type-of te))
+)
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC elisp :results raw
+(setq verse2 (emacsql db [:select [scripture]
+             :from bible
+             :where (and (= book 1) (= chapter 1) (= verse 2))]))
+#+END_SRC
+
+#+RESULTS:
+((The earth was without form and void (, and) darkness was over the face of the deep. And the Spirit of God was hovering over the face of the waters.))
+
+#+BEGIN_SRC elisp
+(setq c-db (emacsql-sqlite "~/Documents/和合本.db"))
+#+END_SRC
+
+#+RESULTS:
+: #s(emacsql-sqlite-connection #<process emacsql-sqlite<2>> nil #<finalizer> "~/Documents/和合本.db")
+
+#+BEGIN_SRC elisp :results raw
+(setq verse2 (emacsql c-db [:select [scripture]
+             :from bible
+             :where (and (= book 1) (= chapter 1) (= verse 2))]))
+#+END_SRC
+
+#+RESULTS:
+((地是空虚混沌，渊面黑暗；　神的灵运行在水面上。))
+
+#+BEGIN_SRC elisp
+(type-of (car verse2))
+#+END_SRC
+
+#+RESULTS:
+: cons
+
+#+BEGIN_SRC elisp :results raw
+(length (car verse2))
+;; (mapconcat #'identity verse2 " ")
+(type-of (car (car verse2)))
+#+END_SRC
+
+#+RESULTS:
+symbol
+地是空虚混沌，渊面黑暗；　神的灵运行在水面上。
+(地是空虚混沌，渊面黑暗；　神的灵运行在水面上。)

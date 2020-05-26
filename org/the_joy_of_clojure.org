@@ -1,0 +1,258 @@
+#+TITLE: The Joy of Clojure
+#+DATE: 2020-05-25
+
+- tags :: [[file:book.org][book]] [[file:lisp.org][Lisp]] [[file:clojure.org][Clojure]]
+
+defn-
+
+letfn
+
+#+BEGIN_SRC clojure
+(defn lookup3 [board pos]  (let [[file rank] (map int pos)        [fc rc]     (map int [\a \0])        f (- file fc)        r (* 8 (- 8 (- rank rc)))        index (+ f r)]    (board index)))(lookup3 (initial-board) "a1")
+#+END_SRC
+
+#+BEGIN_SRC clojure
+(defn initial-board []
+[\r \n]
+[\p \p]
+[\- \-]
+[\- \-]
+[\P \P]
+[\R -N])
+#+END_SRC
+
+* scalar types
+- numbers
+- integers
+- Floating-point numbers
+- Rationals
+classically by an integer numerator and denominator
+
+#+BEGIN_SRC clojure
+22/7
+#+END_SRC
+
+Keywords are similar to symbols, except that they always evaluate to themselves
+
+* Characters
+Clojure characters are written with a literal syntax prefixed with a backslash
+and are stored as Java Character objects:
+#+BEGIN_SRC clojure
+\a       ; The character lowercase a
+\A       ; The character uppercase A
+\u0042   ; The Unicode character uppercase B
+\\       ; The back-slash character \
+\u30DE   ; The Unicode katakana character ?
+#+END_SRC
+
+* collections
+** list
+#+BEGIN_SRC clojure
+(yankee doodle)
+#+END_SRC
+When a list is evaluated, the first item of the list—yankee in this case—is
+resolved to a function, macro, or special operator.
+
+** vectors
+#+BEGIN_SRC clojure
+[yankee doodle]
+#+END_SRC
+
+** maps
+** sets
+They’re written using curly braces with a leading hash:
+#+BEGIN_SRC clojure
+#{1 2 "three" :four 0x5}
+#+END_SRC
+Again, the empty set ~#{}~ isn’t the same as nil.
+
+* vars
+A var is named by a symbol and holds a single value
+
+Using def is the most common way to create vars in Clojure:
+#+BEGIN_SRC clojure
+(def x 42)
+#+END_SRC
+
+root binding
+
+#+BEGIN_SRC clojure
+(def y)
+y
+;=> java.lang.IllegalStateException: Var user/y is unbound.
+#+END_SRC
+
+* reader feature
+similar to C++ preprocessor
+
+* In-place functions with #()
+#+BEGIN_SRC clojure
+(def make-list2 #(list %1 %2))
+(def make-list2+ #(list %1 %2 %&))
+#+END_SRC
+
+% symbol means the same as %1, but we prefer the numbered version. Also note
+that the %& symbol in make-a-list2+ is used to refer to the variable
+arguments passed as arguments.
+
+* locals
+Clojure doesn’t have local variables, but it does have locals; they just can’t
+vary. Locals are created and their scope is defined using a let form
+
+* recur
+ The recur form can only appear in the tail position of a function or loop
+
+* quoting
+- quote (')
+- syntax quote (`) (ie. back-quote)
+
+A symbol can begin with a namespace and a slash (/). These can be called
+qualified symbols:
+
+Syntax-quote automatically qualifies all unqualified symbols in its argument:
+#+BEGIN_SRC clojure
+`map ;=> clojure.core/map
+`Integer;=> java.lang.Integer
+`(map even? [1 2 3]);=> (clojure.core/map clojure.core/even? [1 2 3])
+#+END_SRC
+
+If the symbol doesn’t name a var or class that exists yet, syntax-quote uses the
+current namespace:
+#+BEGIN_SRC clojure
+`is-always-right;=> user/is-always-right
+#+END_SRC
+
+* unquote
+An unquote is used to demarcate specific forms as requiring evaluation
+by prefixing them with the symbol =~= within the body of a syntax-quote:
+#+BEGIN_SRC clojure
+`(+ 10 ~(* 3 2))
+;=> (clojure.core/+ 10 6)
+#+END_SRC
+
+Unquote-splicing
+
+Clojure provides a handy feature to solve exactly the problem posed earlier. A
+variant of unquote called unquote-splicing works similarly to unquote, but a
+little differently:
+
+#+BEGIN_SRC clojure
+(let [x '(2 3)] `(1 ~@x))
+;=> (1 2 3)
+#+END_SRC
+Note the @ in ~@, which tells Clojure to unpack the sequence x, splicing it into
+the resulting list rather than inserting it as a nested list.
+
+* Auto-gensym
+Sometimes you need a unique symbol, such as for a parameter or let local name.
+The easiest way to do this inside a syntax-quote is to append a # to the symbol
+name. This causes Clojure to create a new, unqualified, automatically generated
+symbol:
+#+BEGIN_SRC clojure
+`potion#
+;=> potion__211__auto__
+#+END_SRC
+
+* empty collection
+Because empty collections act like true in Boolean contexts, you need an idiom
+for testing whether there’s anything in a collection to process. Thankfully,
+Clojure provides such a technique:
+#+BEGIN_SRC clojure
+(seq [1 2 3])
+;=> (1 2 3)
+(seq [])
+;=> nil
+#+END_SRC
+The ~seq~ function returns a sequence view of a collection, or nil if the
+collection is empty.
+
+* next vs rest
+~rest~ can return a sequence that’s either empty or not empty (has elements) , but
+it never returns nil. On the other hand, ~next~ returns a seq of the rest, or (seq
+(rest s)), and thus never returns an empty sequence, returning nil in its place
+
+* discover
+Clojure provides ~find-doc~, which searches not just function names but also
+their doc strings for the given term:
+
+* where to find help
+- http://clojuredocs.org providing API documentation and examples
+- http://clojure-doc.org providing tutorials, guides, and cookbooks.
+
+* for comprehension
+#+BEGIN_SRC clojure
+(for [x (range 2) y (range 2)] [x y])
+#+END_SRC
+
+* play
+#+BEGIN_SRC clojure
+(def frame (java.awt.Frame.))
+#+END_SRC
+
+#+RESULTS:
+: #'user/frame
+
+#+BEGIN_SRC clojure
+(for [meth (.getMethods java.awt.Frame)
+      :let [name (.getName meth)]
+      :when (re-find #"Vis" name)]
+  name)
+#+END_SRC
+
+#+RESULTS:
+| setVisible | isVisible |
+
+#+BEGIN_SRC clojure
+(.setVisible frame true)
+#+END_SRC
+
+#+RESULTS:
+
+(.setSize frame (java.awt.Dimension. 200 200))
+
+he Clojure clojure.java.javadoc namespace has a javadoc function to query and
+view official API documentation: (javadoc frame)
+
+#+BEGIN_SRC clojure
+(def gfx (.getGraphics frame))
+(.fillRect gfx 100 100 50 75)
+(.setColor gfx (java.awt.Color. 255 128 0))
+(.fillRect gfx 100 150 75 50)
+#+END_SRC
+
+* identical vs equal
+#+BEGIN_SRC clojure
+(identical? 'goat 'goat)
+;=> false
+(= 'goat 'goat)
+;=> true
+(name 'goat)
+;=> "goat"
+#+END_SRC
+
+* Metadata
+Clojure lets you attach metadata to various objects, but for now we’ll focus on
+attaching metadata to symbols. The ~with-meta~ function takes an object and a map
+and returns another object of the same type with the metadata attached. Equally
+named symbols often aren’t the same instance because each can have its own
+unique metadata:
+
+* sequence
+A sequential collection is one that holds a series of values without reordering them. As such, it’s one of three broad categories of collection         types along with sets and maps.                  A sequence is a sequential collection that represents a series of values that may or may not exist yet. They may be values from a concrete         collection or values that are computed as necessary. A sequence may also be empty.
+
+** seq API
+It consist of two functions: first and rest.
+
+If the collection has anything in it, (first coll) returns the first element;
+otherwise it returns nil. (rest coll) returns a sequence of the items other than
+the first. If there are no other items, rest returns an empty sequence and never
+nil.
+
+A seq is any object that implements the seq API
+
+
+If two sequentials have the same values in the same order, = returns true for
+them, even if their concrete types are different, as shown: (= [1 2 3] '(1 2
+3));=> true Conversely, even if two collections have the same exact values, if
+one is a sequential collection and the other isn’t, = returns false: (= [1 2 3]
+#{1 2 3});=> false

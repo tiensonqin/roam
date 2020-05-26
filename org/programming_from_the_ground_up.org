@@ -1,0 +1,6 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: books
+
+#+TITLE: Programming from the Ground Up
+
+- tags :: [[file:books.org][Books]]

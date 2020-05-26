@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: gzcat
+
+This could useful in the case we want to [[file:grep.org][grep]] something from ~.gz~ file without
+needing to uncompress it.
+
+For eg, in production environment, I'm logged in as user with very limited
+access and uncompress is not an option. However I often need to do that when
+examining log file for issue investigation.

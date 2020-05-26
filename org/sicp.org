@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: SICP
+
+- tags :: [[file:book.org][book]] [[file:lisp.org][Lisp]]
+ 
+https://github.com/AbstProcDo/SICP-in-Elisp
+
+https://github.com/joeltg/mit-scheme-kernel

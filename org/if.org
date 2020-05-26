@@ -1,0 +1,22 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: if
+
+from [[file:sicp_chapter_1.org][SICP - Chapter 1]]
+
+general form of ~if~ expression:
+#+begin_example
+(if <predicate> <consequent> <alternative>)
+#+end_example
+
+~if~ is a [[file:special_form.org][Special Form]]
+
+#+BEGIN_SRC elisp
+(defun abs-using-if (x)
+  (if (< x 0) (- x) x)
+)
+#+END_SRC
+
+#+BEGIN_SRC elisp
+(abs -8)
+#+END_SRC

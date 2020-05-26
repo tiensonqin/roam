@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: dolist
+
+iterate over a list in [[file:elisp.org][Elisp]]
+
+    (dolist (elem (-slice root 2) nil)
+      (message "elem: %s" elem)
+      (me/walk-4 elem))

@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: typing
+
+- https://www.typing.com/student/lessons
+- https://www.typingclub.com/sportal/

@@ -1,0 +1,7 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: Books
+#+TITLE: The Art of Doing Science and Engineering
+#+TAGS: Books
+
+- tags :: [[file:books.org][Books]]
+- [[https://www.goodreads.com/book/show/530415.The_Art_of_Doing_Science_and_Engineering?ac=1&from%5Fsearch=true&qid=JiicJZOxxt&rank=1][GoodReads]]

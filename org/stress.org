@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: stress
+
+- source ::  [[file:how_to_take_smart_notes.org][How to Take Smart Notes]]
+stress floods our brains with hormones that suppress learning processes.

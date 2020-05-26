@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: 2020-03-03
+
+- read [[https://eli.thegreenplace.net/2011/01/27/how-debuggers-work-part-2-breakpoints][How debuggers work: Part 2 - Breakpoints]]
+- summary
+Use ~Int 3~, debugger will replace the ~first byte~ of address with ~0xCC~ which
+will trigger soft interrupt. Then debugger will get control and later will
+restore that byte with original content to continue.

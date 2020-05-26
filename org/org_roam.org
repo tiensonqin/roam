@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Org Roam
+
+- reference :: https://blog.jethro.dev/posts/how_to_take_smart_notes_org/

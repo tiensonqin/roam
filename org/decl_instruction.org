@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: decl instruction
+
+~decl~ stands for decrement. It subtracts 1 from the given register or memory location
+
+#+BEGIN_SRC asm
+decl %eax
+#+END_SRC

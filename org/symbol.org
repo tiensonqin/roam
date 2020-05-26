@@ -1,0 +1,16 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Symbol
+
+Symbols are generally used to mark locations of programs or data, so you can
+refer to them by name instead of by their location number.
+
+for eg:
+#+BEGIN_SRC asm
+.globl _start
+#+END_SRC
+
+Here ~_start~ is a symbol.
+
+~_start~ is a special symbol that always needs to be marked with ~.globl~ because
+it marks the location of the start of the program

@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: System Call
+
+- https://lwn.net/Articles/604287/
+- https://lwn.net/Articles/604515/
+- https://manybutfinite.com/post/system-calls/
+- https://lwn.net/Articles/588444/ - Proper handling of unknown flags in system calls
+
+When you make a system call, system call number has to be loaded into [[file:eax.org][eax]]

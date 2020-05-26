@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Linux Kernel
+
+https://manybutfinite.com/post/kernel-boot-process/

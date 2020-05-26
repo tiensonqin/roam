@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Fleeting notes
+
+- source ::  [[file:how_to_take_smart_notes.org][How to Take Smart Notes]]
+ 
+Fleeting notes, which are only reminders of information, can be written in any
+kind of way and will end up in the trash within a day or two.

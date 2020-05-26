@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: File System
+
+https://lwn.net/Articles/604686/
+https://lwn.net/Articles/605128/

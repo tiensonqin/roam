@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: int instruction
+
+The *int* stands for interrupt. The 0x80 is the interrupt number to use.
+
+An interrupt interrupts the normal program flow. and transfers control from our
+program to Linux so that it will do a system call
+
+#+BEGIN_SRC asm
+int $0x80
+#+END_SRC

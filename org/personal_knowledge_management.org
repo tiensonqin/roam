@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: personal-knowledge-management
+
+- refs :: https://tkainrad.dev/posts/managing-my-personal-knowledge-base/#left

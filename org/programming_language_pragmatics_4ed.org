@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Programming Language Pragmatics 4ed
+
+- tags :: [[file:book.org][book]]

@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: indexed addressing mode
+
+In the indexed addressing mode, the instruction contains a memory address to
+access, and also specifies an index register to offset that address.

@@ -1,0 +1,11 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: singleton
+
+- source ::  [[file:api_design_for_cpp.org][API Design for C++]]
+Singleton is a more elegant way to maintain global state, but you should always
+question whether you need.
+
+The Getinstance() method could return either a pointer or a reference to the
+singleton class However, if you return a pointer, clients could potentially
+delete the object. You should therefore prefer returning a reference.

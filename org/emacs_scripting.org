@@ -1,0 +1,8 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+#+TITLE: Emacs Scripting
+
+- tags :: [[file:Emacs.org][Emacs]]
+
+- https://llazarek.com/2018/08/scripting-emacs.html
+- https://mads-hartmann.com/2016/07/03/exporting-org-from-make.html

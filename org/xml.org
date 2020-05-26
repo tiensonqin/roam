@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: XML
+
+- generator https://onlinerandomtools.com/generate-random-xml

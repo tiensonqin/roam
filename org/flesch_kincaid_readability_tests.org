@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Flesch–Kincaid-readability-tests
+
+- reference :: [[https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests][wikipedia]]

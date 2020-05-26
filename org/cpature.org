@@ -1,0 +1,37 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: cpature
+
+#+BEGIN_SRC emacs-lisp
+(defun yank-html-from-clipboard ()
+  "Yank HTML from clipboard as Org or Markdown code."
+  (interactive)
+  (let* ((result
+          (condition-case err
+              ;; hex-encoded string:
+              ;;           < m e t a ......>
+              ;; «data HTML3C6D657461......3E»
+              (do-applescript "the clipboard as «class HTML»")
+            (error
+             ;; assume it's user's fault
+             (user-error "Can't get HTML data from the clipboard: %s"
+                         (error-message-string err)))))
+         (data (substring result 10 -1))
+         (html (decode-coding-string
+                (apply #'unibyte-string
+                       (mapcar (lambda (x) (string-to-number x 16))
+                               (seq-partition data 2)))
+                'utf-8))
+         (target (if (derived-mode-p 'org-mode)
+                     "org"
+                   ;; the official Markdown doesn't support table?
+                   "gfm")))
+    (insert
+     (with-temp-buffer
+       (if (zerop (call-process-region html nil "pandoc" nil t nil
+                                       ;; https://stackoverflow.com/a/35812743/2999892
+                                       "-f" "html-native_divs-native_spans"
+                                       "-t" target))
+           (buffer-string)
+         (error "pandoc failed: %s" (buffer-string)))))))
+#+END_SRC

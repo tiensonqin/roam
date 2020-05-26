@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: cmpl
+
+The cmpl instruction compares the two values. This compare instruction also affects register not
+mentioned here, the eflags register. This is also known as the status register.

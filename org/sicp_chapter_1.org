@@ -1,0 +1,30 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: SICP - Chapter 1
+
+- tags :: [[file:sicp.org][SICP]]
+
+applicative order vs normal order
+
+language construct - case analysis, [[file:special_form.org][Special Form]] [[file:cond.org][cond]] is for this purpose
+
+[[file:if.org][if]] - only two cases in the case analysis
+
+* logical composition operations
+** and
+#+begin_example
+(and <e1> ... <en>)
+#+end_example
+~and~ is a [[file:special_form.org][Special Form]]
+
+** or
+#+begin_example
+(or <e1> ... <en>)
+#+end_example
+~or~ is a [[file:special_form.org][Special Form]]
+
+** not
+#+begin_example
+(not <e>)
+#+end_example
+~not~ is an ordinary procedure

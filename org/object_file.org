@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Object File
+
+http://manpages.ubuntu.com/manpages/bionic/en/man1/nm.1.html

@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: base pointer
+
+- tags :: [[file:register.org][register]]
+
+Register %ebp
+
+%ebp will always be where the stack pointer was at the beginning of the
+function, so it is more or less a constant reference to the [[file:stack_frame.org][stack frame]]

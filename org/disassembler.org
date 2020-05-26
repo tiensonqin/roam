@@ -1,0 +1,16 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Disassembler
+
+- reference :: [[file:csapp.org][csapp]]
+
+A program generates a format similar to assembly code from the machine code.
+
+ program ~objdump~ (for "object dump") can serve this role given the ~-d~ command-line flag:
+
+#+BEGIN_SRC sh
+objdump -d hello.o
+#+END_SRC
+
+
+http://www.mlsite.net/blog/?p=55

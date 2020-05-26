@@ -1,0 +1,21 @@
+#+TITLE: destructuring
+#+DATE: 2020-05-26
+
+- tags :: [[file:clojure.org][Clojure]]
+
+* destructuring
+Any time you find that you’re calling nth on the same collection a few times, or
+looking up constants in a map, or using first or next, consider using
+destructuring instead.
+* Positional destructuring
+use an ampersand in a destructuring vector to indicate that any remaining values
+of the input should be collected into a (possibly lazy) seq:
+
+(let [[a b c &
+more] (range 10)] (println "a b c are:" a b c) (println "more is:" more)); a b c
+are: 0 1 2; more is: (3 4 5 6 7 8 9);=> nil
+
+** :as
+The final feature of vector destructuring is :as, which can be used to bind a local to the entire collection. It must be placed after the & local, if there is one, at the end of the destructuring vector:                        (let [range-vec (vec (range 10))      [a b c & more :as all] range-vec]  (println "a b c are:" a b c)  (println "more is:" more)  (println "all is:" all)); a b c are: 0 1 2; more is: (3 4 5 6 7 8 9); all is: [0 1 2 3 4 5 6 7 8 9];=> nil            range-vec is a vector in this example, and the directive :as binds the input collection as is, entirely unmolested, so that the vector stays a vector. This is in contrast to &, which binds more to a seq, not a vector.
+
+

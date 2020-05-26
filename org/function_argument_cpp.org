@@ -1,0 +1,26 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: function argument cpp
+
+Arguments to the call are *resolved by position*, and default arguments are used
+to substitute for the trailing arguments of a call.
+
+Which means if the function you write takes more than one parameter, then you
+can NOT just give the first parameter default value without providing default
+value for rest of parameters. Since if you provide a value for parameter when
+calling the function, this value is always considered for the first parameter
+(that's what "arguments to the call are resolved by position" means). You can
+only provide default values for parameters backward.
+
+for example,
+#+BEGIN_SRC cpp
+void f(int a = 1, int b = 0);
+#+END_SRC
+
+if you call f like this:
+#+BEGIN_SRC cpp
+f(2); // OK! then a = 2, b =0
+#+END_SRC
+
+but there is no way you can just override the default value for b without
+specifying the value for a

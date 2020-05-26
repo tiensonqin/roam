@@ -1,0 +1,11 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Linker
+
+The linker is the program that is responsible for putting the [[file:object_file.org][Object File]]
+together and adding information to it so that the kernel knows how to load and
+run it
+
+#+BEGIN_SRC sh
+ld exit.o -o exit
+#+END_SRC

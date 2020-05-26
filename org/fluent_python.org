@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Fluent Python
+
+- author ::
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]] [[file:python.org][Python]]

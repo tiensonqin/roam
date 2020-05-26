@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Surely You're Joking, Mr. Feynman
+
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]]
+
+[[file:richard_feynman.org][Richard Feynman]]

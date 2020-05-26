@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: LRU Cache
+#+KEYWORDS: Cache
+
+- tags :: [[file:cache.org][Cache]]
+
+- [[https://youtu.be/R5ON3iwx78M][[The Magic of LRU Cache (100 Days of Google Dev) (video)]​]]
+- [[https://youtu.be/bq6N7Ym81iI][Implementing LRU (video)]]
+- [[https://youtu.be/8-FZRAjR7qU][LeetCode - 146 LRU Cache (C++) (video)]]

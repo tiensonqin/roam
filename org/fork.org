@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: fork
+
+Create a copy of current running process and run it..
+
+when will we use it?
+- GDB is probably one case

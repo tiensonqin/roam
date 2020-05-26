@@ -1,0 +1,31 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Elisp
+
+https://yoo2080.wordpress.com/2013/08/16/differences-between-common-lisp-and-emacs-lisp/
+
+https://nullprogram.com/blog/2013/01/22/
+
+http://jmhz.net/2013/10/emacs-spotify-client-in-elisp-16min-speedrun-video/
+
+https://github.com/chrisdone/elisp-guide
+
+https://yoo2080.wordpress.com/2013/08/07/living-with-emacs-lisp/
+
+* list to vector
+#+BEGIN_SRC elisp
+(setq tags '(1 2 3))
+(vconcat tags)
+#+END_SRC
+
+#+RESULTS:
+: [1 2 3]
+
+Needed this when using Emacsql
+
+* dolist
+#+BEGIN_SRC elisp
+(let (result)
+  (dolist (elt '(1 2 3) result)
+    (push elt result)))
+#+END_SRC

@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Dynamic Programming - String
+
+- tags :: [[file:dynamic_programming.org][Dynamic Programming]]
+
+https://mp.weixin.qq.com/s/3ttU2ETsWUvWDlS0tVE-nQ
+
+字符匹配类动态规划，题目要你分析的是两个序列彼此之间的联系，这里其实有一个动态规
+划状态维度的提升，在考虑当前子问题的时候，我们要同时考虑两个序列的状态

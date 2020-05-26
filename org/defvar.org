@@ -1,0 +1,2 @@
+#+TITLE: defvar
+#+DATE: 2020-05-19

@@ -1,0 +1,23 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Callable (Python)
+
+- reference :: [[file:fluent_python.org][Fluent Python]]
+ 
+A object which call operator (i.e., ()) can be applied to.
+
+To determine whether an object is callable, use the ~callable()~ built-in
+function.
+
+The Python Data Model lists seven callable types:
+
+- User-defined functions :: Created with def statements or lambda expressions.
+- Built-in functions :: A function implemented in C (for CPython), like len or time.strftime.
+- Built-in methods :: Methods implemented in C, like dict.get.
+- Methods :: Functions defined in the body of a class.
+- Classes
+- Class instances
+- Generator functions
+
+To create User-Defined Callable, just implementing a ~__call__~ instance
+method.

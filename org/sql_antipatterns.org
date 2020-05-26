@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: SQL Antipatterns
+
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]] [[file:sql.org][SQL]]

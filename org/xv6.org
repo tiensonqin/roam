@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Xv6
+
+- tags :: [[file:unix.org][Unix]]
+
+https://pdos.csail.mit.edu/6.828/2011/xv6.html

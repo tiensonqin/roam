@@ -1,0 +1,65 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Thread
+
+- IO bound
+- CPU bound
+
+Thread has its own:
+- [[file:register.org][Register]]
+- [[file:stack.org][Stack]]
+
+Thread share:
+- [[file:environment_variable.org][Environment Variable]]
+- [[file:file_descriptor.org][File Descriptor]]
+
+* Main Thread
+
+How to check if current thread is main thread?
+
+Python signal won’t work properly unless it’s main thread
+
+** cpp
+https://stackoverflow.com/questions/20530218/check-if-current-thread-is-main-thread
+
+
+For Linux:
+
+If `getpid()` returns the same result as `gettid()` it's the main thread.
+
+```
+int i_am_the_main_thread(void)
+{
+  return getpid() == gettid();
+}
+```
+From [`man gettid`](http://man7.org/linux/man-pages/man2/gettid.2.html):
+
+
+> **gettid()** returns the caller's thread ID (TID). In a single-threaded process, the thread ID is equal to the process ID (PID, as returned by **getpid(2))**. In a multithreaded process, all threads have the same PID, but each one has a unique TID.
+
+
+From [`man clone`](http://man7.org/linux/man-pages/man2/clone.2.html):
+
+
+> Thread groups were a feature added in Linux 2.4 to support the POSIX threads notion of a set of threads that share a single PID. Internally, this shared PID is the so-called thread group identifier (TGID) for the thread group. Since Linux 2.4, calls to **getpid(2)** return the TGID of the caller.
+>
+> The threads within a group can be distinguished by their (system-wide) unique thread IDs (TID). A new thread's TID is available as the function result returned to the caller of **clone()**, and a thread can obtain its own TID using **gettid(2)**.
+
+** python
+https://stackoverflow.com/questions/23206787/check-if-current-thread-is-main-thread-in-python
+​
+Python 3.4 introduced [`threading.main_thread()`](https://docs.python.org/3.4/library/threading.html#threading.main_thread) which is much better than the above:
+​
+```
+
+```
+```
+assert threading.current_thread() is threading.main_thread()
+```
+For Python < 3.4, perhaps the best option is:
+​
+```
+isinstance(threading.current_thread(), threading.\_MainThread)
+```
+​

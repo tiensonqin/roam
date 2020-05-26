@@ -1,0 +1,6 @@
+#+TITLE: cons cell
+#+DATE: 2020-05-19
+
+each cons cells holds two pointers:
+- car
+- cdr

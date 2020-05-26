@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: World Clock in Emacs
+
+[[file:Emacs.org][Emacs]] has this ~display-time-world~ function which displays time for few
+predefined countries around the world like London, New York and Tokyo.
+
+The time will also refresh byitself without leaving the buffer, could be
+convenient.
+
+Will check back tomorrow see if it can correctly identify the timezone for
+London to become ~BST~ or not, currently it's shown as ~GMT~.

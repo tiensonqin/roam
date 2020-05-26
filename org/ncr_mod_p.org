@@ -1,0 +1,15 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: nCr mod p
+
+- [[file:ncr.org][nCr]]
+
+[[https://www.geeksforgeeks.org/compute-ncr-p-set-1-introduction-and-dynamic-programming-solution/][Compute nCr % p | Set 1 (Introduction and Dynamic Programming Solution) - GeeksforGeeks]]
+
+Given three numbers n, r and p, compute value of ^n^C~r mod p.
+* Example:
+#+begin_example
+Input:  n = 10, r = 2, p = 13
+Output: 6
+Explanation: 10C2 is 45 and 45 % 13 is 6.
+#+end_example

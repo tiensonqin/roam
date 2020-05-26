@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: 2020-03-04
+
+read https://eli.thegreenplace.net/2011/02/07/how-debuggers-work-part-3-debugging-information
+
+summary:
+- debugging information is produced by compiler, in DWARF format for linux
+- there are some sections dedicated for debug information
+- DIE - Debug Information Entry
+- tag for each entry and type
+- .debug_loc tell where to find a function

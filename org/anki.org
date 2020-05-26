@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Anki
+
+http://augmentingcognition.com/ltm.html
+
+https://yiufung.net/post/anki-org/

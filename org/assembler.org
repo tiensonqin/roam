@@ -1,0 +1,16 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Assembler
+
+Turn assembly code into [[file:object_file.org][Object File]]
+
+#+BEGIN_SRC sh
+as exit.s -o exit.o
+#+END_SRC
+
+
+A label is a symbol followed by a colon. Labels define a [[file:symbol.org][Symbol]] value
+
+#+BEGIN_SRC asm
+_start:
+#+END_SRC

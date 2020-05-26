@@ -1,0 +1,20 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: resource limit
+
+- reference :: [[file:the_linux_programming_interface.org][The Linux Programming Interface]]
+ 
+Limit for resources a process can consume.
+
+Resource includes:
+- open files
+- memory
+- [[file:cpu_time.org][CPU Time]]
+
+Resource limit has:
+- soft limit :: limits the amount of the resource that the process may consume
+- hard limit :: a ceiling on the value to which the soft limit may be adjusted
+
+Use ~setrlimit()~ system call to establish upper limits.
+
+Shell command  [[file:ulimit.org][ulimit]] can adjust resource limits.

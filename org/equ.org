@@ -1,0 +1,16 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: .equ
+
+- tags :: [[file:assembly.org][Assembly]]
+
+~.equ~ allows you to assign names to numbers.
+
+#+BEGIN_SRC asm
+#system call numbers
+.equ SYS_OPEN, 5
+.equ SYS_WRITE, 4
+.equ SYS_READ, 3
+.equ SYS_CLOSE, 6
+.equ SYS_EXIT, 1
+#+END_SRC

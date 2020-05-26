@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Semantic Analyzer
+#+KEYWORDS: compiler
+
+- [[file:compiler.org][Compiler]]
+
+- type checking
+- Coercions

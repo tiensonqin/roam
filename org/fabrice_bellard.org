@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Fabrice Bellard
+
+author of QEMU
+
+https://bellard.org/

@@ -1,0 +1,6 @@
+#+TITLE: Scheme
+#+DATE: 2020-05-19
+
+a dialect of [[file:lisp.org][Lisp]]
+
+Scheme does NOT have [[file:dynamic_scope.org][dynamic scope]]

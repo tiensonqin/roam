@@ -1,0 +1,13 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: keyword-only argument
+
+- references :: [[file:fluent_python.org][Fluent Python]] [[file:python_cookbook.org][Python Cookbook]]
+
+- Only available in Python 3.
+- do not need to have default value [fn:1]
+- good way to enforce greater code clarity when specifying optional function
+  arguments [fn:2]
+
+[fn:1] Fluent Python
+[fn:2] Python Cookbook 7.2

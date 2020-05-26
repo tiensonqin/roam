@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: stack pointer
+
+- tags :: [[file:register.org][register]]
+
+The pointer which points to the current TOP of the [[file:stack.org][Stack]].
+
+Stack register, %esp, always contains a pointer to the current top of the stack
+
+when push something onto the stack with [[file:pushl.org][pushl]], %esp gets subtracted by 4 (32 bit
+OS) or subtracted by 8 (64 bit OS)

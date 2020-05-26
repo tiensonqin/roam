@@ -1,0 +1,33 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Function Introspection
+
+- reference :: [[file:fluent_python.org][Fluent Python]]
+
+Attributes of user-defined functions [fn:1]
+
+| Name            | Type           | Description                                                  |
+|-----------------+----------------+--------------------------------------------------------------|
+| __annotations__ | dict           | Parameter and return annotations                             |
+| __call__        | method-wrapper | Implementation of the () operator                            |
+| __closure__     | tuple          | The function [[file:closure_python.org][Closure (Python)]]                                |
+| __code__        | code           | Function metadata and function body compiled into bytecode   |
+| __defaults__    | tuple          | Default values for the formal parameters                     |
+| __get__         | method-wrapper | Implementation of the read-only descriptor protocol          |
+| __globals__     | dict           | Global variables of the module where the function is defined |
+| __kwdefaults__  | dict           | Default values for the keyword-only formal parameters        |
+| __name__        | str            | The function name                                            |
+| __qualname__    | str            | The qualified function name, e.g., Random.choice             |
+
+For eg, assume s is a function we defined, we can find out how many arguments
+~s~ takes by doing:
+#+BEGIN_SRC python
+s.__code__.argcount
+#+END_SRC
+
+We can also get the argument names for ~s~ with this:
+#+BEGIN_SRC python
+s.__code__.co_varnames
+#+END_SRC
+
+[fn:1] Fluent Python Table 5-1

@@ -1,0 +1,13 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: real time
+
+- reference :: [[file:the_linux_programming_interface.org][The Linux Programming Interface]]
+
+Real time is measured either from some standard point (calendar time) or from
+some fixed point, typically the start, in the life of a process (elapsed or wall
+clock time). On UNIX systems, calendar time is measured in seconds since
+midnight on the morning of January 1, 1970, Universal Coordinated Time (usually
+abbreviated UTC), and coordinated on the base point for timezones defined by the
+longitudinal line passing through Greenwich, England. This date, which is close
+to the birth of the UNIX system, is referred to as the Epoch

@@ -1,0 +1,4 @@
+#+TITLE: dynamic scope
+#+DATE: 2020-05-19
+
+one type of [[file:scope.org][scope]]

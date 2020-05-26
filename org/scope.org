@@ -1,0 +1,4 @@
+#+TITLE: scope
+#+DATE: 2020-05-19
+
+where to consider a variable reference is valid.

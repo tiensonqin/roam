@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Hang
+
+When a process hang, there are few possibilities:
+- infinite loop
+- deadlock

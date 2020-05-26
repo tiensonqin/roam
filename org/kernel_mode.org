@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: kernel mode
+
+(i.e., executing system calls
+and per- forming other kernel services on behalf of the process

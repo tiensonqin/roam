@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Indirect addressing mode
+
+Putting a [[file:register.org][register]] in *parenthesis* causes the computer to go to indirect addressing mode
+
+In the indirect addressing mode, the instruction contains a register that
+contains a pointer to where the data should be accessed.

@@ -1,0 +1,30 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: library
+
+| Ramona's world   Cleary                  | Beverly.	Due: 3/12/2020 |          23:59 |       |
+| Ivy + Bean doomed to dance   Barrows     | Annie.	Due: 3/13/2020   |          23:59 |       |
+| My life as a joke   Tashjian             | Janet                       | Due: 3/13/2020 | 23:59 |
+| Ms. Coco is loco! ; bk.16   Gutman       | Dan.	Due: 3/13/2020     |          23:59 |       |
+| Ms. LaGrange is strange! ; bk.8   Gutman | Dan.	Due: 3/13/2020     |          23:59 |       |
+| Ramona and her father   Cleary           | Beverly                     |        author. |       |
+Diary of a wimpy kid : Greg Heffley's journal; bk.1	Kinney, Jeff,	3/23/2020,23:59
+Diary of a wimpy kid : hard luck ; bk.8	Kinney, Jeff, author.	3/23/2020,23:59
+Diary of an awesome friendly kid : Rowley Jefferson's journal	Kinney, Jeff, author, illustrator.	3/23/2020,23:59
+Diary of a wimpy kid. The third wheel ; bk.7	Kinney, Jeff, author.	3/23/2020,23:59
+Diary of a wimpy kid : the ugly truth ; bk.5 / by Jeff Kinney	Kinney, Jeff, author.	3/23/2020,23:59
+
+Fairies forever	Scott, Lisa Ann,	3/23/2020,23:59
+
+Candy fairies : 3-books-in-1! Bubble gum rescue ; Double dip ; Jelly bean jumble	Perelman, Helen,	3/23/2020,23:59
+
+Cascadia saves the day	Scott, Lisa Ann,	3/23/2020,23:59
+Lana swims north	Scott, Lisa Ann,	3/23/2020,23:59
+
+Movie madness	Keene, Carolyn,	3/23/2020,23:59
+Pool party puzzler	Keene, Carolyn.	3/23/2020,23:59
+Amelia Bedelia unleashed	Parish, Herman,	3/23/2020,23:59
+Amelia Bedelia goes wild!	Parish, Herman.	3/23/2020,23:59
+Diary of a wimpy kid : old school ; bk.10	Kinney, Jeff, author.	3/23/2020,23:59
+Diary of a wimpy kid : the last straw ; bk.3	Kinney, Jeff, author.	3/23/2020,23:59
+Ramona forever

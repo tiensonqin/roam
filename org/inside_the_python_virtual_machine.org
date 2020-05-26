@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Inside The Python Virtual Machine
+
+- tags :: [[file:python.org][Python]] [[file:toread.org][ToRead]] [[file:book.org][book]]
+- source :: https://leanpub.com/insidethepythonvirtualmachine

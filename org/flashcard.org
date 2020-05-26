@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: flashcard
+
+the information on flashcards is neither elaborated on nor embedded in some form
+of context. Each flashcard stays isolated instead of being connected with the
+network of theoretical frames, our experiences or our latticework of mental
+models [fn:1]
+
+[fn:1] [[file:how_to_take_smart_notes.org][How to Take Smart Notes]]

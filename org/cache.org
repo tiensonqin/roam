@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Cache
+
+https://manybutfinite.com/post/intel-cpu-caches/
+
+* CPU cache
+[![MIT 6.004 L15: The Memory Hierarchy - YouTube](https://img.youtube.com/vi/vjYF_fAZI5E&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-&index=24/maxresdefault.jpg)](https://youtu.be/vjYF_fAZI5E&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-&index=24)
+[![MIT 6.004 L16: Cache Issues - YouTube](https://img.youtube.com/vi/ajgC3-pyGlk&index=25&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-/maxresdefault.jpg)](https://youtu.be/ajgC3-pyGlk&index=25&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-)

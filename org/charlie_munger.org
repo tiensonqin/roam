@@ -1,0 +1,16 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Charlie Munger
+
+Well, the first rule is that you can’t really know anything if you just remember
+isolated facts and try and bang ’em back. If the facts don’t hang together on a
+latticework of theory, you don’t have them in a usable form. You’ve got to have
+models in your head. And you’ve got to array your experience, both vicarious and
+direct, on this latticework of models. You may have noticed students who just
+try to remember and pound back what is remembered. Well, they fail in school and
+in life. You’ve got to hang experience on a latticework of models in your
+head. [fn:1]
+
+Here *model* means [[file:mental_model.org][mental model]]
+
+[fn:1] [[file:how_to_take_smart_notes.org][How to Take Smart Notes]]

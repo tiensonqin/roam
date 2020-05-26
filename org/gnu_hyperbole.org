@@ -1,0 +1,24 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: GNU Hyperbole
+
+By default *Action Key* is binded to ~M-RET~ and Assist Key to ~C-u M-RET~
+
+https://blog.abrochard.com/hyperbole-intro.html
+
+External processes
+      "!/usr/local/bin/redis-cli"
+
+git, github, gitlab links
+      gh#abrochard/emacs-todoist/2a63ce7
+     
+social media
+      twitter@abrochard
+
+
+
+Something I use most frequently is open a lisp file doesn't matter where it is
+on my load path:
+
+"${load-path}/org-roam.el"
+"${load-path}/org-roam-db.el"

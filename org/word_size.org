@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: word size
+
+The size of a typical [[file:register.org][register]] is called a computer’s word size.
+x86 processors have four-byte words

@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: CAP
+
+- tags :: [[file:distribute_system.org][Distribute System]]
+ 
+C - Consistency
+A - Availability
+P - Partition

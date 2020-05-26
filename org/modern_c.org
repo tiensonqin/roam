@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Modern C
+
+- [[file:book.org][book]]
+
+- free version https://modernc.gforge.inria.fr/

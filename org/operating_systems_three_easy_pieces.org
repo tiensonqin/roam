@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Operating Systems - Three Easy Pieces
+
+- tags :: [[file:book.org][book]] [[file:operating_system.org][Operating System]] [[file:toread.org][ToRead]]

@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Common Lisp
+
+http://stevelosh.com/blog/2018/08/a-road-to-common-lisp/#lisp-as-a-system

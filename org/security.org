@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Security
+
+https://stackoverflow.com/questions/2794016/what-should-every-programmer-know-about-security

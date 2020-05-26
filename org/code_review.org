@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Code Review
+
+Things to watch out during code review (my own thoughts):
+- if there is *continue* in the while/for loop, check if it will cause infinite loop
+- for multi-thread code, check deadlock or race condition
+- DRY
+- use *const* whenever possible (C++)

@@ -1,0 +1,6 @@
+#+TITLE: youtube-dl
+#+DATE: 2020-05-17
+
+typical use case for me:
+- ~youtube-dl -F <video-url>~ to find out all format
+- ~youtube-dl -f <format-code> <video-url>~ to download the specific format

@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: MarginNote
+
+quite useful app for reading and learning.
+
+However one painful thing is sync between devices, it's unreliable and very slow sometimes.

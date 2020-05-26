@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: tree sitter
+
+- tags :: [[file:video.org][video]]
+
+it uses [[file:lr_parsing.org][LR parsing]]

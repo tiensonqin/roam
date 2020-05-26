@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: weasel-word
+
+- tags :: [[file:writing.org][writing]] [[file:emacs.org][Emacs]] [[file:writegood_mode.org][writegood-mode]]
+- reference :: [[https://randomgeekery.org/2017/08/06/emacs-writegood-mode/]]
+ 
+A set of adverbs that add no meaning to the words they modify.

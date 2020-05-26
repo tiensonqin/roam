@@ -1,0 +1,66 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs 27
+
+** The new configure option '--with-json' adds native support for JSON.
+This uses the Jansson library.  The option is on by default; use
+'./configure --with-json=no' to build without Jansson support.  The
+new JSON functions 'json-serialize', 'json-insert',
+'json-parse-string', and 'json-parse-buffer' are typically much faster
+than their Lisp counterparts from json.el.
+
+** Emacs now supports resizing and rotating images without ImageMagick.
+All modern systems support this feature.  (On GNU and Unix systems,
+Cairo drawing or the XRender extension to X11 is required for this to
+be available; the configure script will test for it and, if found,
+enable scaling.)
+
+The new function 'image-transforms-p' can be used to test whether any
+given frame supports these capabilities.
+** New function 'libxml-available-p'.
+This function returns non-nil if libxml support is both compiled in
+and available at run time.  Lisp programs should use this function to
+detect built-in libxml support, instead of testing for that
+indirectly, e.g., by checking that functions like
+'libxml-parse-html-region' return nil.
+
++++
+** 'libxml-parse-xml-region' and 'libxml-parse-html-region' take
+a parameter that's called DISCARD-COMMENTS, but it really only
+discards the top-level comment.  Therefore this parameter is now
+obsolete, and the new utility function 'xml-remove-comments' can be
+used to remove comments before calling the libxml functions to parse
+the data.
+
++++
+** A new DOM (the XML/HTML document structure returned by functions
+such as 'libxml-parse-html-region') traversal function has been added:
+'dom-search', which takes a DOM and a predicate and returns all nodes
+that match.
+** Emacs now optionally displays a fill column indicator.
+This is similar to what 'fill-column-indicator' package provides, but
+much faster and compatible with 'show-trailing-whitespace'.
+
+Customize the buffer-local user options 'display-fill-column-indicator' and 'display-fill-column-indicator-character' to activate the indicator.
+
+The indicator is not displayed at all in minibuffer windows and in tooltips, as it is not useful there.
+
+There are 2 new buffer local variables and 1 face to customize this
+mode, they are described in the manual "(emacs) Display".
+** The 'cl' package is now officially deprecated in favor of 'cl-lib'.
+** Browse-url
+
+---
+*** The function 'browse-url-emacs' can now visit a URL in selected window.
+It now treats the optional 2nd argument to mean that the URL should be
+shown in the currently selected window.
+
+---
+*** A new function, 'browse-url-add-buttons' can be used to add clickable
+links to most ordinary special-mode buffers that display text that
+have URLs embedded.  'browse-url-button-regexp' controls what's
+considered a button.
+
+---
+*** New user option 'browse-url-secondary-browser-function'.
+It can be set to a function that invokes an alternative browser.

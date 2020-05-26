@@ -1,0 +1,6 @@
+#+TITLE: lexical scope
+#+DATE: 2020-05-19
+
+one type of [[file:scope.org][scope]]
+
+lexical binding of a variable

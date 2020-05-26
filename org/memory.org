@@ -1,0 +1,15 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: memory
+
+https://manybutfinite.com/post/how-the-kernel-manages-your-memory/
+
+https://lwn.net/Articles/250967/
+
+https://manybutfinite.com/post/page-cache-the-affair-between-memory-and-files/
+
+https://manybutfinite.com/post/how-the-kernel-manages-your-memory/
+
+https://manybutfinite.com/post/getting-physical-with-memory/
+
+https://manybutfinite.com/post/memory-translation-and-segmentation/

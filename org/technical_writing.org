@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Technical Writing
+
+- tags :: [[file:toread.org][ToRead]] [[file:course.org][Course]] [[file:google.org][Google]]
+ 
+https://developers.google.com/tech-writing

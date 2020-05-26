@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Diamond
+
+- tags :: [[file:github.org][github]] [[file:python.org][python]] [[file:code_reading.org][Code Reading]]
+- source :: https://github.com/python-diamond/Diamond

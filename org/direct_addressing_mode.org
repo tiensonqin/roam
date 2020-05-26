@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: direct addressing mode
+
+In the direct addressing mode, the instruction contains the memory address to
+access.

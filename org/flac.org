@@ -1,0 +1,29 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: flac
+
+- tags :: [[file:macos.org][MacOS]] [[file:tools.org][tools]]
+
+* split flac files by cue file
+1. Install required packages
+#+BEGIN_SRC sh
+brew install cuetools flac ffmpeg shntool
+#+END_SRC
+
+2. Split flac file by cue
+#+BEGIN_SRC sh
+shnsplit -o flac -f file.cue file.flac
+#+END_SRC
+
+3. Download cuetag.sh from https://github.com/gumayunov/split-cue/blob/master/cuetag and fill meta-info for the resulting flac files
+
+#+BEGIN_SRC sh
+cuetag file.cue split-track*.flac
+#+END_SRC
+
+source https://coderwall.com/p/6ydyoq/how-to-split-flac-files-by-cue-and-convert-to-alac-on-mac-os-x
+* XLD
+Turned out I have APE files, not flac, so this approach not working.
+
+Later discovered best approach is to use XLD. Open cue files with it and it will
+automatically split the files and fill in the metadata information.

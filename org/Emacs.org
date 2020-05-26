@@ -1,0 +1,65 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs
+
+https://www.youtube.com/watch?v=w3krYEeqnyk -  conquering kubernetes with emacs
+
+{C-x h} select whole buffer
+
+- scroll-other-window :: scroll other window while focus is in current window
+
+- http://blog.lujun9972.win/
+
+  https://github.com/lujun9972/emacs-document
+* keybinding convention
+C-c C-k  abort
+C-c C-c  execute/save
+* DevOps
+http://blog.lujun9972.win/emacs-document/blog/2017/03/20/emacs%E4%BD%9C%E4%B8%BAdevops%E7%BC%96%E8%BE%91%E5%99%A8/index.html
+
+3.4.1 在不同服务器或者角色间切换
+你可以在服务器打开文本之后然后使用 sudo 以root角色编辑文件。例如，你想在 服务器 smith16 上以 root 的角色编辑文件，你可以这样：
+
+C-x C-f /ssh:smith16|sudo:root@smith16:/etc/
+
+
+3.5 Literate DevOps
+Literate DevOps http://www.howardism.org/Technical/Emacs/literate-devops.html
+这篇文章介绍了任何无缝地把系统管理工作和文档工作结合起来；按照它
+的指导 DevOps就可以一步一步地编写出优秀的文档
+https://youtu.be/XEf4-MtGQdg
+
+Introduction to Literate DevOps
+with Emacs 如果想了解更多的信息，你可以查看这篇文章Literate DevOps with Emacs
+https://www.youtube.com/watch?v=dljNabciEGg
+
+* 突出显示TODO关键字
+This can be done by adding keywords to font lock: 这个很简单。我让评论中的 TODO: 和 FIXME: 关键字现实时使用自定义字体，这样我可以立即看到它们，知道有东西要修复。这可以通过为font lock添加关键字来实现:
+
+(defun add-watchwords ()
+  "Add TODO: words to font-lock keywords."
+  (font-lock-add-keywords
+   nil '(("\(\<TODO\|\<FIXME\|\<HACK\|@.+\):"
+          1 font-lock-warning-face t))))
+(add-hook 'prog-mode-hook #'add-watchwords)
+todo-highlight.png
+
+这种方法有一个缺点:它会高亮现实编程buffer中所有出现这些单词的地方，即使在注释之外也是如此。 有一些复杂的包可以以更健壮的方式进行高亮，确保只在注释中突出显示这些词。 但我认为不值得因为这些情况而增加复杂性。对我来说，99.99%的情况下，上面的方法是有效的。当出现假阳性时，我就忽略它。
+
+最近我使用了更多描述性的关键字，比如 @correct: 或 @optimization:,所以我在后面添加了一个通配符来处理 "@" 和 ":" 之间的所有单词。即便如此，误报也不是问题。
+
+
+{C-x h} select whole buffer
+
+- scroll-other-window :: scroll other window while focus is in current window
+* find build information
+~system-configuration-options~
+
+#+begin_example
+"--disable-dependency-tracking --disable-silent-rules
+--enable-locallisppath=/usr/local/share/emacs/site-lisp
+--infodir=/usr/local/Cellar/emacs-plus/HEAD-3480071/share/info/emacs
+--prefix=/usr/local/Cellar/emacs-plus/HEAD-3480071 --with-xml2 --without-dbus
+--with-gnutls --with-imagemagick --with-json --with-modules --with-rsvg
+--with-xwidgets --with-ns --disable-ns-self-contained"
+#+end_example

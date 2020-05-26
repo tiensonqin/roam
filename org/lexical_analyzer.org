@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Lexical Analyzer
+#+KEYWORDS: compiler
+
+- [[file:compiler.org][Compiler]]

@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Simon Eskildsen
+
+Personal website: https://sirupsen.com/
+
+github : https://github.com/sirupsen
+
+Created some posts about [[file:napkin_math.org][Napkin Math]]

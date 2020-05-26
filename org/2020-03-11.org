@@ -1,0 +1,23 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: 2020-03-11
+
+* workflow enhancement with Emacs
+Today spent a little bit of time writing a function in [[file:Emacs.org][Emacs]] which does the
+following:
+
+- It asks for a log file (in full path)
+- It prepend the [[file:tramp.org][TRAMP]] path in front of the file full path since it's a file on
+  remote server
+- It open the file using [[file:find_file_no_select.org][find-file-no-select]], then pass the result to [[file:set_buffer.org][set-buffer]]
+- I initially use [[file:find_file.org][find-file]] but that will switch my buffer to that file which
+  will interrupt my workflow, [[file:find_file_no_select.org][find-file-no-select]] turned out to be better option for this case.
+- It goes to begin of buffer then search a particular pattern
+- Once a match is found, it will extract matching part (which is a xml string)
+  and then save to a file, do a pretty print (using [[file:xmllint.org][xmllint]])
+- Last it sets [[file:default_directory.org][default-directory]] back to local path and save the xml file.
+  Without changing [[file:default_directory.org][default-directory]], file will be saved on remote server
+
+I felt much better even though it's just a simple function. But when I did this
+manually before, it felt so much work. I guess that's one of the reason I like
+Emacs more and more.

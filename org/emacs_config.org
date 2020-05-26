@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs Config
+
+https://gitlab.com/ambrevar/dotfiles
+
+https://github.com/jschaf/dotfiles
+
+can't put email under ~:app~, even in my doom.d/modules directory.
+DOOM Emacs will complain and things won't behave correctly

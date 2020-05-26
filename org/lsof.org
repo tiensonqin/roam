@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: lsof
+
+https://medium.com/@copyconstruct/lsof-f2b224eee7b5

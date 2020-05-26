@@ -1,0 +1,4 @@
+#+TITLE: let (lisp)
+#+DATE: 2020-05-19
+
+creates [[file:lexical_scope.org][lexical scope]] variables

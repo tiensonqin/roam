@@ -1,0 +1,14 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs Keybinding
+
+https://github.com/AbstProcDo/Master-Emacs-From-Scrach-with-Solid-Procedures/blob/master/01.Semantic-Keybinding.org
+
+char -> word -> line -> sentence -> page -> buffer
+
+Ctrl -> Meta
+
+- f :: forward
+- b :: backward
+- e :: end
+- a :: ahead

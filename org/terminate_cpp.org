@@ -1,0 +1,14 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: terminate cpp
+
+* When the terninate() will be called?
+
+- when the dtor throw exception during stack unwinding
+- when an exception is not handled during stack unwinding
+
+* What's the default behavior of terminate()?
+call ~abort()~
+
+* how to change the behavior of terminate()?
+use ~set_terminate()~ to specify the function to be called instead of abort()

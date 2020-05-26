@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: bss
+
+~.bss~ section is like the [[file:data_section.org][Data Section]], except that it doesn’t take up space in
+the executable. This section can reserve storage, but it can’t initialize it.

@@ -1,0 +1,67 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Elisp Hook
+#+TAGS: emacs elisp hook org
+
+(define-minor-mode org-roam-mode
+  "Minor mode for Org-roam.
+
+This mode sets up several hooks, to ensure that the cache is updated on file
+changes, renames and deletes. It is also in charge of graceful termination of
+the database connection.
+
+When called interactively, toggle `org-roam-mode'. with prefix
+ARG, enable `org-roam-mode' if ARG is positive, otherwise disable
+it.
+
+When called from Lisp, enable `org-roam-mode' if ARG is omitted,
+nil, or positive. If ARG is `toggle', toggle `org-roam-mode'.
+Otherwise, behave as if called interactively."
+  :lighter " Org-roam"
+  :keymap  org-roam-mode-map
+  :group 'org-roam
+  :require 'org-roam
+  :global t
+  (cond
+   (org-roam-mode
+    (org-roam-db-build-cache)
+    (add-hook 'find-file-hook #'org-roam--find-file-hook-function)
+
+
+(add-hook 'find-file-hook #'org-roam--find-file-hook-function)
+(add-hook 'kill-emacs-hook #'org-roam-db--close-all)
+(advice-add 'rename-file :after #'org-roam--rename-file-advice)
+(advice-add 'delete-file :before #'org-roam--delete-file-advice))
+
+(defun org-roam--find-file-hook-function ()
+  "Called by `find-file-hook' when mode `org-roam-mode' is on."
+  (when (org-roam--org-roam-file-p)
+    (setq org-roam-last-window (get-buffer-window))
+    (add-hook 'post-command-hook #'org-roam--maybe-update-buffer nil t)
+    (add-hook 'after-save-hook #'org-roam-db--update-file nil t)
+    (org-link-set-parameters "file" :face 'org-roam--roam-link-face)
+    (org-roam--maybe-update-buffer :redisplay nil)))
+
+   
+(defun org-roam-db--update-file (&optional file-path)
+  "Update Org-roam cache for FILE-PATH."
+  (let (buf)
+    (if file-path
+        (setq buf (find-file-noselect file-path))
+      (setq buf (current-buffer)))
+    (with-current-buffer buf
+      (save-excursion
+        (org-roam-db--update-titles)
+        (org-roam-db--update-refs)
+        (org-roam-db--update-cache-links)
+        (org-roam--maybe-update-buffer :redisplay t)))))
+
+
+        with-current-buffer
+        with-temp-buffer
+
+        with-temp-file
+
+
+
+        (defun org-roam-db-build-cache ()

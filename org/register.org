@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Register
+
+some special, high-speed memory locations ([[file:programming_from_the_ground_up.org][Programming from the Ground Up]])
+
+registers don't really have [[file:endianness.org][endianness]] : there are no "growing addresses" inside
+a register as there are for memory (https://manybutfinite.com/post/journey-to-the-stack/)

@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs Anki
+
+- tags :: [[file:anki.org][Anki]]
+
+- source :: https://yiufung.net/post/anki-org/

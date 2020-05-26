@@ -1,0 +1,129 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: TRAMP
+
+- tags :: [[file:ssh.org][SSH]]
+
+this [[https://willschenk.com/articles/2020/tramp_tricks/][page]] is an excellent post on Emacs Tramp.
+
+* custom port
+If the host machine does not use standard ssh port (22), then most easier way to make TRAMP to work is to
+add an entry in config file like below:
+#+begin_example
+Host MyRemote
+     HostName <host ip>
+     User johndoe
+     Port 1234
+#+end_example
+
+Then use:
+#+begin_example
+ssh:johndoe@MyRemote:~
+#+end_example
+* authinfo
+为了消除登陆提示，emacs通过 auth-source 包来为Gnus Authinfo和.netrc 提供了原生支持:
+#+BEGIN_SRC elisp
+(require 'dash)
+
+(use-package auth-source
+  :demand
+  :no-require t
+  :config
+  (setq auth-sources (-filter #'file-exists-p '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))))
+#+END_SRC
+
+Now you can just create a ~/.authinfo like this:
+#+begin_example
+machine raspi login pi password raspberry
+#+end_example
+
+然后执行 C-x f /ssh:pi@raspi:/ ,它就会自动连接了，耶!
+* ssh with key
+事实上密码登陆太慢了。消耗大把时间。当有大量的远程主机需要连接时更是如此。
+
+SSH密钥(又名身份文件、证书)是一种更智能(而且在大多数情况下更安全)的处理方式。
+
+如果你有一个主密钥来连接你所有的机器，只需进入 ~/.ssh/config 填入下面内容:
+#+begin_example
+Host *
+User eigen
+IdentityFile ~/.ssh/eigen-identity
+#+end_example
+
+然后你就可以连接到任何服务器了，对于用户 eigen 都会使用指定的密钥。
+* multi-hop
+This [[https://stackoverflow.com/questions/2177687/open-file-via-ssh-and-sudo-with-emacs][post]] has very good example about multi-hop cases.
+
+As of Emacs 24.3, an analog of the old =multi:= syntax has been layered on top
+of the modern =tramp-default-proxies-alist= approach, meaning that you can once
+again perform multi-hops without any prior configuration. For details, see:
+
+#+begin_example
+C-h i g (tramp) Ad-hoc multi-hops
+#+end_example
+
+With the new syntax, each 'hop' is separated by =|=. The example in the manual
+is:
+
+#+begin_example
+C-x C-f /ssh:bird@bastion|ssh:you@remotehost:/path
+#+end_example
+
+Which connects firstly as =bird@bastion=, and from there to
+=you@remotehost:/path=
+** /su: or /sudo: on remote hosts
+You can also use this syntax to sudo/su to root (or of course any other user) on
+a remote host:
+
+#+begin_example
+C-x C-f /ssh:you@remotehost|sudo:remotehost:/path/to/file
+#+end_example
+
+*Important*: be sure to specify the hostname explicitly: =sudo:remotehost:=
+rather than =sudo::= (see below).
+
+As this still uses the proxy mechanism underneath, =tramp-default-proxies-alist=
+should now include the value =("remotehost" "root" "/ssh:you@remotehost:")=
+
+Meaning that the proxy =/ssh:you@remotehost:= is going to be used whenever you
+request a file as =root@remotehost=.
+
+=root= is the default user for these methods, but you can of course also change
+to a non-root user with:
+
+#+begin_example
+C-x C-f /ssh:you@remotehost|sudo:them@remotehost:/path/to/file
+#+end_example
+** Always specify the remote hostname explicitly
+You are probably used to using =sudo::= or =su::= and omitting the hostname. If
+you are /staying/ on the localhost then this is still fine, but if you are
+hopping to a remote server then you /must/ specify the hostname for every hop --
+even if it is the same as for the previous hop. Always use =sudo:hostname:= or
+=su:hostname:= with remote hosts.
+
+The trap here is that =sudo::= /does/ actually appear to work -- /however/ when
+you do that the HOST for the dynamic proxy entry will be the hostname you
+/originated/ from rather than the host you connected to. This will not only look
+confusing (as the wrong host will be displayed in the file paths), but it will
+also mean that any subsequent attempt to use =sudo::= on your localhost will
+instead be proxied to the remote server! (and the proxy would also presumably be
+clobbered if you did the same thing on a second server, causing further issues).
+
+In short, don't use =::= when you multi-hop!
+* docker on remote and need sudo
+My NAS can't ssh into directly with root. always have to do a ~sudo -i~ after
+login with different user to gain root.
+
+Also the docker command can only be ran with root on my NAS server.
+
+I want to use TRAMP along with tramp-docker to edit a file inside a container.
+
+Tried few times, finally got it working..
+
+Syntax is:
+#+begin_example
+ssh:johndoe@MyRemote|sudo:root@MyRemote|docker:3cce4ad24245:/
+#+end_example
+
+last one is docker container id, not name and ~MyRemote~ is the example from [[*custom
+ port][custom port]] section.

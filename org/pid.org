@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: PID
+
+Process ID
+
+few ways to find out PID for a process:
+- ps
+- pgrep
+-

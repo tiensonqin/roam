@@ -1,0 +1,25 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Rest Parameter
+
+- reference :: [[file:understanding_emcascript_6.org][Understanding Emcascript 6]]
+
+In [[file:javascript.org][JavaScript]], a rest parameter is a named parameter preceded by three dots ~...~.
+
+That named parameter becomes an *Array* containing the rest of the parameters
+passed to the function.
+
+#+BEGIN_SRC js
+function pick(object, ...keys)
+{}
+#+END_SRC
+
+It's equivalent to [[file:function_argument_packing.org][Function Argument Packing]] in Python.
+
+Rest parameters don’t affect a function’s length property, which indicates the
+number of named parameters for the function. Rest Parameter is NOT counted as
+part of function length.
+
+Restrictions:
+- there can be only one rest parameter
+- rest parameter must be last

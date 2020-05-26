@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: iterator protocol
+
+- tags :: [[file:python.org][Python]]

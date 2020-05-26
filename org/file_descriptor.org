@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: File Descriptor
+
+A number given by [[file:operating_system.org][Operating System]] so we can use to refer to the file.

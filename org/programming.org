@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Programming
+
+- http://blog.jgc.org/2012/07/some-things-ive-learnt-about.html - Some things I've learnt about programming
+  http://blogs.msdn.com/b/ericlippert/archive/2004/06/14/reading-code-is-hard.aspx

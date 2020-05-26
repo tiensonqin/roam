@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: RethinkDB
+
+- tags :: [[file:opensource.org][OpenSource]] [[file:database.org][Database]]
+
+https://github.com/rethinkdb/rethinkdb

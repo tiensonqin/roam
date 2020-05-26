@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: writegood-mode
+
+- reference :: https://randomgeekery.org/2017/08/06/emacs-writegood-mode/
+
+provides [[file:flesch_kincaid_readability_tests.org][Flesch–Kincaid readability tests]]

@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: The Reasoned Schemer
+
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]] [[file:lisp.org][Lisp]]
+- source :: https://catonmat.net/top-100-books-part-three
+
+Should read after [[file:the_seasoned_schemer.org][The Seasoned Schemer]]

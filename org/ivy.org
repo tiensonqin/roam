@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: ivy
+
+One of the useful feature is when we at ivy interface (for eg, via ~counsel-rg~
+or ~counsel-find-file~), we can use ~C-SPC~ to preview the file under cursor
+without leaving the ivy. Once we quit ivy, we will get back to where we were.

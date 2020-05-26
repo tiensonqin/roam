@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: PDF
+
+https://tech.toryanderson.com/2020/02/09/extracting-pages-of-pdfs/
+
+Extracting pages of pdfs
+Using qpdf:
+
+qpdf --pages ./decree.pdf 1,11 -- ./fulldecree.pdf sup.pdf
+
+The cryptic – is because –pages allows pages to be extracted from multiple pdf sources

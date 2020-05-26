@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: ptrace
+
+Linux system call to allow deubgging purpose.
+
+https://www.linuxjournal.com/article/6100 - Playing with ptrace, Part I

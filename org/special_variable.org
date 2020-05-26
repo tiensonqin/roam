@@ -1,0 +1,8 @@
+#+TITLE: special variable (lisp)
+#+DATE: 2020-05-19
+
+variable with [[file:dynamic_scope.org][dynamic scope]]
+
+can be defined with [[file:defvar.org][defvar]]
+
+people use [[file:earmuff_convention.org][earmuff convention]] for the variable name

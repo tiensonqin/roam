@@ -1,0 +1,11 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+#+TITLE: Hugo
+
+* override baseURL when generate website
+sometimes I need to do this if I want to deploy to two different sites.
+Use ~-b~ to override the ~baseURL~ defined from ~config.toml~ file.
+
+#+BEGIN_SRC sh
+hugo -b <new baseURL>
+#+END_SRC

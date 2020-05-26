@@ -1,0 +1,14 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Dynamic Programming - Matrix
+
+- tags :: [[file:dynamic_programming.org][Dynamic Programming]]
+- source :: https://mp.weixin.qq.com/s/RPBRysbX7wgW_vnPNqloYA
+ 
+矩阵类动态规划，说到这类动态规划通常在一个矩阵中进行，我们只需要考虑当前位置的
+信息即可，分析并定义状态的时候，也只需要分析当前位置和其相邻位置的关系，通常这
+样做就可以达到拆解问题的目的。
+
+序列类动态规划最大的不同在于，*对于第 i 个位置的状态分析，它不仅仅需要考虑当前位
+置的状态，还需要考虑前面 i - 1 个位置的状态* 思考的方向其实在于 寻找当前状态和之
+前所有状态的关系

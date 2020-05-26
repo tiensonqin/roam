@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Cpp
+
+https://monoinfinito.wordpress.com/2011/11/17/c-name-mangling/

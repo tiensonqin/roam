@@ -1,0 +1,34 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Spread Operator
+
+- reference :: [[file:understanding_emcascript_6.org][Understanding Emcascript 6]]
+
+* Array Spread Operator
+When calling a function, prefix the array argument with ~...~, [[file:javascript.org][JavaScript]] engine
+will split the array into individual arguments and passes them in.
+
+#+BEGIN_SRC js
+let values = [25, 50, 75, 100]
+
+// equivalent to
+// console.log(Math.max(25, 50, 75, 100));
+console.log(Math.max(...values));  // 100
+#+END_SRC
+
+It's equivalent to [[file:function_argument_unpacking.org][Function Argument Unpacking]] for [[file:positional_argument.org][positional argument]] in [[file:python.org][Python]].
+It's actually the reverse of [[file:rest_parameter.org][Rest Parameter]].
+
+* Object Spread Operator
+Not part of [[file:javascript.org][JavaScript]] ES6, but used heavily by [[file:react.org][React]].
+
+Prefix ~...~ before an object and it copies each key value pair into a new
+object.
+
+#+BEGIN_SRC js
+const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
+const age = 28;
+const user = { ...userNames, age };
+console.log(user);
+// output: { firstname: 'Robin', lastname: 'Wieruch', age: 28}
+#+END_SRC

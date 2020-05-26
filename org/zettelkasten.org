@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Zettelkasten
+
+https://writingcooperative.com/zettelkasten-how-one-german-scholar-was-so-freakishly-productive-997e4e0ca125
+
+- [[file:mental_model.org][mental model]]
+
+- build up a “latticework of mental models” [fn:1] instead of just “remembering
+  isolated facts and try and bang ’em back.
+
+[fn:1] [[file:charlie_munger.org][Charlie Munger]]

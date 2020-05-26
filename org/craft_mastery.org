@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Craft Mastery
+
+- tags :: [[file:toread.org][ToRead]]
+
+https://jlongster.com/How-I-Became-Better-Programmer

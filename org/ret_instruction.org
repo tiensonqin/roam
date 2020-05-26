@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: ret instruction
+
+Pops the value at the top of the [[file:stack.org][Stack]] and sets the [[file:instruction_pointer.org][instruction pointer]] to that
+value, then jumps to it.

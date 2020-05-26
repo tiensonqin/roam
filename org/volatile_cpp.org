@@ -1,0 +1,14 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: volatile cpp
+
+- tags :: [[file:multithread.org][multi-thread]]
+
+volatile keyword tells compile the variable could be changed unexpectedly, so
+its value should always be read from memory, instead of register(since compilers
+may do optimization, access register is faster than memory)
+
+a variable should be declared as volatile when:
+
+- its value could be changed by another thread
+- its value could be changed by hardware

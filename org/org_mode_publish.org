@@ -1,0 +1,10 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+#+TITLE: Org Mode Publish
+
+- tags :: [[file:org_mode.org][Org Mode]]
+
+- https://pank.eu/blog/blog-setup.html
+- https://nicolas.petton.fr/blog/blogging-with-org-mode.html
+- https://ogbe.net/blog/blogging_with_org.html
+- https://www.kengrimes.com/ox-hugo-tutorial/

@@ -1,0 +1,13 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: traps
+
+software interrrupts
+
+Software interrupts are similar in principle but a bit different in practice.
+CPUs support special instructions that allow the software to simulate an
+interrupt. When such an instruction is executed, the CPU treats it like an
+interrupt - stops its normal flow of execution, saves its state and jumps to a
+handler routine. Such "traps" allow many of the wonders of modern OSes (task
+scheduling, virtual memory, memory protection, debugging) to be implemented
+efficiently

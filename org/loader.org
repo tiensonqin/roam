@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Loader
+
+https://lwn.net/Articles/630727/ - How programs get run
+
+https://lwn.net/Articles/631631/ - How programs get run: ELF binaries

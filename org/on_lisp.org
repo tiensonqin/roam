@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: On Lisp
+
+- author :: [[file:paul_graham.org][Paul Graham]]
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]] [[file:common_lisp.org][Common Lisp]]
+
+https://github.com/showgood/onlisp/blob/master/onlisp.org

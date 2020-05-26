@@ -1,0 +1,11 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Permanent notes
+
+- source ::  [[file:how_to_take_smart_notes.org][How to Take Smart Notes]]
+ 
+Permanent notes, which will never be thrown away and contain the necessary
+information in themselves in a permanently understandable way.
+
+They are always stored in the same way in the same place, either in the
+reference system or, written as if for print, in the slip-box.

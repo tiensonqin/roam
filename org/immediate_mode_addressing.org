@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: immediate mode addressing
+
+in which the data to access is embedded in the instruction itself.
+
+dollar sign switches it to immediate mode addressing

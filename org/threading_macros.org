@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: threading macros
+
+defined by [[file:clojure.org][Clojure]]
+
+https://clojure.org/guides/threading_macros
+
+- thread-first macro (->)
+- thread-last (->>)
+- thread-as (as->) macros
+- some->, some->> and cond->

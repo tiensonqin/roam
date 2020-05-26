@@ -1,0 +1,11 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Org Mode Export
+
+- tags :: [[file:org_mode.org][Org Mode]]
+
+- pre processing https://www.gonsie.com/blorg/ox-hook.html
+- post processing http://kitchingroup.cheme.cmu.edu/blog/2015/12/01/Post-processing-an-org-buffer-on-export/
+- another https://llazarek.com/2018/11/org-export-processing.html
+- yet another https://her.esy.fun/posts/0011-export-tangle-names/index.html
+- hooks, filters https://orgmode.org/manual/Advanced-Export-Configuration.html

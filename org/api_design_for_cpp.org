@@ -1,0 +1,11 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: API Design for C++
+
+- tags :: [[file:book.org][book]] [[file:cpp.org][Cpp]]
+
+styles:
+- Flat C APIs
+- Object-Oriented C++APIs
+- Template-Based APIs
+- Data-Driven APIs

@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: The Elements of Computing Systems
+
+- tags :: [[file:book.org][book]]

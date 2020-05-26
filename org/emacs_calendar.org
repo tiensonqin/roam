@@ -1,0 +1,16 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs Calendar
+
+http://blog.lujun9972.win/blog/2018/10/27/emacs%E4%B8%AD%E7%9A%84%E6%97%A5%E7%A8%8B%E7%AE%A1%E7%90%86/index.html
+
+cal-html-cursor-month
+
+#+begin_example
+,* dinosaur 6-7pm
+<2020-08-17 Mon 18:00-19:00>--<<2020-08-21 Fri 18:00-19:00>
+#+end_example
+
+this will only show entry on first and last day, not days in between
+
+recommended solution is to use: ~org-clone-subtree-with-time-shift~ which creates entry for each day.

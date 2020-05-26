@@ -1,0 +1,139 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Ultra-diff for Emacs
+#+DATE: <2020-03-27 Fri>
+
+- tags :: [[file:Emacs.org][Emacs]] [[file:myadventure.org][MyAdventure]]
+
+* diff backends
+#+BEGIN_SRC emacs-lisp
+(defvar ud/diff-backend 'vdiff)
+#+END_SRC
+
+* core
+This is the function does the heavy lifting and inspired by [[http://mbork.pl/2019-11-17_Diffing_buffer_fragments%2c_continued][this]], I just
+enhanced a bit on top of it.
+
+#+BEGIN_SRC emacs-lisp
+;;;###autoload
+(defun ud/diff-last-two-kills (prettier backend)
+  "Put the last two kills to temporary buffers, apply the prttier to the buffers, then diff using backend"
+  (let ((first-copy (generate-new-buffer "*first*"))
+    (last-copy (generate-new-buffer "*last*")))
+    (set-buffer last-copy)
+    (insert (current-kill 0 t))
+    (funcall prettier)
+    (set-buffer first-copy)
+    (insert (current-kill 1 t))
+    (funcall prettier)
+    (funcall backend first-copy last-copy)
+))
+#+END_SRC
+
+We also need a function which translates the backend symbol to the actual
+function used for diff.
+#+BEGIN_SRC emacs-lisp
+;;;###autoload
+(defun ud/get-backend ()
+  "Put the last two kills to temporary buffers, json pretty print buffers and diff using ud/diff-back-end"
+  (let ((backend nil))
+    (when (eq ud/diff-backend 'vdiff)
+      (setq backend #'vdiff-buffers)
+    )
+    (when (eq ud/diff-backend 'ediff)
+      (setq backend #'ediff-buffers)
+    )
+
+    backend))
+#+END_SRC
+* diff json buffers
+Now with all the foundation is laid, it's pretty easy to apply this to json text
+since Emacs has built-in method to pretty print json blob:
+#+BEGIN_SRC emacs-lisp
+;;;###autoload
+(defun ud/json-diff-last-two-kills ()
+  "Put the last two kills to temporary buffers,
+   json pretty print buffers and diff using ud/diff-back-end"
+  (interactive)
+  (ud/diff-last-two-kills #'json-pretty-print-buffer (ud/get-backend))
+)
+#+END_SRC
+* diff xml buffers
+However it's slightly more work for xml case since there is no built-in method
+to pretty print xml text, but it's not difficult to create one ourselves.
+One easy approach is to make use of ~xmllint~:
+#+BEGIN_SRC emacs-lisp
+;;;###autoload
+(defun xml-pretty-print-buffer ()
+  "Pretty-print current buffer with external tool - `xmllint`"
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (point-min) (point-max) "xmllint --format -" (buffer-name) t)
+))
+#+END_SRC
+
+Now we're ready for xml diff:
+#+BEGIN_SRC emacs-lisp
+;;;###autoload
+(defun ud/xml-diff-last-two-kills ()
+  "Put the last two kills to temporary buffers,
+   xml pretty print buffers and diff using ud/diff-back-end"
+  (interactive)
+  (ud/diff-last-two-kills #'xml-pretty-print-buffer (ud/get-backend))
+)
+#+END_SRC
+
+* change diff backend
+We're almost done except we need to offer an option to allow user to select
+different diff backend if desired.
+
+Here's first attempt:
+#+BEGIN_SRC emacs-lisp :tangle no
+(defun ud/select-backend ()
+  "choose diff backend"
+  (interactive)
+  (let (
+        (backends '("vdiff" "ediff" "diff")))
+
+    (ivy-read "backends: " backends
+      :action '(1
+       ("o" (lambda (x) (setq ud/diff-backend (quote x)) "choose"))))
+))
+#+END_SRC
+
+After running this function and choose ~ediff~ from list, the variable
+~ud/diff-backend~ is ~'x~, not right..
+
+ok, then maybe we should not quote it:
+#+BEGIN_SRC emacs-lisp
+(defun ud/select-backend ()
+  "choose diff backend"
+  (interactive)
+  (let (
+        (backends '("vdiff" "ediff" "diff")))
+
+    (ivy-read "backends: " backends
+      :action '(1
+       ("o" (lambda (x) (setq ud/diff-backend x)) "choose")))
+))
+#+END_SRC
+
+Still not work, the value now is ~"ediff"~, what we want is the symbol ~'ediff~.
+
+Turned out this [[https://emacsredux.com/blog/2014/12/05/converting-between-symbols-and-strings/][post]] tells me exactly what I need - use ~intern~ to convert
+string to symbol.
+
+This is the working version:
+#+BEGIN_SRC emacs-lisp
+;;;###autoload
+(defun ud/select-backend ()
+  "choose diff backend"
+  (interactive)
+  (let (
+        (backends '("vdiff" "ediff" "diff")))
+
+    (ivy-read "backends: " backends
+      :action '(1
+       ("o" (lambda (x) (setq ud/diff-backend (intern x)) "choose"))))
+))
+#+END_SRC

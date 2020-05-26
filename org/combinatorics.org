@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Combinatorics
+
+* Math Skills: How to find Factorial, Permutation and Combination (Choose)
+[[https://youtu.be/8RRo6Ti9d0U][Math Skills: How to find Factorial, Permutation and Combination (Choose) - YouTube]]

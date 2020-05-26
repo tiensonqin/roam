@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: register addressing mode
+
+In the register addressing mode, the instruction contains a register to access,
+rather than a memory location.

@@ -1,0 +1,54 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Org Mode
+
+- tags :: [[file:Emacs.org][Emacs]]
+- source :: http://blog.lujun9972.win/emacs-document/blog/2020/01/14/%E4%B8%80%E4%BA%9Bemacs%E6%8A%80%E5%B7%A7/index.html
+- another :: https://writequit.org/eos/eos-org.html
+
+https://orgmode.org/worg/org-contrib/
+
+* 在org文档中插入截图
+我在Org上做了很多笔记。当我做一些设计可视化的东西时，我比较喜欢包含一些屏幕截图，因为它们通常更有助于表达。为了减少截屏，剪切，插入链接到Org文件的不爽之处，我写了一些Elisp来帮我:
+
+#+BEGIN_SRC emacs-lisp
+(defun insert-screenshot (file-name)
+  "Save screenshot to FILE-NAME and insert an Org link at point.
+
+This calls the `import' from ImageMagick to take the screenshot,
+and `optipng' to reduce the file size if the program is present."
+  (interactive "FSave to file: ")
+  ;; Get absolute path
+  (let ((file (expand-file-name file-name)))
+    ;; Create the directory if necessary
+    (make-directory (file-name-directory file) 'parents)
+    ;; Still, make sure to signal if the screenshot was in fact not created
+    (unless (= 0 (call-process "import" nil nil nil file))
+      (user-error "`import' failed to create screenshot %s" file))
+    (if (executable-find "optipng")
+        (start-process "optipng" nil "optipng" file))
+    (insert
+     ;; A link relative to the buffer where it is inserted is more portable
+     (format "[[file:%s]]"
+             (file-relative-name file
+                                 (file-name-directory buffer-file-name))))
+    (when (eq major-mode 'org-mode)
+      (org-redisplay-inline-images))))
+#+END_SRC
+这段代码请求输入一个文件名，然后调用 import 来选择我想要截屏的区域并保存它，然后
+在光标处插入一个org格式的图像链接。 org-mode会显示内联图像，这样我就可以立即看到
+结果。如果安装了 optipng,它甚至会压缩屏幕截图以节省空间。
+
+* sql
+http://blog.lujun9972.win/emacs-document/blog/2019/12/13/%E5%9C%A8org%E8%A1%A8%E4%B8%8A%E8%BF%90%E8%A1%8Csql/index.html
+在org表上运行SQL
+
+* company
+http://blog.lujun9972.win/emacs-document/blog/2019/12/12/%E4%BD%BF%E7%94%A8company%E8%A1%A5%E5%85%A8org-block/index.html
+使用Company补全org block
+* capture
+http://blog.lujun9972.win/emacs-document/blog/2020/02/14/macos%E4%B8%8A%E6%8D%95%E8%8E%B7emacs-org-mode%E4%BB%A3%E5%8A%9E%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%85%A8%E5%B1%80%E7%83%AD%E9%94%AE/index.html
+* css
+https://github.com/gongzhitaao/orgcss
+* write thesis
+https://github.com/dangom/org-thesis

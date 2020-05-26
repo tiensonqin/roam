@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: QuickJS
+
+- tags :: [[file:javascript.org][JavaScript]]
+ 
+https://bellard.org/quickjs/

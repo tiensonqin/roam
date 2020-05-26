@@ -1,0 +1,12 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+#+TITLE: calling convention
+
+- source :: [[file:programming_from_the_ground_up.org][Programming from the Ground Up]]
+
+The way that the variables are stored and the parameters and return values are
+transferred
+
+* C calling convention
+program pushes all of the parameters for the function onto the stack in the
+*reverse order* that they are documented.

@@ -1,0 +1,18 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+
+#+TITLE: Python
+
+make all dirs in a path
+
+You are looking for os.makedirs() which does exactly what you need.
+
+Because it fails if the leaf directory already exists you'll want to test for
+
+existence before calling os.makedirs().
+
+
+import pathlib
+
+path = pathlib.Path(p4)
+path.parent.mkdir(parents=True, exist_ok=True)

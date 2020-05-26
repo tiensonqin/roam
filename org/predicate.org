@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: predicate
+
+- procedure returns true/false
+- expression evaluates to true/false

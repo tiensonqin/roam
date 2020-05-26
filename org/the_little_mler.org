@@ -1,0 +1,8 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: The Little MLer
+
+- tags :: [[file:book.org][book]]
+- source :: https://catonmat.net/top-100-books-part-four
+
+Should read after [[file:the_reasoned_schemer.org][The Reasoned Schemer]]

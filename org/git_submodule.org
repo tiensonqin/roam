@@ -1,0 +1,22 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+#+TITLE: git submodule
+
+- tags :: [[file:git.org][git]]
+
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+git submodule add https://github.com/jethrokuan/cortex/
+
+- ~git submodule init~ initialize your local configuration file
+- run it at submodule directory
+- ~git submodule update~ fetch all the data from that project
+
+#+BEGIN_SRC sh
+cd cortex/
+git submodule init
+#+END_SRC
+
+#+begin_example
+Submodule 'themes/cortex' (https://github.com/jethrokuan/cortex/) registered for path './'
+#+end_example

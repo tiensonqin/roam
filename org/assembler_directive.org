@@ -1,0 +1,18 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: assembler directive
+
+- tags :: [[file:programming_from_the_ground_up.org][Programming from the Ground Up]]
+ 
+Anything starting with *a period* isn't directly translated into a machine
+instruction Instead. it's an instruction to the assembler itself.
+
+For eg:
+#+BEGIN_SRC asm
+.section .text
+#+END_SRC
+starts the [[file:text_section.org][text section]]
+
+
+~.globl~ means that the assembler shouldnt discard this symbol after assembly
+because the linker will need it.

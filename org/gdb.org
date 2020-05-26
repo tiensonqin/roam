@@ -1,0 +1,35 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+#+TITLE: GDB
+
+- tags :: [[file:debugger.org][Debugger]]
+ 
+* set function breakpoint
+Need to use fully qualified name, for eg, ~namespace1::namespace2::func~
+* set breakpoint with filename + line number
+* set breakpoint to catch exception
+- catch throwing [[file:exception.org][exception]]
+* data breakpoint
+* list breakpoints
+~info b~
+* debug core dump
+#+BEGIN_SRC sh
+gdb <binary file> <core dump file>
+#+END_SRC
+* delete breakpoint
+- use ~del x~ where x is number of breakpoint we get from [[list breakpoints]]
+* python interpreter
+[[file:python.org][python]]
+* print command
+use ~p~ as shortcut.
+
+p/d - display value in decimal
+p/t - display value in binary
+p/x - display value in hexadecimal
+
+* articles
+https://jvns.ca/blog/2018/01/04/how-does-gdb-call-functions/
+http://www.brendangregg.com/blog/2016-08-09/gdb-example-ncurses.html
+https://blog.0x972.info/?d=2015/09/09/09/19/14-debugging-with-gdb-a-real-life-example
+https://jvns.ca/blog/2014/02/10/three-steps-to-learning-gdb/
+https://pauladamsmith.com/blog/2011/03/redis_get_set.html - More Redis internals: Tracing a GET & SET

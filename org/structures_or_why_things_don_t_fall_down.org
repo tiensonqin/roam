@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Structures: Or Why Things Don't Fall Down
+
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]]

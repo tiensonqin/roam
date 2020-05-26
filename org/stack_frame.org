@@ -1,0 +1,31 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: stack frame
+
+- reference :: [[file:programming_from_the_ground_up.org][Programming from the Ground Up]]
+ 
+stack frame consists of all of the stack variables used within a function including:
+- parameters
+- local variables
+- return address
+
+* creates the stack frame for a function
+- saves current [[file:base-pointer.org][base-pointer]] (%ebp) to top of [[file:stack.org][Stack]]
+- copies the [[file:stack-pointer.org][stack-pointer]] (%esp) to [[file:base-pointer.org][base-pointer]] (%ebp)
+
+#+BEGIN_SRC asm
+pushl %ebp
+movl %esp, %ebp
+#+END_SRC
+
+* restore previous stack frame
+#+BEGIN_SRC asm
+movl %ebp, %esp
+popl %ebp
+#+END_SRC
+
+basically after set ~%esp~ value to ~%ebp~, now top of stack will point to where
+%ebp is, this effectively just like removes all local variables from [[file:stack.org][Stack]]
+
+Then after pop the top of stack and put into ~%ebp~, now top of stack is
+function's [[file:return_address.org][return address]]. This prepares things for [[file:ret_instruction.org][ret instruction]].

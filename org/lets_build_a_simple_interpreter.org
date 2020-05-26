@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Let's Build A Simple Interpreter
+
+- tags :: [[file:interpreter.org][Interpreter]] [[file:toread.org][ToRead]] [[file:blog.org][Blog]]
+
+- [[https://ruslanspivak.com/lsbasi-part1/][Let’s Build A Simple Interpreter]]

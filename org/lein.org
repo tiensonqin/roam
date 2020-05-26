@@ -1,0 +1,44 @@
+#+TITLE: lein
+#+DATE: 2020-05-25
+
+- tags :: [[file:clojure.org][Clojure]] [[file:macos.org][MacOS]]
+- source :: https://purelyfunctional.tv/guide/how-to-install-clojure/
+ 
+#+BEGIN_SRC sh
+curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
+sudo mv lein /usr/local/bin/lein
+sudo chmod a+x /usr/local/bin/lein
+lein version
+#+END_SRC
+
+initially got error:
+#+begin_example
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+#+end_example
+
+Found the solution [[https://ofosos.org/2017/12/04/sudo-org-babel/][here]]. basically use [[file:tramp.org][TRAMP]] ~sudo~ protocol:
+#+BEGIN_SRC sh :tangle no :dir /sudo::/tmp
+curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
+mv lein /usr/local/bin/lein
+chmod a+x /usr/local/bin/lein
+lein version
+#+END_SRC
+
+Then it works:
+#+RESULTS:
+| /var/root/.lein/self-installs/leiningen-2.9.3-standalone.jar.pending: |    OK |    |      |        |         |        |        |    |
+| Leiningen                                                             | 2.9.3 | on | Java | 13.0.2 | OpenJDK | 64-Bit | Server | VM |
+
+But later turned out still not quite.. the owner and permission are all wrong:
+#+begin_example
+❯ lein new app hello
+bash: /usr/local/bin/lein: Permission denied
+❯ ls -lh /usr/local/bin/lein
+-rwx--x--x  1 root  wheel    13K May 25 16:39 /usr/local/bin/lein
+#+end_example
+
+So have to repeat the steps in terminal and it works:
+#+begin_example
+❯ ls -lh /usr/local/bin/lein
+-rwxr-xr-x  1 showgood  staff    13K May 25 16:44 /usr/local/bin/lein
+#+end_example

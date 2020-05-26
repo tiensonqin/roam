@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Project notes
+
+Project notes, which are only relevant to one particular project. They are kept
+within a project-specific folder and can be discarded or archived after the
+project is finished.  [[file:how_to_take_smart_notes.org][How to Take Smart Notes]]

@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Holistic Learning
+
+Six steps:
+
+- [[file:acquire.org][Acquire]]
+- [[file:understand.org][Understand]]
+- [[file:explore.org][Explore]]
+- Debug
+- [[file:apply.org][Apply]]
+- Test

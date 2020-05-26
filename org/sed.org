@@ -1,0 +1,43 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: sed
+
+* case-insensitive search
+I'd like to and so on while
+replacing or performing other operations.
+
+GNU sed and other version does support a case-insensitive search using ~I~ flag
+after ~/regex/~ so it will match all combination of word like ~foo~, ~FOO~, ~FoO~.
+
+Example:
+#+BEGIN_SRC sh
+cat file.txt | sed -e 's/target/replace-word/gI'
+#+END_SRC
+
+* how to use bash variable in sed?
+surround bash variable with single quote(').
+
+#+BEGIN_SRC sh
+sed -i '/-I$__LIB_DIR$/i '$bash_var'' $compiler_option
+#+END_SRC
+
+* how to search and replace pattern which contains /
+use another character, like ~#~ instead of ~/~
+
+* how to replace a character(like |) with a TAB?
+this one is very tricky than it looks. I tried several ways, only this one seems
+work:
+
+#+BEGIN_SRC sh
+sed -i 's/|/'$'\t''/g' $compiler_option
+#+END_SRC
+
+* why I saw the error message like "sed: -e expression #1, char 11: unknown option to `s'"
+Seems it's most likely that something you use(either pattern or string
+to be replaced to) has / which cause the trouble. To solve this, try use #
+instead of / as delimiter.
+
+* how to provide multiple patterns for a sed command?
+#+BEGIN_SRC sh
+sed -i 's/target1/replace1/g s/target2/replace2/g' $input_file
+#+END_SRC

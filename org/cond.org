@@ -1,0 +1,61 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: cond
+
+from [[file:sicp_chapter_1.org][SICP - Chapter 1]]
+
+general form of conditional expression:
+#+begin_example
+(cond (<p1> <e1>)
+      (<p2> <e2>)
+         ...
+      (<pn> <en>)
+)
+#+end_example
+
+~cond~ is a [[file:special_form.org][Special Form]]
+
+- [[file:predicate.org][predicate]] :: <p>
+- consequent expression :: <e>
+- clause :: pair of [[file:predicate.org][predicate]] and consequent expression (<p> <e>)
+
+#+BEGIN_SRC emacs-lisp
+(defun abs (x)
+  (cond ((< x 0) (- x))
+        ((= x 0) 0)
+        ((> x 0) x)
+        )
+)
+#+END_SRC
+
+~else~ is special symbol can only appear in final clause of ~cond~:
+#+begin_example
+(cond (<p1> <e1>)
+      (<p2> <e2>)
+        ...
+      (else <e>)
+)
+#+end_example
+
+So we can rewrite abs function by using ~else~:
+#+BEGIN_SRC elisp
+(defun abs-2 (x)
+  (cond ((> x 0) x)
+        (else (- x))
+        )
+)
+#+END_SRC
+
+We will get error when running this version:
+#+BEGIN_QUOTE
+abs-elisp: Symbol’s value as variable is void: else
+#+END_QUOTE
+
+It turned out in [[file:elisp.org][Elisp]], there is no ~else~ for ~cond~, instead we should use ~t~:
+#+BEGIN_SRC elisp
+(defun abs-elisp (x)
+  (cond ((> x 0) x)
+        (t (- x))
+        )
+)
+#+END_SRC

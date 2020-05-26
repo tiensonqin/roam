@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Linux Cross Reference
+
+- tags :: [[file:linux.org][Linux]] [[file:bookmark.org][Bookmark]]
+
+http://lxr.linux.no/

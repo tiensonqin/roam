@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Monica
+
+- tags :: [[file:opensource.org][OpenSource]] [[file:self_host.org][Self Host]]
+ 
+https://github.com/monicahq/monica
+
+Open source personal CRM

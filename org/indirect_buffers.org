@@ -1,0 +1,7 @@
+#+TITLE: Indirect Buffers
+#+DATE: 2020-05-23
+
+- tags :: [[file:Emacs.org][Emacs]]
+
+https://www.emacswiki.org/emacs/narrow-indirect.el
+https://emacs.stackexchange.com/questions/12180/why-use-indirect-buffers/12182#12182

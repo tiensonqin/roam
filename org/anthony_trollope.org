@@ -1,0 +1,13 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Anthony Trollope
+
+- tags :: [[file:person.org][person]]
+
+One of the most popular and productive authors of the 19th century: He would
+start every morning at 5:30 a.m. with a cup of coffee and a clock in front of
+him. Then he would write at least 250 words every 15 minutes. This, he writes in
+his autobiography: “allowed me to produce over ten pages of an ordinary novel
+volume a day, and if kept up through ten months, would have given as its results
+three novels of three volumes each in the year” (Trollope, 2008, 272). And that,
+mind you, was before breakfast.  [[file:how_to_take_smart_notes.org][How to Take Smart Notes]]

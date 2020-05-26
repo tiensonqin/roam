@@ -1,0 +1,4 @@
+#+TITLE: lambda
+#+DATE: 2020-05-19
+
+lambda folding

@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Magit
+
+- tags :: [[file:Emacs.org][Emacs]] [[file:git.org][git]]
+
+Favorite Feature:
+
+- spin-off branch
+- display commits affect a function
+- display commits affect a file
+- time machine

@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: SQL Performance Explained
+
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]]

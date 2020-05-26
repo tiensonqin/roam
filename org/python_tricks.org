@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Python Tricks
+
+- author :: Dan Bader
+- tags :: [[file:book.org][book]] [[file:python.org][Python]] [[file:toread.org][ToRead]]

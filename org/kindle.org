@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Kindle
+
+[[https://readwise.io/][readwise]] is a paid service useful for aggregate Kindle notes
+
+Similar tool [[https://en.toolinbox.net/Klib/][Klib]] and [[https://knotesapp.cn/][Knotes]], [[https://www.clippings.io/][clippings.io]]
+
+K2pdfopt

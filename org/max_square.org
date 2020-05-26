@@ -1,0 +1,64 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Max Square
+
+- tags :: [[file:dynamic_programming.org][Dynamic Programming]]
+- source :: https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247486923&idx=2&sn=6c1c8aeb4db68522e67ddf8c1e933660&chksm=fa0e624acd79eb5cdb410808921609a830b9b9221e813e4eb89cf551ca48f317668d44b095d2&scene=21#wechat_redirect
+
+* 问题拆解
+我们可以思考，如果我们从左到右，然后从上到下遍历矩阵，假设我们遍历到的当前位置是
+正方形的右下方的点，那其实我们可以看之前我们遍历过的点有没有可能和当前点组成符合
+条件的正方形，除了这个点以外，无非是要找另外三个点，这三个点分别在当前点的上方，
+左方，以及左上方，也就是从这个点往这三个方向去做延伸，具体延伸的距离是和其相邻的
+三个点中的状态有关
+
+* 状态定义
+因为我们考虑的是正方形的右下方的顶点，因此状态可以定义成 “当前点为正方形的右下方
+的顶点时，正方形的最大面积”
+
+* 递推方程
+有了状态，我们再来看看递推方程如何写，前面说到我们可以从当前点向三个方向延伸，我
+们看相邻的位置的状态，这里我们需要取三个方向的状态的最小值才能确保我们延伸的是全
+为 ‘1’ 的正方形，也就是
+
+#+BEGIN_SRC cpp
+dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1
+#+END_SRC
+
+* 实现
+在实现上，我们需要单独考虑两种情况，就是当前位置是 ‘1’，还有就是当前位置是 ‘0’，
+如果是 ‘0’ 的话，状态就是 0，表示不能组成正方形，如果是 ‘1’ 的话，我们也需要考虑
+位置，如果是第一行的元素，以及第一列的元素，表明该位置无法同时向三个方向延伸，状
+态直接给为 1 即可，其他情况就按我们上面得出的递推方程来计算当前状态。
+
+* code
+#+BEGIN_SRC java
+public int maximalSquare(char[][] matrix) {
+    if (matrix.length == 0 || matrix[0].length == 0) {
+        return 0;
+    }
+
+    int m = matrix.length, n = matrix[0].length;
+
+    int[][] dp = new int[m][n];
+
+    int maxLength = 0;
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (matrix[i][j] == '1') {
+                if (i == 0 || j == 0) {
+                    dp[i][j] = matrix[i][j] == '1' ? 1 : 0;
+                } else {
+                    dp[i][j] = Math.min(dp[i - 1][j],
+                                        Math.min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
+                }
+
+                maxLength = Math.max(dp[i][j], maxLength);
+            }
+        }
+    }
+
+    return maxLength * maxLength;
+}
+#+END_SRC

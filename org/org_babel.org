@@ -1,0 +1,12 @@
+#+TITLE: Org Babel
+#+DATE: 2020-05-25
+
+* work with Clojure
+https://kirang.in/post/setting-up-org-mode-to-run-clojure-code/
+
+Basically need to set backend:
+#+BEGIN_SRC elisp
+(setq org-babel-clojure-backend 'cider)
+#+END_SRC
+
+Then use command ~M-x cider-jack-in~.

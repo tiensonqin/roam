@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: The Design of the UNIX Operating System
+
+- tags :: [[file:toread.org][ToRead]] [[file:operating_system.org][Operating System]]

@@ -1,0 +1,13 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: dis module
+
+- tags :: [[file:disassembler.org][Disassembler]] [[file:python.org][Python]]
+ 
+~dis~ module provides an easy way to disassemble the bytecode of Python
+functions.
+
+#+BEGIN_SRC python
+from dis import dis
+dis(f1)
+#+END_SRC

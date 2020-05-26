@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: GCC
+
+- tags :: [[file:compiler.org][Compiler]]
+
+https://stackoverflow.com/questions/89603/how-does-the-debugging-option-g-change-the-binary-executable
+
+GCC has ~-fstack-protector~ compiler [[http://gcc.gnu.org/onlinedocs/gcc-4.2.3/gcc/Optimize-Options.html][option]] to protect [[file:buffer_overflow.org][buffer overflow]] issue.
+If buffer overflow detected, program is aborted via [[http://refspecs.linux-foundation.org/LSB_4.0.0/LSB-Core-generic/LSB-Core-generic/libc---stack-chk-fail-1.html][__stack_chk_fail]].  [[https://manybutfinite.com/post/epilogues-canaries-buffer-overflows/][here]]

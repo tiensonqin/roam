@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: deliberate practice
+
+[[file:how_to_take_smart_notes.org][How to Take Smart Notes]]

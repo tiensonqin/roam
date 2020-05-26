@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: bootstrap
+
+https://manybutfinite.com/post/when-does-your-os-run/
+
+https://manybutfinite.com/post/how-computers-boot-up/

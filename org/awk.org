@@ -1,0 +1,13 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: awk
+
+* only print certain fields for first n line of a file
+#+BEGIN_SRC sh
+gawk -F',' 'BEGIN{OFS=","} 1{print $3, $4, $5} {if (NR == 9000) {nextfile}}'  data.csv
+#+END_SRC
+
+* only print lines which is different from previous based on particular field
+#+BEGIN_SRC sh
+gawk -F',' 'BEGIN{last="aaa"} {if(last != $1) {print $1; last=$1}}' data.csv > abc
+#+END_SRC

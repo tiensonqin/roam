@@ -1,0 +1,15 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: House Robber 2
+
+[[file:leetcode.org][Leetcode]] 213
+
+- tags :: [[file:dynamic_programming_sequence.org][Dynamic Programming - Sequence]]
+
+https://mp.weixin.qq.com/s/RPBRysbX7wgW_vnPNqloYA
+
+房子排列方式是一个圆圈意味着之前的最后一个房子和第一个房子之间产生了联系，这里有一个小技巧就是我们线性考虑 [0, n - 2] 和 [1, n - 1]，然后求二者的最大值。
+
+其实这么做的目的很明显，把第一个房子和最后一个房子分开来考虑。实现上面我们可以直接使用之前的实现代码。
+
+这里有一个边界条件就是，当只有一个房子的时候，我们直接输出结果即可。

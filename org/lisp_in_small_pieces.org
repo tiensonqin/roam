@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Lisp in Small Pieces
+
+- tags :: [[file:book.org][book]] [[file:lisp.org][Lisp]] [[file:toread.org][ToRead]]

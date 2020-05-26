@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Process
+
+A process is an instance of an executing program.
+
+parent process
+
+child process

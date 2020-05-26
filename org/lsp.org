@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: LSP
+
+使用PyEnv等配置Emacs Python LSP
+http://blog.lujun9972.win/emacs-document/blog/2020/01/15/%E4%BD%BF%E7%94%A8pyenv%E7%AD%89%E9%85%8D%E7%BD%AEemacs-python-lsp/index.html

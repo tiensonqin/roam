@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: call instruction
+
+- reference :: [[file:programming_from_the_ground_up.org][Programming from the Ground Up]]
+ 
+~call~ instruction does two things:
+- pushes the address of the next instruction (ie, [[file:return_address.org][return address]]) onto the [[file:stack.org][Stack]]
+- modifies [[file:instruction_pointer.org][instruction pointer]] to point to the start of the function
+
+The difference between call and [[file:jmp_instruction.org][jmp]] is that call also pushes the return address
+onto the stack so that the function can return, while the jmp does not

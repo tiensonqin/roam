@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: In Search of Memory
+
+- author :: Eric R. Kandel
+- tags :: [[file:book.org][book]] [[file:learning.org][Learning]] [[file:toread.org][ToRead]]

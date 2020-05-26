@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: To Mock a Mockingbird
+
+- tags :: [[file:book.org][book]]
+- source ::  https://catonmat.net/top-100-books-part-two

@@ -1,0 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Ask HN: How do you learn complex, dense technical information?
+
+- tags :: [[file:memory.org][memory]]

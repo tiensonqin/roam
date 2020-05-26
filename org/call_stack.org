@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Call Stack
+
+https://eli.thegreenplace.net/2015/programmatic-access-to-the-call-stack-in-c/
+
+https://manybutfinite.com/post/journey-to-the-stack/

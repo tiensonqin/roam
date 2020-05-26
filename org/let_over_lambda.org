@@ -1,0 +1,9 @@
+#+TITLE: Let Over Lambda
+#+DATE: 2020-05-19
+
+#+BEGIN_QUOTE
+Once a programmer becomes used to a complex solution to a problem, simple
+solutions to the same problem feel incomplete and uncomfortable.
+#+END_QUOTE
+
+variables don't have types. Only values have types.

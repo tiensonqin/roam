@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: destructor cpp
+
+* what happens if the base class declares its destructor private?
+compiler error

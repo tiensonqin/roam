@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: cite
+
+To address this problem, deep residual neural networks were presented
+cite:he15_deep_resid_learn_image_recog.

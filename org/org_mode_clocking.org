@@ -1,0 +1,27 @@
+#+TITLE: org mode clocking
+#+DATE: 2020-05-20
+
+- best one
+https://writequit.org/denver-emacs/presentations/2017-04-11-time-clocking-with-org.html
+
+task,parents,category,start,end,effort,ishabit,tags
+analysis,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:47,2016-05-14 16:49,,,
+coding,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:49,2016-05-14 16:54,,,
+review,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:54,2016-05-14 16:57,,,
+verify,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:57,2016-05-14 17:02,,,
+WA,cpp practice on <2016-05-14 Sat>,,2016-05-14 17:02,2016-05-14 17:04,,,
+
+#+BEGIN_SRC elisp
+(org-clock-csv "~/org/coding-leetcode/Leetcode/dp/integerBreak.org" t)
+#+END_SRC
+
+#+RESULTS:
+: #<buffer *clock-entries-csv*>
+
+#+BEGIN_SRC elisp :results raw
+(mapcar (lambda (entry) (org-clock-csv-default-row-fmt entry))
+        (org-clock-csv--get-entries '("~/org/coding-leetcode/Leetcode/dp/integerBreak.org")))
+#+END_SRC
+
+#+RESULTS:
+(analysis,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:47,2016-05-14 16:49,,, coding,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:49,2016-05-14 16:54,,, review,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:54,2016-05-14 16:57,,, verify,cpp practice on <2016-05-14 Sat>,,2016-05-14 16:57,2016-05-14 17:02,,, WA,cpp practice on <2016-05-14 Sat>,,2016-05-14 17:02,2016-05-14 17:04,,,)

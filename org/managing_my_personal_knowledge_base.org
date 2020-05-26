@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Managing my personal knowledge base
+
+- tags :: [[file:personal_knowledge_management.org][personal-knowledge-management]]
+- source :: https://tkainrad.dev/posts/managing-my-personal-knowledge-base/#left

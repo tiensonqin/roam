@@ -1,0 +1,11 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Stack
+
+https://manybutfinite.com/post/journey-to-the-stack/
+
+To access the value on the top of the stack, use the %esp register in [[file:indirect_addressing_mode.org][Indirect addressing mode:]]
+#+BEGIN_SRC asm
+movl (%esp), %eax
+#+END_SRC
+

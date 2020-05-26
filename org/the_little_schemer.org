@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: The Little Schemer
+
+- tags :: [[file:book.org][book]] [[file:toread.org][ToRead]] [[file:lisp.org][Lisp]]
+- source :: https://catonmat.net/top-100-books-part-one

@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: CS 253 Web Security
+
+- tags :: [[file:security.org][Security]] [[file:course.org][Course]] [[file:standford.org][Standford]]
+
+https://web.stanford.edu/class/cs253/

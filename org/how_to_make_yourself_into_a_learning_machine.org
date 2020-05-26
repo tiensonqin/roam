@@ -1,0 +1,12 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: How to Make Yourself Into a Learning Machine
+
+- tags :: [[file:zettelkasten.org][Zettelkasten]] [[file:learning.org][Learning]]
+ 
+- source :: https://superorganizers.substack.com/p/how-to-build-a-learning-machine
+
+by [[file:simon_eskildsen.org][Simon Eskildsen]]
+
+In his Zettelkasten he put in the original quote, then the source, and then
+write a small commentary on it.

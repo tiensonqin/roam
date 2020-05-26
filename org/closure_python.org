@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Closure (Python)
+
+- reference :: [[file:fluent_python.org][Fluent Python]]
+
+a closure is a function with an extended scope that encompasses nonglobal
+variables referenced in the body of the function but not defined there. It does
+not matter whether the function is anonymous or not; what matters is that it can
+access nonglobal variables that are defined outside of its body.

@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: nCr
+
+- [[file:combinatorics.org][Combinatorics]]
+
+[[https://www.hackerrank.com/challenges/ncr/problem][nCr]]

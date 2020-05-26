@@ -1,0 +1,7 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: context manager
+
+Python class which implements ~__enter__~ and ~__exit__~ method.
+
+~__exit__~ will guarantee to be called.

@@ -1,0 +1,62 @@
+#+SETUPFILE:./hugo_setup.org
+#+HUGO_SECTION: zettels
+#+TITLE: Function Argument Packing
+
+- related :: [[file:function_argument_unpacking.org][Function Argument Unpacking]]
+
+* pack positional argument
+To pack any number of [[file:positional_argument.org][positional argument]] (which will be [[file:tuple.org][tuple]]), put ~*~ before
+the argument name. (Python Cookbook 7.1)
+
+Note, the argument name after ~*~ *CAN be omitted*.
+
+#+BEGIN_SRC python
+def avg(first, *rest):
+    return (first + sum(rest)) / (1 + len(rest))
+# Sample use
+avg(1, 2) # 1.5
+avg(1, 2, 3, 4) # 2.5
+#+END_SRC
+
+A ~*~ argument can only appear as the last [[file:positional_argument.org][positional argument]].
+
+NOTE, not the last *argument*, but last [[file:positional_argument.org][positional argument]].
+* pack keyword argument
+To pack any number of [[file:keyword_argument.org][keyword argument]] (which will be [[file:dict.org][dict]]), put ~**~ before the
+argument name.
+
+~**~ argument can only appear as the *last* argument.
+
+#+BEGIN_SRC python
+def foo(required, **kwargs):
+    print(required)
+    if kwargs:
+        print(kwargs)
+
+foo('hello', key1='value', key2=999)
+
+# output: hello
+# {'key1': 'value', 'key2': 999}
+#+END_SRC
+* pack both
+If you want a function that can accept both any number of positional and
+keyword-only arguments, use ~*~ and ~**~ together.
+
+#+BEGIN_SRC python
+def anyargs(*args, **kwargs):
+    print(args)     # A tuple
+    print(kwargs)   # A dict
+#+END_SRC
+
+* keyword-only argument
+To make function accept [[file:keyword_only_argument.org][keyword-only argument]], place the keyword arguments after
+the packing positional argument.
+
+#+BEGIN_SRC python
+def recv(maxsize, *, block):
+    'Receives a message'
+    pass
+
+recv(1024, True)        #  TypeError
+recv(1024, block=True)  # Ok
+#+END_SRC

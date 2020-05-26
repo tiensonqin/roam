@@ -1,0 +1,181 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: How to Take Smart Notes
+
+- tags :: [[file:book.org][book]] [[file:learning.org][Learning]]
+
+- capture
+- reference system : Zotero
+- slip-box : Daniel Lüdecke’s Zettelkasten
+
+critical mass
+
+That is why the threshold to write an idea down has to be as low as possible,
+but it is equally crucial to elaborate on them within a day or two.
+
+It is the standardised format that enables the notes to build up a critical mass
+in one place
+
+The seemingly pragmatic and down-to-earth- sounding advice – to decide what to
+write about before you start writing – is therefore either misleading or banal
+
+By always using the same notebook for making quick notes, always extracting the
+main ideas from a text in the same way and always turning them into the same
+kind of permanent notes, which are always dealt with in the same manner, the
+number of decisions during a work session can be greatly reduced
+
+The outcome of reading with a pen in the hand is not possible to anticipate
+either, and here, too, the idea is not to copy, but to have a meaningful
+dialogue with the texts we read.
+
+
+When we extract ideas from the specific context of a text, we deal with ideas
+that serve a specific purpose in a particular context, support a specific
+argument, are part of a theory that isn’t ours or written in a language we
+wouldn’t use. This is why we have to translate them into our own language to
+prepare them to be embedded into new contexts of our own thinking, the different
+context(s) within the slip-box. Translating means to give the truest possible
+account of the original work, using different words – it does not mean the
+freedom to make something fit. As well, the mere copying of quotes almost always
+changes their meaning by stripping them out of context, even though the words
+aren’t changed. This is a common beginner mistake, which can only lead to a
+patchwork of ideas, but never a coherent thought.
+
+#+BEGIN_QUOTE
+After finishing the book I go through my notes and think how these notes might
+be relevant for already written notes in the slip-box. It means that I always
+read with an eye towards possible connections in the slip-box.”(Luhmann et al.,
+1987, 150)
+#+END_QUOTE
+
+One of the *most important habitual changes* when starting to work with the
+slip-box is moving the attention from the individual project with our
+preconceived ideas towards the open connections within the slip-box
+
+
+The ability to *distinguish relevant from less relevant information* is another
+skill that can only be learned by doing.
+
+
+The ability to spot patterns, to question the frames used and detect the
+distinctions made by others, is the precondition to thinking critically and
+looking behind the assertions of a text or a talk
+
+
+The most important advantage of writing is that it helps us to confront
+ourselves when we do not understand something as well as we would like to
+believe.
+
+#+BEGIN_QUOTE
+“The principle is that you must not fool yourself, and you are the easiest
+person to fool,” Feynman stressed in a speech to young scientists (Feynman 1985,
+342).
+#+END_QUOTE
+
+Reading, especially rereading, can easily fool us into believing we understand a text
+rereading makes us feel we have learned what we read:
+
+
+This is why choosing an external system that forces us to deliberate practice
+and confronts us as much as possible with our lack of understanding or
+not-yet-learned information is such a smart move
+
+
+Understanding is not just a precondition to learning something. To a certain
+degree, learning is understanding. And the mechanisms are not so different,
+either: We can only improve our learning if we test ourselves on our progress
+
+
+
+
+
+
+stress floods our brains with hormones that suppress learning processes
+
+Learning itself requires [[file:deliberate_practice.org][deliberate practice]]
+
+Learning requires effort, because we have to think to understand and we need to
+actively retrieve old knowledge to convince our brains to connect it with new
+ideas as cues.
+
+When we try to answer a question before we know how to, we will later remember
+the answer better, even if our attempt failed
+
+best-researched and most successful learning method is elaboration
+
+Not learning from what we read because we don’t take the time to elaborate on it
+is the real waste of time
+
+The slip-box takes care of details and references and is a long-term memory
+resource that keeps information objectively unaltered. That allows the brain to
+focus on the gist, the deeper understanding and the bigger picture, and frees it
+up to be creative
+
+One difference stood out as critical: The ability to think beyond the given
+frames of a text (Lonka 2003, 155f)
+
+Experienced academic readers usually read a text with questions in mind and try
+to relate it to other possible approaches
+
+Writing brief accounts on the main ideas of a text instead of collecting quotes
+
+
+This is exactly what we do when we take the next step, in which we write and add
+permanent notes to the slip-box. We don’t just play with ideas in our heads, but
+do something with them in a very concrete way: We think about what they mean for
+other lines of thoughts, then we write this explicitly on paper and connect them
+literally with the other notes
+
+[[file:anthony_trollope.org][Anthony Trollope]]
+
+the sum of the slip-box content is worth much more than the sum of the notes
+
+Taking permanent notes of our own thoughts is a form of self-testing as well
+
+We reinvent and rewrite our memory every time we try to retrieve information
+
+#+BEGIN_QUOTE
+it is not possible to think systematically without writing (Luhmann 1992, 53)
+#+END_QUOTE
+
+A common way to embed an idea into the context of the slip-box is by writing out
+the reasons of its importance for your own lines of thought
+
+Scarcity: Why Having Too Little Means So Much
+
+Transferring these ideas into the network of our own thoughts, our latticework
+of theories, concepts and mental models in the slip-box brings our thinking to
+the next level
+
+[[file:solomon_shereshevsky.org][Solomon Shereshevsky]]
+
+involuntary memory - can't retrieve it on purpose
+
+Storage strength
+
+retrieval strength
+
+Learning would be not so much about saving information, but
+about building connections and bridges between pieces of information to
+circumvent the inhibition mechanism in the right moment
+
+connect a piece of information to as many meaningful contexts as possible
+
+[[file:hermann_ebbinghaus.org][Hermann Ebbinghaus]]
+
+elaboration is nothing more than connecting information to other information in
+a meaningful way
+
+first step of elaboration is to think enough about a piece of information so we are able to write about it
+
+second step is to think about what it means for other contexts as well
+
+understanding, which means connecting in a meaningful way to previous knowledge
+
+
+[[file:richard_feynman.org][Richard Feynman]]
+
+The slip-box forces us to ask numerous elaborating questions: What does it mean?
+How does it connect to … ? What is the difference between … ? What is it similar
+to?
+[[file:surely_you_re_joking_mr_feynman.org][Surely You're Joking, Mr. Feynman]]

@@ -1,0 +1,9 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: 2020-03-05
+
+read another two blog post about how debugger works, mostly are already
+mentioned in [[file:debugger.org][debugger]] links from Eli.
+
+But one post mentioned [[file:debug_register.org][Debug Register]] for data breakpoint which is something new
+to me and not seen before.

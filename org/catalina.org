@@ -1,0 +1,174 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Catalina
+
+❯ pmset -g custom
+Battery Power:
+ lidwake              1
+ autopoweroff         1
+ standbydelayhigh     86400
+ autopoweroffdelay    28800
+ standbydelaylow      10800
+ standby              0
+ ttyskeepawake        1
+ highstandbythreshold 50
+ gpuswitch            2
+ powernap             0
+ hibernatefile        /var/vm/sleepimage
+ hibernatemode        3
+ displaysleep         2
+ sleep                1
+ acwake               0
+ halfdim              1
+ lessbright           1
+ disksleep            10
+AC Power:
+ lidwake              1
+ autopoweroff         1
+ standbydelayhigh     86400
+ autopoweroffdelay    28800
+ standbydelaylow      10800
+ standby              0
+ ttyskeepawake        1
+ hibernatemode        3
+ powernap             1
+ gpuswitch            2
+ hibernatefile        /var/vm/sleepimage
+ highstandbythreshold 50
+ womp                 1
+ displaysleep         10
+ networkoversleep     0
+ sleep                1
+ acwake               0
+ halfdim              1
+ disksleep            10
+
+ 应该可以看到默认情况下，standbydelayhigh = 86400 （24小时）， standbydelaylow=10800(3小时）
+
+ sudo pmset -a hibernatemode 25
+
+ sudo pmset standbydelayhigh =300
+
+#+BEGIN_SRC sh
+sudo pmset -a standby 1
+#+END_SRC
+
+#+RESULTS:
+
+
+ pmset -a hibernatemode 25
+pmset sleepnow
+
+sudo pmset -c standby 0
+
+     pmset manages power management settings such as idle sleep timing, wake
+     on administrative access, automatic restart on power loss, etc.
+
+     Note that processes may dynamically override these power management set-
+     tings by using I/O Kit power assertions.  Whenever processes override any
+     system power settings, pmset will list those processes and their power
+     assertions in -g and -g assertions. See caffeinate(8).
+
+SETTING
+     pmset can modify the values of any of the power management settings
+     defined below. You may specify one or more setting & value pairs on the
+     command-line invocation of pmset.  The -a, -b, -c, -u flags determine
+     whether the settings apply to battery ( -b ), charger (wall power) ( -c
+     ), UPS ( -u ) or all ( -a ).
+
+#+BEGIN_SRC sh
+pmset -g custom
+#+END_SRC
+
+#+RESULTS:
+| Battery              |             Power: |
+| lidwake              |                  1 |
+| autopoweroff         |                  1 |
+| standbydelayhigh     |              86400 |
+| autopoweroffdelay    |              28800 |
+| standbydelaylow      |              10800 |
+| standby              |                  1 |
+| ttyskeepawake        |                  1 |
+| highstandbythreshold |                 50 |
+| gpuswitch            |                  2 |
+| powernap             |                  0 |
+| hibernatefile        | /var/vm/sleepimage |
+| hibernatemode        |                  3 |
+| displaysleep         |                  2 |
+| sleep                |                  1 |
+| acwake               |                  0 |
+| halfdim              |                  1 |
+| lessbright           |                  1 |
+| disksleep            |                 10 |
+| AC                   |             Power: |
+| lidwake              |                  1 |
+| autopoweroff         |                  1 |
+| standbydelayhigh     |              86400 |
+| autopoweroffdelay    |              28800 |
+| standbydelaylow      |              10800 |
+| standby              |                  1 |
+| ttyskeepawake        |                  1 |
+| hibernatemode        |                  3 |
+| powernap             |                  1 |
+| gpuswitch            |                  2 |
+| hibernatefile        | /var/vm/sleepimage |
+| highstandbythreshold |                 50 |
+| womp                 |                  1 |
+| displaysleep         |                 10 |
+| networkoversleep     |                  0 |
+| sleep                |                  1 |
+| acwake               |                  0 |
+| halfdim              |                  1 |
+| disksleep            |                 10 |
+
+#+BEGIN_SRC sh
+
+#+END_SRC
+
+#+BEGIN_SRC sh
+pmset -g custom
+#+END_SRC
+
+#+RESULTS:
+| Battery              |             Power: |
+| lidwake              |                  1 |
+| autopoweroff         |                  1 |
+| standbydelayhigh     |              86400 |
+| autopoweroffdelay    |              28800 |
+| standbydelaylow      |              10800 |
+| standby              |                  1 |
+| ttyskeepawake        |                  1 |
+| highstandbythreshold |                 50 |
+| gpuswitch            |                  2 |
+| powernap             |                  0 |
+| hibernatefile        | /var/vm/sleepimage |
+| hibernatemode        |                  3 |
+| displaysleep         |                  2 |
+| sleep                |                  1 |
+| acwake               |                  0 |
+| halfdim              |                  1 |
+| lessbright           |                  1 |
+| disksleep            |                 10 |
+| AC                   |             Power: |
+| lidwake              |                  1 |
+| autopoweroff         |                  1 |
+| standbydelayhigh     |              86400 |
+| autopoweroffdelay    |              28800 |
+| standbydelaylow      |              10800 |
+| standby              |                  0 |
+| ttyskeepawake        |                  1 |
+| hibernatemode        |                  3 |
+| powernap             |                  1 |
+| gpuswitch            |                  2 |
+| hibernatefile        | /var/vm/sleepimage |
+| highstandbythreshold |                 50 |
+| womp                 |                  1 |
+| displaysleep         |                 10 |
+| networkoversleep     |                  0 |
+| sleep                |                  1 |
+| acwake               |                  0 |
+| halfdim              |                  1 |
+| disksleep            |                 10 |
+
+* turn off standby when on charger
+sudo pmset -c standby 0

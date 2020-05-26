@@ -1,0 +1,54 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: function call
+
+- reference :: [[file:programming_from_the_ground_up.org][Programming from the Ground Up]]
+
+* What happens for a function call
+Following things happen in the order below:
+
+- push all function parameters onto [[file:stack.org][Stack]] (obey [[file:calling_convention.org][calling convention]])
+- invoke [[file:call_instruction.org][call instruction]]
+- creates [[file:stack_frame.org][stack frame]]
+ 
+#+begin_example
+Parameter #N     <--- N*4+4(%ebp)
+...
+Parameter 2      <--- 12(%ebp)
+Parameter 1      <--- 8(%ebp)
+Return Address   <--- 4(%ebp)
+Old %ebp         <--- (%ebp)
+Local Variable 1 <--- -4(%ebp)
+Local Variable 2 <--- -8(%ebp) and (%esp)
+#+end_example
+
+- ~4(%ebp)~ holds [[file:return_address.org][return address]]
+- ~8(%ebp)~ holds first parameter
+- ~-4(%ebp)~ holds first local variable
+
+* when function call finished
+- stores its return value in %eax.
+- restores the previous [[file:stack_frame.org][stack frame]]
+- returns control back to caller using [[file:ret_instruction.org][ret instruction]]
+- calling code needs to pop off all of parameters pushed onto [[file:stack.org][Stack]] before
+
+this excellent [[https://manybutfinite.com/post/epilogues-canaries-buffer-overflows/][blog post]] explains in details.
+
+* great example
+This [[https://manybutfinite.com/post/journey-to-the-stack/][blog post]] has a great example explains in detail how [[file:stack.org][Stack]] looks during
+function call for this simple program below:
+#+BEGIN_SRC cpp
+int add(int a, int b)
+{
+    int result = a + b;
+    return result;
+}
+
+int main(int argc)
+{
+    int answer;
+    answer = add(40, 2);
+}
+#+END_SRC
+
+[[file:files/callSequence.png]]

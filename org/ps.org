@@ -1,0 +1,11 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: ps
+
+* ps aux
+- a :: all process
+- u :: user friendly
+
+u will cause translation from [[file:uid.org][UID]] to username.
+* ps lax
+- l :: long form

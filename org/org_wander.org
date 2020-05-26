@@ -1,0 +1,680 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Org Wander
+#+TAGS: org wander emacsql
+#+DATE: 2020-05-03
+
+First need to get list of tags:
+#+BEGIN_SRC elisp
+(defun org-wander/test ()
+  (interactive)
+  (setq properties (jk-org-kwds))
+  (message "properties: %s" properties)
+  (message "type: %s" (type-of (cdr (assoc "TAGS" properties))))
+)
+#+END_SRC
+
+update tags could be quite bit of work..
+
+"${load-path}/org-roam-db.el"
+
+interestingly title is not stored inside files table
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defconst org-wander-db--version 1)
+#+END_SRC
+
+#+RESULTS:
+: org-wander-db--version
+
+* table schema
+#+BEGIN_SRC elisp
+(defconst org-wander-db--table-schemata
+  '((files
+     [
+      (id :integer :unique :primary-key :autoincrement :not-null)
+      (file :unique)
+      (hash :not-null)
+      (last-modified :not-null)
+      ])
+
+    (tags
+     [(id :integer :unique :primary-key :autoincrement :not-null)
+      (name :not-null :unique)
+      ])
+
+    (file-tags
+     [(tag-id file-id)
+      (:foreign-key [tag-id] :references tags [id]
+               :on-delete :cascade)
+      (:foreign-key [file-id] :references files [id]
+               :on-delete :cascade)
+     ]
+     )
+
+    ))
+#+END_SRC
+
+#+RESULTS:
+: org-wander-db--table-schemata
+
+(:foreign-key [subject-id] :references subjects [id]
+               :on-delete :cascade))
+
+#+RESULTS:
+: org-wander-db--table-schemata
+
+final version
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defconst org-wander-db--table-schemata
+  '((files
+     [
+      (id :integer :unique :primary-key :autoincrement :not-null)
+      (file :unique)
+      (hash :not-null)
+      (last-modified :not-null)
+      ])
+
+    (tags
+     [(id :integer :unique :primary-key :autoincrement :not-null)
+      (name :not-null :unique)
+      ])
+
+    (files_tags_link
+     [(id :integer :unique :primary-key :autoincrement :not-null)
+      (file :integer) (tag :integer)]
+      (:foreign-key [tag] :references tags [id]
+               :on-delete :cascade)
+      (:foreign-key [file] :references files [id]
+               :on-delete :cascade)
+     )
+    ))
+#+END_SRC
+* files and tags link table
+looking at Calibre database, they have this ~books_tags_link~ table which
+interestingly also have a ~id~ column for each entry, not sure why but I think
+it might be good idea to have.
+
+another round of schema change:
+#+BEGIN_SRC elisp :tangle no
+(defconst org-wander-db--table-schemata
+  '((files
+     [
+      (id :integer :unique :primary-key :autoincrement :not-null)
+      (file :unique)
+      (hash :not-null)
+      (last-modified :not-null)
+      ])
+
+    (tags
+     [(id :integer :unique :primary-key :autoincrement :not-null)
+      (name :not-null :unique)
+      ])
+
+    (files_tags_link
+     [(id :integer :unique :primary-key :autoincrement :not-null)
+      (file :integer) (tag :integer)]
+      (:foreign-key [tag] :references tags [id]
+               :on-delete :cascade)
+      (:foreign-key [file] :references files [id]
+               :on-delete :cascade)
+     )
+    ))
+#+END_SRC
+
+#+RESULTS:
+: org-wander-db--table-schemata
+
+* db creation
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun org-wander-db--init (db)
+  "Initialize database DB with the correct schema and user version."
+  (emacsql-with-transaction db
+    (pcase-dolist (`(,table . ,schema) org-wander-db--table-schemata)
+      (emacsql db [:create-table $i1 $S2] table schema))
+    (emacsql db (format "PRAGMA user_version = %s" org-wander-db--version))))
+#+END_SRC
+
+#+RESULTS:
+: org-wander-db--init
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(setq db (emacsql-sqlite "test.db"))
+#+END_SRC
+
+#+RESULTS:
+: #s(emacsql-sqlite-connection #<process emacsql-sqlite<1>> nil #<finalizer> "test.db")
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(org-wander-db--init db)
+#+END_SRC
+
+#+BEGIN_SRC elisp :tangle no
+(file-tags
+     [(tag-id file-id)
+      (:foreign-key [tag-id] :references tags [id]
+               :on-delete :cascade)
+      (:foreign-key [file-id] :references files [id]
+               :on-delete :cascade)
+     ]
+     )
+#+END_SRC
+got this error:
+emacsql-error: Invalid SQL statement: "Invalid identifier: :foreign-key"
+
+#+BEGIN_SRC elisp :tangle no
+(defconst org-wander-db--table-schemata
+  '((files
+     [
+      (id :integer :unique :primary-key :autoincrement :not-null)
+      (file :unique)
+      (hash :not-null)
+      (last-modified :not-null)
+      ])
+
+    (tags
+     [(id :integer :unique :primary-key :autoincrement :not-null)
+      (name :not-null)
+      ])
+
+    (file-tags
+     [tag-id file-id]
+      (:foreign-key [tag-id] :references tags [id]
+               :on-delete :cascade)
+      (:foreign-key [file-id] :references files [id]
+               :on-delete :cascade)
+     )
+
+    ))
+#+END_SRC
+
+#+RESULTS:
+: org-wander-db--table-schemata
+
+finally this is correct syntax for foreign key:
+#+BEGIN_SRC elisp :tangle no
+(file-tags
+     [tag-id file-id]
+      (:foreign-key [tag-id] :references tags [id]
+               :on-delete :cascade)
+      (:foreign-key [file-id] :references files [id]
+               :on-delete :cascade)
+     )
+#+END_SRC
+
+* populate data
+for autoincrement field, we need to pass ~nil~ otherwise it won't work:
+#+BEGIN_SRC elisp :tangle org-wander.el
+(emacsql db [:insert :into tags
+             :values ([nil "cis"] [nil "fix-adapter"] [nil "critical"])])
+#+END_SRC
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(emacsql db [:insert :into files
+             :values ([nil "abc.org" 123 123]  [nil "def.org" 456 456])])
+#+END_SRC
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(emacsql db [:insert :into files_tags_link
+             :values ([nil 1 1])])
+#+END_SRC
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(emacsql db [:insert :into files_tags_link
+             :values ([nil 1 2])])
+#+END_SRC
+* join query
+Now is the interesting part..
+
+How can we have a query which return list of files have given list of tags?
+
+https://stackoverflow.com/questions/44378087/sql-tag-list-and-tag-filtering
+
+#+BEGIN_SRC sql :tangle no
+SELECT f.*, GROUP_CONCAT(ft.tag) as tags FROM files as f LEFT JOIN files_tags_link as ft ON f.id = ft.file GROUP BY f.id
+#+END_SRC
+
+#+BEGIN_SRC sql :tangle no
+SELECT f.id,f.file,GROUP_CONCAT(ft.tag) as tags
+FROM files f
+LEFT JOIN files_tags_link as ft ON f.id = ft.file
+LEFT JOIN tags t ON t.id=ft.tag AND t.id IN (10,20,30) --change this as needed
+GROUP BY f.id,f.file
+HAVING COUNT(ft.tag) >= COUNT(t.id) AND COUNT(t.id) = 3 --change this number to the number of tags
+#+END_SRC
+
+now how can we do this with Emacsql?
+
+maybe prepared statements?
+#+BEGIN_SRC elisp :tangle no
+;; (setq select-st [:select * :from tags :where (:in tag '(1 2))])
+;; (setq select-st [:select * :from tags])
+(setq select-st [:select * :from tags :where (in id [1 2])])
+#+END_SRC
+
+#+RESULTS:
+: [:select * :from tags :where (in id [1 2])]
+
+#+BEGIN_SRC elisp :tangle no
+;; (emacsql db [:select * :from files])
+(emacsql db select-st)
+#+END_SRC
+
+#+RESULTS:
+| 1 | cis         |
+| 2 | fix-adapter |
+
+[:select tag :from tags
+ :where (in tag [:select ...])]
+
+(emacsql db [:select * :from $i1 :where (> salary $s2)] 'employees 50000)
+#+BEGIN_SRC elisp :tangle no
+(setq file-tag-query
+    [:SELECT [f:* (funcall GROUP_CONCAT ft:tag)] :FROM files :AS f :LEFT :JOIN files_tags_link :AS ft :ON (= f:id ft:file) :GROUP :BY f:id])
+#+END_SRC
+
+#+BEGIN_SRC elisp :tangle no
+;; (emacsql db [:select * :from files])
+(emacsql db file-tag-query)
+#+END_SRC
+
+#+RESULTS:
+| 1 | abc.org | 123 | 123 | nil |
+| 2 | def.org | 456 | 456 |   1 |
+
+#+BEGIN_SRC elisp :tangle no
+(setq file-tag-query-join
+[:SELECT [f:id f:file (funcall GROUP_CONCAT ft:tag)] :as tags
+:FROM files f
+:LEFT :JOIN files_tags_link :as ft :ON (= f:id ft:file)
+:LEFT :JOIN tags t :ON (= t:id ft:tag) :where (in t:id [1])
+:GROUP :BY [f:id f:file]
+:HAVING (and (>= (funcall COUNT ft:tag) (funcall COUNT t:id )) (= (funcall COUNT t:id) 1))])
+#+END_SRC
+
+#+RESULTS:
+: [:SELECT [f:id f:file (funcall GROUP_CONCAT ft:tag)] :as tags :FROM files f :LEFT :JOIN files_tags_link :as ft :ON (= f:id ft:file) :LEFT :JOIN tags t :ON (= t:id ft:tag) :where (in t:id [1]) :GROUP :BY [f:id f:file] :HAVING (and (>= (funcall COUNT ft:tag) (funcall COUNT t:id)) (= (funcall COUNT t:id) 1))]
+
+#+BEGIN_SRC elisp :tangle no
+;; (emacsql db [:select * :from files])
+(emacsql db file-tag-query-join)
+#+END_SRC
+
+#+RESULTS:
+| 2 | def.org | 1 |
+
+first version, not working
+#+BEGIN_SRC elisp :tangle no
+(defun files-with-tags (db given-tags)
+    (setq query
+    [:SELECT [f:id f:file (funcall GROUP_CONCAT ft:tag)] :as tags
+    :FROM files f
+    :LEFT :JOIN files_tags_link :as ft :ON (= f:id ft:file)
+    :LEFT :JOIN tags t :ON (= t:id ft:tag) :where (in t:id (vconcat given-tags))
+    :GROUP :BY [f:id f:file]
+    :HAVING (and (>= (funcall COUNT ft:tag) (funcall COUNT t:id )) (= (funcall COUNT t:id) (length given-tags)))])
+
+  query
+  ;; (emacsql db query)
+)
+#+END_SRC
+
+#+RESULTS:
+: files-with-tags
+
+#+BEGIN_SRC elisp
+(files-with-tags db '(1 2))
+#+END_SRC
+
+second version, not working:
+#+BEGIN_SRC elisp :tangle no
+(defun files-with-tags (db given-tags)
+    (setq query
+    [:SELECT [f:id f:file (funcall GROUP_CONCAT ft:tag)] :as tags
+    :FROM files f
+    :LEFT :JOIN files_tags_link :as ft :ON (= f:id ft:file)
+    :LEFT :JOIN tags t :ON (= t:id ft:tag) :where (in t:id ,(vconcat given-tags))
+    :GROUP :BY [f:id f:file]
+    :HAVING (and (>= (funcall COUNT ft:tag) (funcall COUNT t:id )) (= (funcall COUNT t:id) ,(length given-tags)))])
+
+  query
+  ;; (emacsql db query)
+)
+#+END_SRC
+
+#+RESULTS:
+: files-with-tags
+
+third version (working):
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun files-with-tag-ids (db given-tags)
+  (message "given-tags: %s" given-tags)
+    (setq query
+    [:SELECT [f:id f:file (funcall GROUP_CONCAT ft:tag)] :as tags
+    :FROM files f
+    :LEFT :JOIN files_tags_link :as ft :ON (= f:id ft:file)
+    :LEFT :JOIN tags t :ON (= t:id ft:tag) :where (in t:id $v1)
+    :GROUP :BY [f:id f:file]
+    :HAVING (and (>= (funcall COUNT ft:tag) (funcall COUNT t:id )) (= (funcall COUNT t:id) $s2))])
+
+  (emacsql db query (vconcat given-tags) (length given-tags))
+)
+#+END_SRC
+
+#+RESULTS:
+: files-with-tag-ids
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(files-with-tags db '(1 2))
+#+END_SRC
+nil
+((2 def.org 1 (, 2)))
+
+* test drive
+#+BEGIN_SRC elisp
+(load! "org-wander")
+#+END_SRC
+
+#+RESULTS:
+: t
+
+#+BEGIN_SRC elisp :tangle org-wander.el :results raw
+(files-with-tags db '(1 2))
+#+END_SRC
+
+#+RESULTS:
+((1 abc.org 1 (, 2)))
+nil
+nil
+
+#+BEGIN_SRC sql
+SELECT f.id,f.file,GROUP_CONCAT(ft.tag) as tags
+FROM files f
+LEFT JOIN files_tags_link as ft ON f.id = ft.file
+LEFT JOIN tags t ON t.id=ft.tag  where t.id in (1, 2) --change this as needed
+GROUP BY f.id,f.file
+HAVING COUNT(ft.tag) >= COUNT(t.id) AND COUNT(t.id) = 2 --change this number to the number of tags
+#+END_SRC
+
+* start from tag name
+For now, I think it's easier that I translate tag names to ids then call the
+function earlier:
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun files-with-tag-names (db given-tags)
+    (setq query
+    [:SELECT [id]
+     :FROM tags
+     :where (in name $v1)])
+
+  (files-with-tag-ids db
+    (emacsql db query (vconcat given-tags)))
+)
+#+END_SRC
+
+#+BEGIN_SRC elisp
+(files-with-tag-names db '("cis" "fix-adapter"))
+#+END_SRC
+
+#+RESULTS:
+
+given-tags: ((1) (2))
+
+So the return result for that tag name --> tag id query is list of list, so we
+need to flatten it first before passing down..
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun flatten (list-of-lists)
+  (apply #'append list-of-lists))
+#+END_SRC
+
+#+RESULTS:
+: flatten
+
+Now try again:
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun files-with-tag-names (db given-tags)
+    (setq query
+    [:SELECT [id]
+     :FROM tags
+     :where (in name $v1)])
+
+  (files-with-tag-ids db
+    (flatten (emacsql db query (vconcat given-tags))))
+)
+#+END_SRC
+
+#+RESULTS:
+: files-with-tag-names
+
+#+BEGIN_SRC elisp
+(files-with-tag-names db '("cis" "fix-adapter"))
+#+END_SRC
+
+#+RESULTS:
+| 1 | abc.org | 1 | (, 2) |
+
+* populate file tag linkage
+It should be fairly straightforward..
+
+- first get the property of TAGS
+- then split using space
+- go through each of the tag, insert into tags first
+- then insert the linkage
+
+Of course this needs to happen after record has been inserted into files table..
+
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun org-wander/get-file-id (db file)
+"return nil if no matching record from db."
+    (setq query
+    [:SELECT [id]
+     :FROM files
+     :where (= file $s1)])
+
+    (car (flatten (emacsql db query file))))
+#+END_SRC
+
+#+RESULTS:
+: org-wander/get-file-id
+
+#+BEGIN_SRC elisp
+(org-wander/file-id-from-name db "hij.org")
+#+END_SRC
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun org-wander/tag-ids-from-names (db given-tags)
+    (setq query
+    [:SELECT [id]
+     :FROM tags
+     :where (in name $v1)])
+
+   (flatten (emacsql db query (vconcat given-tags)))
+)
+#+END_SRC
+
+#+RESULTS:
+: org-wander/tag-ids-from-names
+
+#+BEGIN_SRC elisp :results raw
+(org-wander/tag-ids-from-names db '("cis" "fix-adapter" "xyz"))
+#+END_SRC
+
+#+RESULTS:
+(1 2)
+
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun org-wander/add-tag (db tag)
+  (emacsql db [:insert :into tags
+                       :values ([nil $s1])] tag)
+)
+#+END_SRC
+
+#+RESULTS:
+: org-wander/add-tag
+
+#+BEGIN_SRC elisp
+(org-wander/add-tag db "dogman")
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC elisp
+(defun org-wander/add-file-tag-link (db file-id tag-id)
+  (setq query
+    [:insert :into files_tags_link
+             :values ([nil $s1 $s2])])
+
+  (emacsql db query file-id tag-id))
+#+END_SRC
+
+#+RESULTS:
+: org-wander/add-file-tag-link
+
+#+BEGIN_SRC elisp
+(org-wander/add-file-tag-link db 1 5)
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC elisp
+(defun add-file-tags-linkage (db file tags)
+  (let* ((file-id (org-wander/file-id-from-name db file))
+          (tag-ids nil)
+         )
+
+   (message "file-id: %s" file-id)
+   ;; (setq tag-ids (mapcar (lambda (x) (org-wander/add-tag db x)) tags))
+   ;; (mapcar (lambda (x) (org-wander/add-file-tag-link db file-id x)) tag-ids)
+   )
+  ;; first look up files table to get file id
+  ;; then go through each tag, insert into tags table first
+  ;; then insert the linkage
+)
+#+END_SRC
+
+#+RESULTS:
+: add-file-tags-linkage
+#+BEGIN_SRC elisp
+(add-file-tags-linkage db "def.org" '("cis" "batman" "blah"))
+#+END_SRC
+
+#+RESULTS:
+: file-id: (2)
+
+* update the file tag linking
+One question arise now is when should we update the linking between file and tag
+in database?
+
+This is relatively expensive operation since it involves delete existing records
+and populate new..
+
+We don't want this to happen everytime a file is saved..
+
+So I'm thinking also save the value of TAGS property for a file in the file
+table, so we can compare that value first, if that value is same, then there is
+no point updating the linkage.
+
+Otherwise we can update it.
+
+* insert file record if not exists
+#+BEGIN_SRC elisp :tangle org-wander.el
+(defun org-wander/add-file (db file)
+  (unless (org-wander/get-file-id db file)
+    (setq query
+        [:insert :into files
+        :values ([nil $s1 123 456])])
+    (emacsql db query file)
+  )
+)
+#+END_SRC
+
+#+RESULTS:
+: org-wander/add-file
+
+#+BEGIN_SRC elisp
+(org-wander/add-file db "wander.org")
+#+END_SRC
+
+#+RESULTS:
+
+* examples
+(defun org-roam-db--update-titles ()
+  "Update the title of the current buffer into the cache."
+  (let ((file (file-truename (buffer-file-name))))
+    (org-roam-db-query [:delete :from titles
+                                :where (= file $s1)]
+                       file)
+    (org-roam-db--insert-titles file (org-roam--extract-titles))))
+
+    (defun org-roam-db-query (sql &rest args)
+  "Run SQL query on Org-roam database with ARGS.
+SQL can be either the emacsql vector representation, or a string."
+  (if  (stringp sql)
+      (emacsql (org-roam-db) (apply #'format sql args))
+    (apply #'emacsql (org-roam-db) sql args)))
+
+    (defun org-roam-db--update-file (&optional file-path)
+  "Update Org-roam cache for FILE-PATH."
+  (let (buf)
+    (if file-path
+        (setq buf (find-file-noselect file-path))
+      (setq buf (current-buffer)))
+    (with-current-buffer buf
+      (save-excursion
+        (org-roam-db--update-titles)
+        (org-roam-db--update-refs)
+        (org-roam-db--update-cache-links)
+        (org-roam--maybe-update-buffer :redisplay t)))))
+
+
+
+            (add-hook 'find-file-hook #'org-roam--find-file-hook-function)
+    (add-hook 'kill-emacs-hook #'org-roam-db--close-all)
+    (advice-add 'rename-file :after #'org-roam--rename-file-advice)
+    (advice-add 'delete-file :before #'org-roam--delete-file-advice))
+* test drive
+#+BEGIN_SRC elisp
+;; (load! "~/repo/org-wander/org-wander-db.el")
+(setq org-wander-directory "~/org/roam/org")
+(load! "~/repo/org-wander/org-wander.el")
+(org-wander/init)
+#+END_SRC
+
+#+RESULTS:
+: #s(emacsql-sqlite-connection #<process emacsql-sqlite<4>> nil #<finalizer> "/Users/showgood/org/roam/org/org-wander.db")
+
+#+BEGIN_SRC elisp
+(org-wander/files-with-tag-names )
+#+END_SRC
+* unique constraint for link table
+currently I can insert the same file-id tag-id combination multiple times, it's
+not making sense, we need to enforce it at schema level..
+
+need to figure out how to do it with emacsql
+
+(:unique [col1 col2])
+
+ CONSTRAINT name_unique UNIQUE (last_name, first_name)
+* populate results into a buffer
+(defun org-roam ()
+  "Pops up the window `org-roam-buffer' accordingly."
+  (interactive)
+  (setq org-roam-last-window (get-buffer-window))
+  (pcase (org-roam--current-visibility)
+    ('visible (delete-window (get-buffer-window org-roam-buffer)))
+    ('exists (org-roam--setup-buffer))
+    ('none (org-roam--setup-buffer))))
+
+(defun org-roam--setup-buffer ()
+  "Setup the `org-roam' buffer at the `org-roam-buffer-position'."
+  (let ((window (get-buffer-window)))
+    (-> (get-buffer-create org-roam-buffer)
+        (display-buffer-in-side-window
+         `((side . ,org-roam-buffer-position)))
+        (select-window))
+    (org-roam--set-width
+     (round (* (frame-width)
+               org-roam-buffer-width)))
+    (select-window window)))
