@@ -1,0 +1,4 @@
+#+TITLE: STM - software transactional memory
+#+DATE: 2020-05-28
+
+software transactional memory (STM)

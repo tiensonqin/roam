@@ -2,3 +2,79 @@
 #+SETUPFILE:./hugo_setup.org
 #+TITLE: Clojure
 
+libraries:
+
+- https://github.com/clojure/test.generative
+- https://github.com/clojure/data.generators
+- https://github.com/clojure/test.check
+
+- cheatsheet :: https://clojure.org/api/cheatsheet
+ 
+* function composition
+pure function is referentially transparent
+** comp
+ for creating a new function from the composition of any number of functions.
+
+using comp on the functions f1, f2, ... fn, creates a new function g such that g(x1, x2, ... xn) equals f1(f2(fn(x1, x2, ... xn))).
+
+order is from right to left.
+#+BEGIN_SRC clojure
+((comp inc *) 2 3)
+; => 7
+#+END_SRC
+
+** memoize
+remembers the result of a particular function call
+
+* atom
+Clojure’s atom reference type allows you to endow a succession of related values
+with an identity.
+
+To get an atom’s current state, you dereference it. Here’s Fred’s current
+state:@fred
+
+dereferencing an atom (or any other reference type) will never block
+
+To update the atom so that it refers to a new state, you use swap!
+
+swap! receives an atom and a function as arguments. It applies the function to
+the atom’s current state to produce a new value, and then it updates the atom to
+refer to this new value. The new value is also returned.
+
+By using atoms, you can retain past state
+
+ update an atom without checking its current value, use ~reset!~
+
+* watch
+A watch is a function that takes four arguments: a key, the reference being
+watched, its previous state, and its new state.
+
+To attach watch function to a ref, using ~add-watch~ The general form of add-watch is (add-watch ref key watch-fn).
+
+* Validators
+Validators let you specify what states are allowable for a reference
+
+ validator takes only one argument. When you add a validator to a reference, the
+ reference is modified so that, whenever it’s updated, it will call this
+ validator with the value returned from the update function as its argument. If
+ the validator fails by returning false or throwing an exception, the reference
+ won’t change to point to the new value
+
+attach a validator during atom creation
+#+BEGIN_SRC clojure
+(def bobby  
+  (atom {:cuddle-hunger-level 0 :percent-deteriorated 0}
+        :validator percent-deteriorated-validator))
+
+(swap! bobby update-in [:percent-deteriorated] + 200)
+#+END_SRC
+
+* Refs
+Atoms are ideal for managing the state of independent identities. Sometimes,
+though, we need to express that an event should update the state of more than
+one identity simultaneously. Refs are the perfect tool for this scenario.
+
+Refs allow you to update the state of multiple identities using transaction
+semantics
+
+* Vars

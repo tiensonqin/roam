@@ -1,0 +1,4 @@
+#+TITLE: ACID
+#+DATE: 2020-05-28
+
+ACID is an acronym that stands for Atomicity, Consistency, Isolation, Durability
