@@ -1,0 +1,183 @@
+#+TITLE: Living Clojure
+#+DATE: 2020-05-29
+
+- tags :: [[file:clojure.org][Clojure]]
+
+* atom
+Atoms are designed to store the state of something that is independent, meaning
+we can change the value of itindependently of changing any other state.
+
+** dereference
+to see the value of the atom at this moment, we need todereference it with a preceding @:
+
+** change the value of atom
+The first is using reset!. This simply replaces the old value with the new value
+and returns the new value.
+
+The swap! form applies a function on the old value of the atom and sets it to the new value.
+
+* underscore
+A convention for naming a parameter you are not using is to use an underscore.
+
+* future
+One way is touse the future form.  The future form takes a body and executes it in another thread
+
+#+BEGIN_SRC clojure
+(def counter (atom 0))
+@counter;; -> 0
+(let [n 5]
+  (future (dotimes [_ n] (swap! counter inc)))
+  (future (dotimes [_ n] (swap! counter inc)))
+  (future (dotimes [_ n] (swap! counter inc))))
+#+END_SRC
+
+* Refs
+Using Refs for Coordinated Changes
+
+** dereference
+precede ref with @
+
+** alter
+alter form, which takes a ref and a function to apply to the current value (very similar to swap! with atoms):
+
+** dosync
+We need to run this in a transaction.  We do this by using a dosync form
+
+** commute
+difference between commute and alter:
+
+commute will not retry during the transaction. Instead, it will use an
+in-transaction-value in the meantime, finally setting the ref value at the
+commit point in the transaction.
+
+* agents
+agents are used for independent and asynchronous changes
+
+#+BEGIN_SRC clojure
+(def who-agent (agent :caterpillar))
+#+END_SRC
+
+** dereference
+precede agent with @
+
+** send
+We can change the state of an agent by using send.  The send form takes a function to send to the agent.
+
+The send dispatches the action to the agent, which gets processed by a thread in
+the thread pool. The agent will only process one action at a time
+
+the actions will be also processed in the same order that they were dispatched,
+if they were dispatched from the same thread. Unlike swap! and alter, send
+returns immediately.
+** send-off
+ send-off form is the same as the send form; the difference is that
+ send-offshould be used for potentially I/O-blocking actions. Using send uses a
+ fixed thread pool, which is good for CPU-bound operations, whereas send-off
+ uses an expandablethread pool necessary to avoid an I/O-bound thread pool from
+ blocking:
+
+** error
+The agent’s errors can also be inspected with agent-errors:
+#+BEGIN_SRC clojure
+(agent-errors who-agent)
+;; -> (#<Exception java.lang.Exception: Boom!>)
+#+END_SRC
+
+The agent will stay in this failed state until the agent is restarted with
+restart-agent, which clears its errors andresets the state of the agent:
+
+* overview
+| type  | communication | coordination  |
+|-------+---------------+---------------|
+| Atom  | Synchronous   | uncoordinated |
+| Ref   | Synchronous   | coordinated   |
+| Agent | Asynchronous  | uncoordinated |
+
+* Java interop
+A String in Java is an instance of java.lang.String.  A string in Clojure is the exact same thing.
+
+#+BEGIN_SRC clojure
+(class "caterpillar")
+;; -> java.lang.String
+#+END_SRC
+
+We do this in Clojure by using a dot followed by the object and the object’s method that we wish to invoke:
+#+BEGIN_SRC clojure
+(. "caterpillar" toUpperCase)
+;; -> "CATERPILLAR"
+#+END_SRC
+
+a shorthand dot prefix way to do the same thing by usinga ~dot followed by the object’s method~ that we wish to invoke:
+#+BEGIN_SRC clojure
+(.toUpperCase "caterpillar")
+;; -> "CATERPILLAR"
+#+END_SRC
+
+If the Java method takes arguments, they are included after the object
+#+BEGIN_SRC clojure
+(.indexOf "caterpillar" "pillar")
+#+END_SRC
+
+** create instances
+We can create instances of Java objects with ~new~:
+#+BEGIN_SRC clojure
+(new String "Hi!!")
+;; -> "Hi!!"
+#+END_SRC
+
+Another way to  is to use a shorthand form by using a dot right after the class name:
+#+BEGIN_SRC clojure
+(String. "Hi!!")
+;; -> "Hi!!"
+#+END_SRC
+
+** import Java class
+using ~:import~ in the namespace with the package name and the class that we
+wish to import:
+#+BEGIN_SRC clojure
+(ns caterpillar.network
+  (:import (java.net InetAddress)))
+#+END_SRC
+
+without importing we need to use the fully qualified names:
+#+BEGIN_SRC clojure
+(java.net.InetAddress/getByName "localhost")
+;; -> #<Inet4Address localhost/127.0.0.1>
+#+END_SRC
+
+** static method
+To execute static methods on Java classes from Clojure, we use a ~forward slash~:
+#+BEGIN_SRC clojure
+(InetAddress/getByName "localhost")
+;; -> #<Inet4Address localhost/127.0.0.1>
+#+END_SRC
+
+** doto macro
+allows us to take a Java object and then act on it in succession with a list of
+operations
+
+#+BEGIN_SRC clojure
+(def sb (doto (StringBuffer. "Who ")
+          (.append "are ")
+          (.append "you?")))
+
+(.toString sb)
+;; -> "Who are you?"
+#+END_SRC
+
+** UUID generation
+#+BEGIN_SRC clojure
+(import 'java.util.UUID)
+(UUID/randomUUID)
+#+END_SRC
+
+* Polymorphism
+** multimethods
+
+#+begin_example
+(defmulti name function)
+#+end_example
+
+#+BEGIN_SRC clojure
+(defmulti who-are-you class)
+#+END_SRC

@@ -78,3 +78,42 @@ Refs allow you to update the state of multiple identities using transaction
 semantics
 
 * Vars
+dynamic var
+#+BEGIN_SRC clojure
+(def ^:dynamic *notification-address* "dobby@elf.org")
+#+END_SRC
+
+temporarily change the value of dynamic vars by using binding
+#+BEGIN_SRC clojure
+(binding [*notification-address* "test@elf.org"]  *notification-address*)
+; => "test@elf.org"
+#+END_SRC
+
+Dynamic vars are most often used to name a resource that one or more functions target.
+
+Clojure comes with a ton of built-in dynamic vars for this purpose. *out*, for
+example, represents the standard output for print operations.
+
+Dynamic vars are a great way to specify a common resource while retaining the
+flexibility to change it on an ad hoc basis.
+
+Dynamic vars are also used for configuration. For example, the builtin var
+*print-length* allows you to specify how many items in a collection Clojure
+should print:
+
+#+BEGIN_SRC clojure
+(binding [*print-length* 1]  (println ["Print" "just" "one!"]))
+; => [Print ...]
+#+END_SRC
+
+it’s possible to set! dynamic vars that have been bound
+
+* Var root
+When you create a new var, the initial value that you supply is its root:
+#+BEGIN_SRC clojure
+(def power-source "hair")
+#+END_SRC
+
+Clojure lets you permanently change this root value with the function ~alter-var-root~
+
+You can also temporarily alter a var’s root with ~with-redefs~
