@@ -10,18 +10,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "autoprefixer": "^9.7.6",
+    "autoprefixer": "^9.8.0",
     "cssnano": "^4.1.10",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "lunr": "^2.3.8",
-    "postcss-cli": "^7.1.0",
+    "postcss-cli": "^7.1.1",
     "remove-markdown": "^0.3.0",
     "striptags": "^3.1.1",
-    "tailwindcss": "^1.2.0",
+    "tailwindcss": "^1.4.6",
     "toml": "^3.0.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.1.2"
+    "@fullhuman/postcss-purgecss": "^2.2.0"
   }
 }

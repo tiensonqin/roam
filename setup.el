@@ -98,6 +98,3 @@ from lines like:
 
 (add-to-list 'load-path "~/.emacs.d/.local/straight/build/ox-hugo")
 (require 'ox-hugo)
-
-;; in order to find out what's going wrong..
-;; find content -iname "*.md" | xargs -I % sh -c 'echo % ;node lib/hli.js -i %'
