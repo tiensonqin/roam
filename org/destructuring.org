@@ -1,2 +1,4 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: destructuring
 #+DATE: 2020-05-26

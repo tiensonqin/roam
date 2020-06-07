@@ -1,3 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: Langford Pairs
 #+DATE: 2020-06-06
 

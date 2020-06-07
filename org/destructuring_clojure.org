@@ -1,3 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: destructuring Clojure
 #+DATE: 2020-06-07
 

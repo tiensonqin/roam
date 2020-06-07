@@ -1,2 +1,4 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: The Art of Computer Programming Vol 4A
 #+DATE: 2020-06-06

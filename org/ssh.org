@@ -1,2 +1,4 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: SSH
 #+DATE: 2020-05-24

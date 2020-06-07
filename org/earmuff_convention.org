@@ -1,2 +1,4 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: earmuff convention
 #+DATE: 2020-05-19

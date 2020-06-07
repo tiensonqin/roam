@@ -2,6 +2,26 @@
 #+SETUPFILE:./hugo_setup.org
 #+TITLE: sed
 
+* replace regex capture group
+- we can use =-r= to avoid escape capture group
+- we also need =-E= to support capture group
+- NOTE, =-r= must appear *before* =-E=
+
+For eg, to replace the line:
+#+begin_example
+date = 2020-05-19
+#+end_example
+
+to:
+#+begin_example
+date = "2020-05-19"
+#+end_example
+
+We can use this:
+#+BEGIN_SRC sh
+sed -i -r -E "s/^date = (.*)/date = \"\1\"/" test.md
+#+END_SRC
+
 * case-insensitive search
 I'd like to and so on while
 replacing or performing other operations.

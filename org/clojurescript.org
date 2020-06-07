@@ -1,3 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: ClojureScript
 #+DATE: 2020-06-06
 

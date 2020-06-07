@@ -1,3 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: The Joy of Clojure
 #+DATE: 2020-05-25
 

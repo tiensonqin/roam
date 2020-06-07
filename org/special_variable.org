@@ -1,3 +1,5 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
 #+TITLE: special variable (lisp)
 #+DATE: 2020-05-19
 
