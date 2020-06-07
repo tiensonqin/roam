@@ -1,3 +1,41 @@
 #+HUGO_SECTION: zettels
 #+SETUPFILE:./hugo_setup.org
 #+TITLE: PostgreSQL
+
+* docker
+- container port :: 5432 (I map it to 32900)
+- default user :: ~postgres~
+- set password :: using environment variables ~POSTGRES_PASSWORD~
+- data volume should be mounted to :: ~/var/lib/postgresql/data~
+
+#+BEGIN_SRC sh
+docker exec -it postgres psql -U postgres
+#+END_SRC
+
+docker exec -it [container_name] psql -U [postgres_user]
+
+container id: e1f2dfba228b
+
+* database
+** create database
+#+BEGIN_SRC sql
+create database [db_name];
+#+END_SRC
+** switch database
+#+BEGIN_SRC sh
+\c <database name>
+#+END_SRC
+* schema
+** create
+#+BEGIN_SRC sql
+CREATE SCHEMA [IF NOT EXISTS] schema_name
+#+END_SRC
+** list all schema
+#+BEGIN_SRC sql
+select nspname from pg_catalog.pg_namespace;
+#+END_SRC
+
+* SERIAL
+By far the simplest and most common technique for adding a primary key in
+Postgres is by using the SERIAL or BIGSERIAL data types when CREATING a new
+table. https://chartio.com/resources/tutorials/how-to-define-an-auto-increment-primary-key-in-postgresql/

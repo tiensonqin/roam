@@ -1,0 +1,96 @@
+#+TITLE: reagent Component
+#+DATE: 2020-06-06
+
+https://cljdoc.org/d/reagent/reagent/0.10.0/doc/tutorials/creating-reagent-components
+
+* The Core Of A Component
+At the core of any component is a render function.
+
+A render function is the backbone, mandatory part of a component. In fact, as you'll soon see, components will often collapse down to be nothing more than a render function.
+
+A render function turns data into HTML. Data is supplied via the function parameters, and HTML is the return value.
+
+Data in, HTML out.
+
+Much of the time, a render function will be a pure function. If you pass the same data into a render function, then it will return the same HTML, and it won't side effect.
+
+* The Three Ways
+There are three ways to create a component.
+
+Ordered by increasing complexity, they are:
+
+- via a simple render function - data in as parameters, and it returns HTML.
+- via a function which returns the render function - the returned function is the render function.
+- via a map of functions, one of which is the render the rest of the functions are React lifecycle methods which allow for some more advanced interventions.
+
+** form-1 simple function
+#+BEGIN_SRC clojure
+(defn greet
+   [name]                    ;; data coming in is a string
+   [:div "Hello " name])     ;; returns Hiccup (HTML)
+#+END_SRC
+
+** Form-2: A Function Returning A Function
+Now, let's take one step up in complexity. Sometimes, a component requires:
+
+- some setup; or
+- some local state; and of course
+- a renderer
+
+#+BEGIN_SRC clojure
+(defn timer-component []
+  (let [seconds-elapsed (reagent/atom 0)]     ;; setup, and local state
+    (fn []        ;; inner, render function is returned
+      (js/setTimeout #(swap! seconds-elapsed inc) 1000)
+      [:div "Seconds Elapsed: " @seconds-elapsed])))
+#+END_SRC
+
+** Form-3: A Class With Life Cycle Methods
+With Form-3 components, you can nominate lifecycle methods for [[file:react.org][React]]
+
+#+BEGIN_SRC clojure
+(defn my-component
+  [x y z]
+  (let [some (local but shared state)      ;; <-- closed over by lifecycle fns
+        can  (go here)]
+     (reagent/create-class                 ;; <-- expects a map of functions
+       {:display-name  "my-component"      ;; for more helpful warnings & errors
+
+        :component-did-mount               ;; the name of a lifecycle function
+        (fn [this]
+          (println "component-did-mount")) ;; your implementation
+
+        :component-did-update              ;; the name of a lifecycle function
+        (fn [this old-argv]                ;; reagent provides you the entire "argv", not just the "props"
+          (let [new-argv (rest (reagent/argv this))]
+            (do-something new-argv old-argv)))
+
+        ;; other lifecycle funcs can go in here
+
+
+        :reagent-render        ;; Note:  is not :render
+         (fn [x y z]           ;; remember to repeat parameters
+            [:div (str x " " y " " z)])})))
+
+(reagent/render
+    [my-component 1 2 3]         ;; pass in x y z
+    (.-body js/document))
+
+;; or as a child in a larger Reagent component
+
+(defn homepage []
+  [:div
+   [:h1 "Welcome"]
+   [my-component 1 2 3]]) ;; Be sure to put the Reagent class in square brackets to force it to render!
+#+END_SRC
+ 
+* React Fragment
+React Fragment is created using the ~:<>~ Hiccup form.
+
+#+BEGIN_SRC clojure
+(defn right-component
+   [name]
+   [:<>
+     [:div "Hello"]
+     [:div name]])
+#+END_SRC

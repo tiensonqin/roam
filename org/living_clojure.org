@@ -181,3 +181,91 @@ operations
 #+BEGIN_SRC clojure
 (defmulti who-are-you class)
 #+END_SRC
+
+* project
+Always use underscores for directories and filenames, and use dashes for namespaces.
+
+#+BEGIN_SRC clojure
+(deftest a-test
+  (testing "FIXME, I fail."
+    (is (= 0 1))))
+#+END_SRC
+
+- deftest defines a test function.
+- testing is used within deftest to provide a context to what is being tested.
+
+run test: lein test
+
+[org.clojure/clojure "1.6.0"]
+- org.clojure is the group id
+- clojure is the artifact id
+- 1.6.0 is the version
+
+- https://clojars.org/
+- https://search.maven.org/
+ 
+it can also be configured to look at additional repositories (public and
+private), by using the :repositories key in the configuration file.
+
+By default, it stores them in your maven home directory. It looks something like
+this on a Mac/Linux system:-> ls
+~/.m2/repository/org/clojure/clojure/1.6.0/_maven.repositories clojure-1.6.0.jar
+clojure-1.6.0.jar.sha1clojure-1.6.0.pom clojure-1.6.0.pom.sha1
+
+~lein deps :tree~. It will show you a tree structure of the exact libraries
+andversions that your project is using—after all the dependencies have been
+resolved.
+
+* web
+#+BEGIN_SRC sh :dir ~/project
+lein new compojure cheshire-cat
+#+END_SRC
+
+#+RESULTS:
+
+start web server:
+#+BEGIN_SRC sh
+lein ring server
+#+END_SRC
+
+~defroutes~ is used to create a sequence of HTTP routes called app-routes.  These are the request paths that the web application will handle.
+
+The Ring-JSON library does just this.  It will automatically convert any response with a Clojure collection as a body into JSON for you, and it uses Cheshire to do it.
+
+
+[ring/ring-json "0.5.0"]
+
+[ring.middleware.json :as ring-json]
+[ring.util.response :as rr]
+
+#+BEGIN_SRC clojure
+(GET "/cheshire-cat" []
+     (rr/response {:name "Cheshire Cat" :status :grinning}))
+#+END_SRC
+
+#+BEGIN_SRC clojure
+(def app
+  (-> app-routes
+      (ring-json/wrap-json-response)
+      (wrap-defaults site-defaults)))
+#+END_SRC
+
+** clojurescript
+[org.clojure/clojurescript "0.0-2371"]
+
+The lein-cljsbuild plug-in allows you to autocompile your ClojureScript code while you are working on it, and it also provides a nice ClojureScript REPL as well.  Go ahead and add a dependency for this as well in your :plugins section::plugins [[lein-ring "0.8.12"]          [lein-cljsbuild "1.0.3"]]
+
+#+BEGIN_SRC clojure
+:cljsbuild {    :builds [{        :source-paths ["src-cljs"]          :compiler {          :output-to "resources/public/main.js"           :optimizations :whitespace            :pretty-print true}}]} 
+#+END_SRC
+
+#+BEGIN_SRC sh
+lein trampoline cljsbuild repl-rhino
+#+END_SRC
+
+This will use Rhino JavaScript to evaluate the end result from the ClojureScript that you enter as input.  It is the simplest ClojureScript REPL to get up and running.
+
+interop with JavaScript functions by using a ~js/~ prefix.  For example, we can look at the JavaScript Date function:js/Date;; -> #<function Date() { [native code for Date.Date, arity=1] }
+
+** difference
+These are the major differences to take note of:ClojureScript has JavaScript interop rather than Java.Although there are atoms, there are no agents or refs.In ClojureScript, only integer and floating-point numbers are supported.Of course, ClojureScript compiles to JavaScript.

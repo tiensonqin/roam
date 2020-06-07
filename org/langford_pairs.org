@@ -1,0 +1,4 @@
+#+TITLE: Langford Pairs
+#+DATE: 2020-06-06
+
+- source :: [[file:the_art_of_computer_programming_vol_4a.org][The Art of Computer Programming Vol 4A]]

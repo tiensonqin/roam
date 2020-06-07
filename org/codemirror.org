@@ -1,0 +1,47 @@
+#+TITLE: CodeMirror
+#+DATE: 2020-06-06
+
+- tags :: [[file:javascript.org][JavaScript]]
+
+- react component :: https://github.com/JedWatson/react-codemirror
+- reference :: https://medium.com/@devsebastian/codemirror-everything-you-need-to-know-about-codemirror-f816f07ce2d3
+
+CodeMirror actually works on top of a <textarea> element of your web document.
+
+In your document wherever you want the editor to be located insert a <textarea> element like so:
+<textarea id=”editor”></textarea>
+Now in your javascript file just add:
+#+BEGIN_SRC javascript
+let cm = new CodeMirror();
+#+END_SRC
+
+This will attach CodeMirror to the first <textarea> element it finds in the
+document. if you want to attach CodeMirror to a custom <textarea> element
+instead of the above code insert the following code:
+
+#+BEGIN_SRC javascript
+let cm = new CodeMirror.fromTextArea(document.findElementById("editor"));
+#+END_SRC
+
+passing options:
+#+BEGIN_SRC javascript
+var cm = new CodeMirror.fromTextArea(document.getElementById("editor"), {lineNumbers: true});
+#+END_SRC
+
+* theme
+It can be found in [node_modules]/codemirror/theme/[theme-name].css.
+#+BEGIN_SRC javascript
+{theme: "[theme-name]"}
+#+END_SRC
+* mode
+Modes can be found in [node_modules]/codemirror/mode/[mode-name]/[mode-name].js.
+here is the editor with the mode set to “javascript” and theme set to “dracula”.
+
+#+BEGIN_SRC javascript
+let cm = new CodeMirror.fromTextArea(document.getElementById("editor"), {
+  lineNumbers: true,
+  mode: "javascript",
+  theme: "dracula",
+  lineWrapping: false
+});
+#+END_SRC

@@ -3,3 +3,8 @@
 #+TITLE: React
 
 - tags :: [[file:web_programming.org][Web Programming]]
+
+* lifecycle methods
+https://reactjs.org/docs/react-component.html#lifecycle-methods
+
+* FUNCTION COMPONENT

@@ -1,0 +1,40 @@
+#+TITLE: reagent React Interop
+#+DATE: 2020-06-06
+
+- source :: https://cljdoc.org/d/reagent/reagent/0.10.0/doc/tutorials/interop-with-react
+
+* Creating Reagent "Components" from React Components
+The function reagent/adapt-react-class will turn a React Component into
+something that can be placed into the first position of a Hiccup form, as if it
+were a Reagent function. Take, for example the react-flip-move library and
+assume that it has been properly imported as a React Component called FlipMove.
+By wrapping FlipMove with ~adapt-react-class~, we can use it in a Hiccup form:
+
+#+BEGIN_SRC clojure
+(defn top-articles [articles]
+  [(reagent/adapt-react-class FlipMove)
+   {:duration 750
+    :easing "ease-out"}
+   articles]
+#+END_SRC
+
+There is also a convenience mechanism ~:>~ (colon greater-than) that shortens
+this and avoid some parenthesis:
+
+#+BEGIN_SRC clojure
+(defn top-articles [articles]
+  [:> FlipMove
+   {:duration 750
+    :easing "ease-out"}
+   articles]
+#+END_SRC
+
+This is the equivalent JavaScript:
+
+#+BEGIN_SRC javascript
+const TopArticles = ({ articles }) => (
+  <FlipMove duration={750} easing="ease-out">
+    {articles}
+  </FlipMove>
+);
+#+END_SRC

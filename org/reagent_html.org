@@ -1,0 +1,89 @@
+#+TITLE: reagent html
+#+DATE: 2020-06-06
+
+https://cljdoc.org/d/reagent/reagent/0.10.0/doc/tutorials/using-hiccup-to-describe-html
+
+* basic
+Reagent uses a datastructure known as Hiccup to describe HTML. Hiccup describes
+HTML elements and user-defined components as a nested ClojureScript vector:
+
+#+BEGIN_SRC clojure
+[:div {:class "parent"}
+  [:p {:id "child-one"} "I'm first child element."]
+  [:p "I'm the second child element."]]
+#+END_SRC
+
+As described below, reagent provides a number of extensions and conveniences to
+Hiccup, but the general rules of Hiccup are as follows:
+
+- The first element is either a keyword or a symbol
+- If it is a keyword, the element is an HTML element where (name keyword) is the
+  tag of the HTML element.
+- If it is a symbol, reagent will treat the vector as a component, as described
+  in the next section.
+- If the second element is a map, it represents the attributes to the element.
+  The attribute map may be omitted.
+- Any additional elements must either be Hiccup vectors representing child nodes
+  or string literals representing child text nodes.
+
+* Special interpretation of class attribute
+In JavaScript, class is a reserved keyword, so React uses the ~className~ to
+specify class attibutes. Reagent just uses class.
+
+As of reagent 0.8.0, the class attribute accepts a collection of classes and
+will ~remove any nil value~:
+
+#+BEGIN_SRC clojure
+[:div {:class ["a-class" (when active? "active") "b-class"]}]
+#+END_SRC
+* Special notation for id and class
+The id of an element can be indicated with a hash (~#~) after the name of the
+element.
+
+This:
+#+BEGIN_SRC clojure
+[:div#my-id]
+#+END_SRC
+is the same as this:
+#+BEGIN_SRC clojure
+[:div {:id "my-id"}]
+#+END_SRC
+
+One or more classes can be indicated for an element with a ~.~ and the class-name
+like this:
+
+#+BEGIN_SRC clojure
+[:div.my-class.my-other-class.etc]
+#+END_SRC
+which is the same as:
+
+#+BEGIN_SRC clojure
+[:div {:class ["my-class" "my-other-class" "etc"]}]
+#+END_SRC
+
+Special notations for id and classes can be used together. The id must be listed first:
+
+#+BEGIN_SRC clojure
+[:div#my-id.my-class.my-other-class]
+#+END_SRC
+which is the same as:
+
+#+BEGIN_SRC clojure
+[:div {:id "my-id" :class ["my-class" "my-other-class"]}]
+#+END_SRC
+
+* Special notation for nested elements
+Reagent extends standard Hiccup in one way: it is possible to stack elements
+together by using a ~>~ character.
+
+This:
+#+BEGIN_SRC clojure
+[:div
+  [:p
+    [:b "Nested Element"]]]
+#+END_SRC
+
+can be written as:
+#+BEGIN_SRC clojure
+[:div>p>b "Nested Element"]
+#+END_SRC

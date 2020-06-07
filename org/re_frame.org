@@ -1,0 +1,53 @@
+#+TITLE: re-frame
+#+DATE: 2020-06-05
+
+#+BEGIN_SRC sh
+lein new re-frame my-web
+#+END_SRC
+
+to run:
+#+BEGIN_SRC sh
+lein dev
+#+END_SRC
+
+* Six Dominoes
+Each iteration of the re-frame loop has 6 stages, and because these stages
+happen one after the other, we talk about this process as a six domino cascade.
+
+One domino triggers the next, which triggers the next, boom, boom, boom, until
+we are back at the beginning of the loop, and the dominoes reset to attention
+again, ready for the next iteration of the same cascade.
+
+The six dominoes are:
+
+- Event dispatch
+- Event handling
+- Effect handling
+- Query
+- View
+- DOM
+
+* directory
+config.cljs
+core.cljs
+db.cljs
+events.cljs
+subs.cljs
+views.cljs
+
+#+BEGIN_SRC clojure
+(defn dev-setup []
+  (when config/debug?
+    (println "dev mode")))
+
+(defn ^:dev/after-load mount-root []
+  (re-frame/clear-subscription-cache!)
+  (let [root-el (.getElementById js/document "app")]
+    (rdom/unmount-component-at-node root-el)
+    (rdom/render [views/main-panel] root-el)))
+
+(defn init []
+  (re-frame/dispatch-sync [::events/initialize-db])
+  (dev-setup)
+  (mount-root))
+#+END_SRC

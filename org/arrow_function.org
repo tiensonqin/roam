@@ -1,3 +1,38 @@
 #+HUGO_SECTION: zettels
 #+SETUPFILE:./hugo_setup.org
 #+TITLE: Arrow Function
+
+- tags :: [[file:javascript.org][JavaScript]] [[file:understanding_emcascript_6.org][Understanding Emcascript 6]]
+
+* syntax
+begin with function arguments, followed by the arrow, followed by the body of
+the function.
+* arguments
+** no arguments
+must include ~an empty set of parentheses~ in the declaration:
+#+BEGIN_SRC javascript
+let getName = () => "Nicholas";
+// effectively equivalent to:
+let getName = function() {return "Nicholas";};
+#+END_SRC
+
+** only one argument
+#+BEGIN_SRC javascript
+let reflect = value => value;
+
+// effectively equivalent to:
+let reflect = function(value) {
+    return value;
+};
+#+END_SRC
+** more than one arguments
+must include ~parentheses around those arguments~:
+#+BEGIN_SRC javascript
+let sum = (num1, num2) => num1 + num2;
+// effectively equivalent to:
+let sum = function(num1, num2) {
+    return num1 + num2;};
+#+END_SRC
+* body
+* return value
+by default return the ~first argument~ that is passed in
