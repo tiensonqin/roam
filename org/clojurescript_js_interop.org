@@ -15,23 +15,25 @@ types/functions/methods/objects defined in global scope (i.e. window object for
 browser).
 
 * Invoking methods [fn:1] [fn:2]
-To invoke a JavaScript method we need to prefix the name of the method with the . (dot):
+To invoke a JavaScript method we need to prefix the name of the method with the
+=.= (dot):
 
 #+BEGIN_SRC clojure
 (.hello js/window)
 ;; JS output: window.hello();
 #+END_SRC
-which is a syntactic sugar of:
 
+which is a syntactic sugar of:
 #+BEGIN_SRC clojure
 (. js/window (hello))
 #+END_SRC
 
 * Property access
-The interface from ClojureScript to JavaScript is called the "dot special form". It works as both a property accessor and a means to invoke functions.
+The interface from ClojureScript to JavaScript is called the "dot special form".
+It works as both a property accessor and a means to invoke functions.
 
-Get the title property on the document. Note the -{property} syntax, where a property must be preceded by a hyphen.
-
+Get the title property on the document. Note the -{property} syntax, where a
+property must be preceded by a hyphen.
 #+BEGIN_SRC clojure
 (. js/document -title)
 #+END_SRC
@@ -46,6 +48,20 @@ document.hasFocus()
 The set! function provides a means to set native javascript object properties.
 
 (set! (.. js/window -location -search) "foo=bar")
+
+* clj->js
+cljs data structure to javascript data structures
+#+BEGIN_SRC clojure
+(clj->js {:a 1 'b 2 "c" {:d 3}})
+;; => #js {a: 1, b: 2, c: #js {d: 3}}
+#+END_SRC
+
+* js->clj
+javascript data structure to cljs data structures
+#+BEGIN_SRC clojure
+(js->clj #js {a: 1, b: 2, c: #js {d: 3}})
+;; => {"a" 1 "b" 2 "c" {"d" 3}}
+#+END_SRC
 
 [fn:1] https://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/
 [fn:2] https://www.verypossible.com/blog/clojurescript-and-javascript-interoperability-a-comprehensive-guide

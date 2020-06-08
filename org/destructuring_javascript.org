@@ -1,9 +1,9 @@
 #+HUGO_SECTION: zettels
 #+SETUPFILE:./hugo_setup.org
-#+TITLE: destructuring Javascript
+#+TITLE: destructuring (Javascript)
 #+DATE: 2020-06-07
 
-- tags :: [[file:javascript.org][JavaScript]]
+- tags :: [[file:javascript.org][JavaScript]] [[file:destructuring.org][destructuring]]
 
 * Object destructuring
 Object destructuring syntax uses an ~object literal~ on the left side of an

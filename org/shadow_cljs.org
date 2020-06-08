@@ -1,0 +1,47 @@
+#+TITLE: shadow-cljs
+#+DATE: 2020-06-08
+
+- tags :: [[file:clojurescript_js_interop.org][ClojureScript JS Interop]]
+
+Table 1. ES6 Import to CLJS Require [fn:1]
+| ES6 Import                               | CLJS Require                                      |
+|------------------------------------------+---------------------------------------------------|
+| import defaultExport from "module-name"; | (:require ["module-name" :default defaultExport]) |
+|                                          |                                                   |
+
+
+
+
+import * as name from "module-name";
+
+(:require ["module-name" :as name])
+
+import { export } from "module-name";
+
+(:require ["module-name" :refer (export)])
+
+import { export as alias } from "module-name";
+
+(:require ["module-name" :rename {export alias}])
+
+import { export1 , export2 } from "module-name";
+
+(:require ["module-name" :refer (export1 export2)])
+
+import { export1 , export2 as alias2 , […​] } from "module-name";
+
+(:require ["module-name" :refer (export1) :rename {export2 alias2}])
+
+import defaultExport, { export [ , […​] ] } from "module-name";
+
+(:require ["module-name" :refer (export) :default defaultExport])
+
+import defaultExport, * as name from "module-name";
+
+(:require ["module-name" :as name :default defaultExport])
+
+import "module-name";
+
+(:require ["module-name"])
+
+[fn:1] https://shadow-cljs.github.io/docs/UsersGuide.html#_requiring_js

@@ -1,0 +1,10 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Semantic URL
+#+DATE: 2020-06-07
+
+Semantic or nice URLS (https://en.wikipedia.org/wiki/Semantic_URL) are aimed at
+improving the usability and accessibility of a website or web app by decoupling
+the internal implementation from the UI. [fn:1]
+
+[fn:1] [[file:react_quickly.org][React Quickly]]

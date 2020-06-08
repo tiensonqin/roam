@@ -1,0 +1,18 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: React Lifecycle Methods
+#+DATE: 2020-06-07
+
+- source :: https://reactjs.org/docs/react-component.html#lifecycle-methods
+- tags :: [[file:react.org][React]]
+
+* componentDidMount [fn:1]
+fired when an element is mounted and appears in the real DOM node
+
+safest place to:
+- attach events that integrate with other DOM objects
+- make AJAX/XHR calls
+* componentWillUnmount [fn:1]
+best place to remove event listeners
+
+[fn:1] [[file:react_quickly.org][React Quickly]]

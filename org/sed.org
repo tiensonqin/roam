@@ -1,11 +1,16 @@
 #+HUGO_SECTION: zettels
 #+SETUPFILE:./hugo_setup.org
 #+TITLE: sed
+- tags :: [[file:regex.org][regex]]
 
+- reference :: https://www.grymoire.com/Unix/Sed.html
+ 
+* replace inplace on Mac
+there is quirk on Mac for this, need to use =-i ' '= otherwise will create extra
+file.. [fn:1]
 * replace regex capture group
-- we can use =-r= to avoid escape capture group
-- we also need =-E= to support capture group
-- NOTE, =-r= must appear *before* =-E=
+- use =-r= for GNU sed
+- use =-E= for Mac os sed
 
 For eg, to replace the line:
 #+begin_example
@@ -19,9 +24,8 @@ date = "2020-05-19"
 
 We can use this:
 #+BEGIN_SRC sh
-sed -i -r -E "s/^date = (.*)/date = \"\1\"/" test.md
+sed -i ' ' -E 's/^date = \(.*\)/date = "\1\"/' test.md
 #+END_SRC
-
 * case-insensitive search
 I'd like to and so on while
 replacing or performing other operations.
@@ -61,3 +65,5 @@ instead of / as delimiter.
 #+BEGIN_SRC sh
 sed -i 's/target1/replace1/g s/target2/replace2/g' $input_file
 #+END_SRC
+
+[fn:1] https://stackoverflow.com/questions/5694228/sed-in-place-flag-that-works-both-on-mac-bsd-and-linux

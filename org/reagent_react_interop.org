@@ -40,3 +40,64 @@ const TopArticles = ({ articles }) => (
   </FlipMove>
 );
 #+END_SRC
+
+* example
+#+BEGIN_SRC clojure
+
+(defn BasicTable []
+  [:> DataTable  #js{:title "Movie list"
+                 :columns my-cols
+                 :data my-data}])
+#+END_SRC
+
+There are no records to display
+
+#+BEGIN_SRC clojure
+(defn BasicTable []
+  [:> DataTable  (cljs->js {:title "Movie list"
+                 :columns my-cols
+                 :data my-data})])
+#+END_SRC
+this raised bunch of errors
+
+turned out there is no ~cljs->js~, it's ~clj->js~
+
+#+BEGIN_SRC clojure
+(defn BasicTable []
+  [:> DataTable  {:title "Movie list"
+                 :columns my-cols
+                 :data my-data}])
+#+END_SRC
+this alos raises bunch of errors
+
+
+#+begin_example
+Objects are not valid as a React child (found: object with keys {ns, name, fqn, _hash, cljs$lang$protocol_mask$partition0$, cljs$lang$protocol_mask$partition1$}). If you meant to render a collection of children, use an array instead.
+#+end_example
+
+so the issue is this:
+#+BEGIN_SRC clojure
+:cell (fn [row] (CustomTitle row))}
+#+END_SRC
+
+once I get rid of this key, it starts to show something
+
+* how to translate this
+#+BEGIN_SRC javascript
+class MyComponent extends Component {
+  render() {
+      return (
+        <DataTable
+          title="Arnold Movies"
+          columns={columns}
+          data={data}
+          selectableRows // add for checkbox selection
+          Clicked
+          Selected={handleChange}
+        />
+    )
+  }
+};
+#+END_SRC
+
+don't know how to pass ~selectableRows~ ..
