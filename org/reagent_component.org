@@ -3,6 +3,8 @@
 #+TITLE: reagent Component
 #+DATE: 2020-06-06
 
+- tags :: [[file:reagent.org][reagent]]
+
 https://cljdoc.org/d/reagent/reagent/0.10.0/doc/tutorials/creating-reagent-components
 
 * The Core Of A Component
@@ -32,7 +34,7 @@ Ordered by increasing complexity, they are:
    [:div "Hello " name])     ;; returns Hiccup (HTML)
 #+END_SRC
 
-** Form-2: A Function Returning A Function
+** Form-2 A Function Returning A Function
 Now, let's take one step up in complexity. Sometimes, a component requires:
 
 - some setup; or
@@ -47,7 +49,7 @@ Now, let's take one step up in complexity. Sometimes, a component requires:
       [:div "Seconds Elapsed: " @seconds-elapsed])))
 #+END_SRC
 
-** Form-3: A Class With Life Cycle Methods
+** Form-3 A Class With Life Cycle Methods
 With Form-3 components, you can nominate lifecycle methods for [[file:react.org][React]]
 
 #+BEGIN_SRC clojure

@@ -41,6 +41,23 @@ const TopArticles = ({ articles }) => (
 );
 #+END_SRC
 
+* Creating React Components from Reagent "Components"
+The ~reagent/reactify-component~ will take a Form-1, Form-2, or Form-3 reagent
+"component". For example:
+
+#+BEGIN_SRC clojure
+(defn exported [props]
+  [:div "Hi, " (:name props)])
+
+(def react-comp (r/reactify-component exported))
+
+(defn could-be-jsx []
+  (r/create-element react-comp #js{:name "world"}))
+#+END_SRC
+Note:
+
+adapt-react-class and reactify-component are not perfectly symmetrical, because reactify-component requires that the reagent component accept everything in a single props map, including its children.
+
 * example
 #+BEGIN_SRC clojure
 
@@ -101,3 +118,10 @@ class MyComponent extends Component {
 #+END_SRC
 
 don't know how to pass ~selectableRows~ ..
+
+* another mistake
+(defn datagrid [columns rows]
+  [:div.ag-theme-alpine :style {:height "250px" :width "600px"}
+   :> AgGridReact {:columnDefs columns
+                   :rowData rows}]
+)
