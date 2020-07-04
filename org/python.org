@@ -1,18 +1,26 @@
 #+SETUPFILE:./hugo_setup.org
 #+HUGO_SECTION: zettels
-
 #+TITLE: Python
 
-make all dirs in a path
+* location of site-package directory
+#+BEGIN_SRC python :results output
+from distutils.sysconfig import get_python_lib
+print(get_python_lib())
+#+END_SRC
 
-You are looking for os.makedirs() which does exactly what you need.
+* path of imported module
+use ~__file__~ attribute on the module
 
-Because it fails if the leaf directory already exists you'll want to test for
+#+BEGIN_SRC python :results output
+import argparse
+print(argparse.__file__)
+#+END_SRC
 
-existence before calling os.makedirs().
+* sort dict by key
+#+BEGIN_SRC python
+candidates = {'a': 3, 'b': 5, 'c': 2}
+candidates = {k: v for k, v in sorted(candidates.items(), key=lambda x: x[1])}
 
-
-import pathlib
-
-path = pathlib.Path(p4)
-path.parent.mkdir(parents=True, exist_ok=True)
+# add : reverse=True will sort they values descending
+candidates = {k: v for k, v in sorted(candidates.items(), reverse=True, key=lambda x: x[1])}
+#+END_SRC

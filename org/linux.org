@@ -1,3 +1,9 @@
 #+HUGO_SECTION: zettels
 #+SETUPFILE:./hugo_setup.org
 #+TITLE: Linux
+
+* books
+[[x-devonthink-item://5D2AD0F6-475D-4E65-A575-DE868B31F63F][Linux内核中的链表 » NoAlGo博客]]
+[[x-devonthink-item://364F3602-D759-44A3-962A-7A7DDB351324][Linux内核学习四库全书 - 开源中国]]
+[[x-devonthink-item://1ECC65B4-5928-4C95-917E-2F29CEF46E5A][Linux内核红黑树原理与使用 » NoAlGo博客]]
+[[x-devonthink-item://19DD1A59-E6FE-43A8-88AD-B1916667B677][Linux网络编程必看书籍推荐 - 开源中国]]

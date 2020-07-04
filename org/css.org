@@ -1,0 +1,75 @@
+#+TITLE: CSS
+#+DATE: 2020-06-27
+
+elements
+
+Elements are the basis of document structure
+
+elements generally take two forms: replaced and nonreplaced
+
+~Replaced elements~ are those where the element’s content is replaced by something
+that is not directly represented by document content. Probably the most familiar
+HTML example is the img element
+
+Nonreplaced elements
+
+Element Display RolesIn addition to replaced and nonreplaced elements, CSS uses two other basic types of elements:
+- block-level
+- inline-level.
+
+~Block-level elements~ generate an element box that (by default) fills its parent element’s content area and cannot have other elements at its sides. In other words, it generates “breaks” before and after the element box. The most familiar block elements from HTML are p and div. Replaced elements can be block-level elements, but usually they are not.
+
+~Inline-level elements~ generate an element box within a line of text and do not break up the flow of that line. The best inline element example is the a element in HTML.
+
+* connect HTML with CSS
+** link tag
+#+BEGIN_SRC html
+<link rel="stylesheet" type="text/css" href="sheet1.css" media="all">
+#+END_SRC
+
+To successfully load an external stylesheet, link should be placed inside the
+~head element~, though it can also appear inside the body element.
+
+Alternate stylesheets
+It’s also possible to define alternate stylesheets. These are defined by making the value of the rel attribute alternate stylesheet
+#+BEGIN_SRC html
+<link rel="alternate stylesheet" type="text/css"   href="bigtext.css" title="Big Text">
+#+END_SRC
+
+** The style Element
+The style element is one way to include a stylesheet, and it appears in the document itself
+
+#+BEGIN_SRC html
+<style type="text/css">...</style>
+#+END_SRC
+
+The styles between the opening and closing style tags are referred to as the
+~document stylesheet~ or the ~embedded stylesheet~
+
+*** @import Directive
+It must be placed before the other CSS rules or it won’t work at all.
+#+BEGIN_SRC html
+@import url(sheet2.css);
+#+END_SRC
+
+** Inline Styles
+employ the HTML attribute ~style~ to set an inline style
+
+The style attribute can be associated with any HTML tag whatsoever, except for
+those tags that are found outside of body (~head~ or ~title~, for instance).
+
+* Stylesheet content
+* Rule
+Each rule has two fundamental parts:
+- the ~selector~
+- ~declaration block~
+
+** declaration block
+composed of one or more ~declarations~, and each declaration is a pairing of a property and a value.
+
+* vendor prefixes
+* comments
+use ~/* comments here */~, can span multiple lines.
+* Media Queries
+With media queries, an author can define the media environment in which a given stylesheet is used by the browser
+* Feature Queries

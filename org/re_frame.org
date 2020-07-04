@@ -53,3 +53,37 @@ views.cljs
   (dev-setup)
   (mount-root))
 #+END_SRC
+
+* Registering Event Handlers
+Event handler functions:
+
+- take two arguments coeffects and event
+- return effects
+
+Event handlers can be registered in two ways:
+
+- reg-event-fx
+- reg-event-db
+
+One ends in -fx and the other in -db.
+
+reg-event-fx can take many coeffects and can return many effects
+reg-event-db allows you to write simpler handlers for the common case where you want them to take only one coeffect - the current app state - and return one effect - the updated app state.
+
+
+reg-event-db
+We register event handlers using re-frame's API:
+
+
+#+BEGIN_SRC clojure
+(rf/reg-event-db           ;; <-- the re-frame API function to use
+  :the-event-id            ;; <-- the event id
+  the-event-handler-fn)    ;; <-- the handler function
+#+END_SRC
+The handler function you provide should expect two arguments:
+
+db - the current application state (the map value contained in app-db)
+e - the event vector (given to dispatch)
+So, your handler function will have a signature like this: (fn [db e] ...).
+
+These event handlers must compute and return the new state of the application, which means they return a modified version of db.

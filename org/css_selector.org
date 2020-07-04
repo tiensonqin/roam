@@ -1,0 +1,99 @@
+#+TITLE: CSS Selector
+#+DATE: 2020-06-27
+
+- tags :: [[file:css.org][CSS]]
+
+* Element Selector
+An element selector is most often an HTML element, but not always. For example,
+if a CSS file contains styles for an XML document, the element selectors might
+look something like this:
+
+If you use an incorrect property or value in a declaration, the whole rule will be ignored
+
+* declaration
+value is either a single keyword or a space-separated list of one or more
+keywords that are permitted for that property.
+
+#+BEGIN_SRC css
+p {font: medium Helvetica;}
+#+END_SRC
+
+space-separated words are referred to as ~keywords~
+
+* Grouping Selectors
+By placing the h2 and p selectors on the left side of the rule and separating them with a comma
+#+BEGIN_SRC css
+h2, p {color: gray;}
+#+END_SRC
+
+* universal selector
+This selector(~*~) matches any element at all, much like a wildcard.
+#+BEGIN_SRC css
+ * {color: red;}
+#+END_SRC
+
+* class selector
+To associate the styles of a class selector with an element, you must assign a
+class attribute the appropriate value.
+
+a class is preceded by a period (.):
+#+BEGIN_SRC css
+.warning {font-weight: bold;}
+#+END_SRC
+
+** combine with element selector
+#+BEGIN_SRC css
+p.warning {font-weight: bold;}
+#+END_SRC
+The selector now matches any p elements that have a class attribute containing
+the word warning, but no other elements of any kind, classed or otherwise
+
+** Multiple Classes
+chaining two multiple class selectors together, order does not matter
+#+BEGIN_SRC css
+.warning.urgent {background: silver;}
+#+END_SRC
+
+* ID selector
+preceded by ~#~
+
+#+BEGIN_SRC css
+*#lead-para {font-weight: bold;}
+#+END_SRC
+
+but ~*~ can be omitted, so this is same as above:
+#+BEGIN_SRC css
+#lead-para {font-weight: bold;}
+#+END_SRC
+
+ID selectors can’t be combined with other IDs, since ID attributes do not permit
+a space-separated list of words.
+
+Another difference between class and id names is that IDs carry more weight when
+you’re trying to determine which styles should be applied to a given element.
+
+Also note that class and ID selectors may be case-sensitive, depending on the
+document language. HTML defines class and ID values to be case-sensitive
+
+* Attribute Selector
+** simple attribute selector
+select elements have a certain attribute, regardless of that attribute’s value
+#+BEGIN_SRC css
+h1[class] {color: silver;}
+#+END_SRC
+
+If you wanted to boldface any element that includes title information, which
+most browsers display as a “tool tip” when a cursor hovers over the element, you
+could write:
+#+BEGIN_SRC css
+*[title] {font-weight: bold;}
+#+END_SRC
+
+*** chaining attributes
+To select based on the presence of more than one attribute by chaining the
+attribute selectors together:
+#+BEGIN_SRC css
+a[href][title] {font-weight: bold;}
+#+END_SRC
+
+** exact attribute value selector

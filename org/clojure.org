@@ -9,7 +9,9 @@ libraries:
 - https://github.com/clojure/test.check
 
 - cheatsheet :: https://clojure.org/api/cheatsheet
- 
+
+* it has no unless
+instead it's ~when-not~
 * function composition
 pure function is referentially transparent
 ** comp
@@ -117,3 +119,18 @@ When you create a new var, the initial value that you supply is its root:
 Clojure lets you permanently change this root value with the function ~alter-var-root~
 
 You can also temporarily alter a var’s root with ~with-redefs~
+
+* Function Literals
+An anonymous function is a function without a name. In Clojure these can be
+defined in two ways, fn and the literal #(…​). Creating a function with defn
+immediately binds it to a name, fn just creates a function.
+
+The function literal supports multiple arguments via %, %n, and %&.
+#+BEGIN_SRC clojure
+#(println %1 %2 %3)
+#+END_SRC
+
+* namespaced keyword
+:click-handler and ::click-handler. The first one merely references a keyword, whereas the one with two colons implicitly includes the full namespace where it was created.
+
+If your current namespace is relevance.core, for example, then using the later keyword would be equivalent to :relevance.core/click-handler.

@@ -1,3 +1,7 @@
 #+HUGO_SECTION: zettels
 #+SETUPFILE:./hugo_setup.org
 #+TITLE: FFmpeg
+
+#+BEGIN_SRC sh :dir ~/Downloads
+ffmpeg -i video.webm -i audio.webm -c:v copy -c:a copy output.mkv
+#+END_SRC

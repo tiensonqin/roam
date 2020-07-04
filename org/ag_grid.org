@@ -1,0 +1,33 @@
+#+TITLE: ag-grid
+#+DATE: 2020-06-13
+
+* cell render
+https://www.ag-grid.com/javascript-grid-cell-rendering-components/
+
+* register component
+https://www.ag-grid.com/javascript-grid-components/#registering-framework-components
+
+A component is registered with the grid by providing it through the components
+grid property. The components grid property contains a map of 'component names'
+to 'component classes'. Components of all types (editors, renderers, filters
+etc) are all stored together and must have unique names.
+
+If you are using one of the supported frameworks registration is done using the
+frameworkComponents property rather than the components property. Then the
+component is registered by name as normal.
+* event
+https://www.ag-grid.com/javascript-grid-events/
+
+Selection
+cellClicked	Cell is clicked.
+cellDoubleClicked	Cell is double clicked.
+cellFocused	Cell is focused.
+cellMouseOver	Mouse entered cell.
+cellMouseOut	Mouse left cell.
+cellMouseDown	Mouse down on cell.
+rowClicked	Row is clicked.
+rowDoubleClicked	Row is double clicked.
+rowSelected	Row is selected or deselected.
+selectionChanged	Row selection is changed. Use the grid API to get the new row selected.
+cellContextMenu	Cell is right clicked.
+rangeSelectionChanged	A change to range selection has occurred.
