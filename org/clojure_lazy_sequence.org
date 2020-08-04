@@ -1,0 +1,14 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Clojure Lazy Sequence
+#+DATE: 2020-08-03
+
+- tags :: [[file:clojure.org][Clojure]]
+
+"Lazy sequences are cached, so each element is realized only once, and then
+stored instead of being recalculated. This means that expensive computations
+won’t be run unnecessarily. It also means that it’s safe to have sequence
+generating functions with side effects—they may not happen at all, if the
+sequence is never realized, but they’ll never be executed repeatedly." [fn:1]
+
+[fn:1] ClojureScript: Up and Running

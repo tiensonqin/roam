@@ -1,0 +1,24 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Clojure REPL
+#+DATE: 2020-08-03
+
+- tags :: [[file:clojure.org][Clojure]]
+ 
+- reference :: The Clojure workshop
+
+* special variable
+~*1~ bound to the result of the last expression evaluated
+in the REPL.
+
+~*2~ and ~*3~ are variables bound to second and third most recent values of REPL
+session
+
+~*e~ contains the result of the last exception
+
+* explore
+- doc
+- find-doc
+- apropos
+- dir
+above functions are useful REPL tools for browsing through documentation.

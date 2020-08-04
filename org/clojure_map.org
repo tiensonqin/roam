@@ -1,0 +1,18 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Clojure Map
+#+DATE: 2020-08-03
+
+- tags :: [[file:clojure.org][Clojure]]
+
+* build map
+** from list of paired items
+use ~into~ [fn:1]
+#+BEGIN_SRC clojure
+(into {} [[:a 1] [:b 2]])
+#+END_SRC
+
+"user> (into {} (map (fn [[k v]] [k (* v 10)]) letters-and-numbers))"
+The Clojure Workshop
+
+[fn:1] The Clojure workshop

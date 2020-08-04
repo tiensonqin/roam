@@ -24,3 +24,22 @@ candidates = {k: v for k, v in sorted(candidates.items(), key=lambda x: x[1])}
 # add : reverse=True will sort they values descending
 candidates = {k: v for k, v in sorted(candidates.items(), reverse=True, key=lambda x: x[1])}
 #+END_SRC
+
+* max int in Python 3
+no such thing, but can use ~sys.maxsize~
+
+* create a array fill with n elements
+#+BEGIN_SRC python
+dp = [sys.maxsize] * 7
+#+END_SRC
+
+* all
+The ~all()~ method returns True when all elements in the given iterable are
+true otherwise returns False.
+
+It could be useful when checking certain condition on all elements of an
+iterable when combine with ~map()~ method
+
+* any
+~any()~ method returns True if any element of an iterable is True otherwise
+returns False

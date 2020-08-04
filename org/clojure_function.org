@@ -1,0 +1,14 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Clojure Function
+#+DATE: 2020-08-03
+
+- tags :: [[file:clojure.org][Clojure]]
+
+~fn?~ to check if a symobo is function or not.
+
+apply
+
+~partial~ Is similar to bind1st or bind2nd in c++
+
+comp

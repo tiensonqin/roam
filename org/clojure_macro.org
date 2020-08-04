@@ -1,0 +1,36 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Clojure Macro
+#+DATE: 2020-08-03
+
+- tags :: [[file:clojure.org][Clojure]]
+
+"Syntax-quote is written using the backtick (`) symbol. It behaves like the
+normal single quote in that it prevents evaluation, but syntax-quote also allows
+values to be unquoted." [fn:1]
+
+"To write a macro, first think about the expression you want to be able to write
+in your code. Second, think about what you want it to become. Finally, write a
+function that converts the first into the second. " [fn:1]
+
+"Macros allow you to manipulate the data structures in your code before they get
+to the compiler. This is very powerful: a macro can effectively rewrite code
+before it gets to the compiler." [fn:1]
+
+"Typically you only need macros in three cases:
+
+To do things functions cannot do. For example, the and conditional operation cannot be written as a function, because it needs to prevent evaluation of some of its arguments. Macros can control when and how their arguments are evaluated.[3]
+
+To add a layer of syntactic sugar. For example, the when macro doesn’t do anything different from what you can already accomplish with if and do, but it makes the syntax shorter and easier to read.
+
+To improve performance. Because macros are evaluated during compilation, they
+can potentially convert an expression into a more-efficient form before it
+reaches the compiler. The ClojureScript compiler uses macros internally to
+produce more efficient code, but you are unlikely to encounter this situation in
+everyday programming." [fn:1]
+
+"The debug macro also contains a clever trick: the “quote-unquote” in '~expr.
+This allows the expansion to print the literal code of expr without evaluating
+it." [fn:1]
+
+[fn:1] ClojureScript: Up and Running

@@ -16,7 +16,7 @@ browser).
 
 * Invoking methods [fn:1] [fn:2]
 To invoke a JavaScript method we need to prefix the name of the method with the
-=.= (dot):
+~.~ (dot):
 
 #+BEGIN_SRC clojure
 (.hello js/window)

@@ -10,8 +10,42 @@ libraries:
 
 - cheatsheet :: https://clojure.org/api/cheatsheet
 
+* declare private symbol for a namespace
+#+BEGIN_SRC clojure
+(defonce ^:private abc)
+#+END_SRC
+* pos?
+~pos?~ is a handy and commonly used predicate for determining whether a number
+is above zero. [fn:1]
+* Ratio type
+* floating-point number
+floating-point numbers are "contagious" in Clojure. Any operation involving
+floating-point numbers will result in a float or a double. [fn:1]
 * it has no unless
 instead it's ~when-not~
+* comparison
+Clojure's comparison functions can accept more than two arguments.
+
+#+BEGIN_SRC clojure
+(>= next-to-last the-last elevation)
+#+END_SRC
+
+will return true if next-to-last is greater than or equal to the-last , and if
+the-last is greater than or equal to elevation. [fn:1]
+
+* equality
+sequences of different types can be considered equal [fn:1]
+#+BEGIN_SRC clojure
+(= '(1 2 3) [1 2 3])
+;; true
+#+END_SRC
+
+~=~ function can also take one argument, in which case it will always return true [fn:1]
+#+BEGIN_SRC clojure
+(= 1)
+;; true
+#+END_SRC
+
 * function composition
 pure function is referentially transparent
 ** comp
@@ -134,3 +168,5 @@ The function literal supports multiple arguments via %, %n, and %&.
 :click-handler and ::click-handler. The first one merely references a keyword, whereas the one with two colons implicitly includes the full namespace where it was created.
 
 If your current namespace is relevance.core, for example, then using the later keyword would be equivalent to :relevance.core/click-handler.
+
+[fn:1] The Clojure workshop
