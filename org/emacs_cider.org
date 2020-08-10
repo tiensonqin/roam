@@ -1,0 +1,63 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Emacs Cider
+#+DATE: 2020-08-08
+
+* keybindings
+- spc m d -> cider-clojuredocs
+- spc m D -> cider-clojuredocs-web
+- spce m e E -> cider-insert-last-sexp-in-repl
+- C-c C-z runs the command cider-switch-to-last-clojure-buffer
+* REPL shortcuts [fn:1]
+press ~,~ to get list of shortcuts
+
+* Clear the Most Recent Output
+C-c C-o (or M-x cider-repl-clear-output)
+
+* Clearing the REPL Completely
+C-u C-c C-o (M-x cider-repl-clear-buffer)
+
+* Interrupting Evaluations
+C-c C-c (M-x cider-interrupt)
+
+* find usage
+cider-xref-fn-refs (C-c C-? r) and cider-xref-fn-refs-select (C-c C-? C-r)
+The first command will show the usages of the function at point in a dedicated
+buffer and the second will show them in the minibuffer.
+
+* navigate buffer [fn:2]
+~cider-selector~ command, bound by default to ~C-c M-s~
+
+Here’s a list of all of cider-selectors’s keybindings:
+| Keyboard Shortcut | Description                                               |
+|-------------------+-----------------------------------------------------------|
+| c                 | Most recently visited Clojure buffer.                     |
+| e                 | Most recently visited Emacs Lisp buffer.                  |
+| r                 | Current REPL buffer or most recently visited REPL buffer. |
+| m                 | *nrepl-messages* buffer.                                  |
+| x                 | *cider-error* buffer.                                     |
+| d                 | *cider-doc* buffer.                                       |
+| p                 | *cider-profiler* buffer.                                  |
+| s                 | *cider-scratch* buffer.                                   |
+| q                 | Abort.                                                    |
+| ?                 | Show help.                                                |
+
+** extend with new command
+#+BEGIN_SRC elisp
+(def-cider-selector-method ?z
+  "CIDER foo buffer."
+  cider-foo-buffer)
+#+END_SRC
+
+* restart repl [fn:3]
+** soft restart
+kills the current nREPL connection (which in CIDER is the same as a REPL buffer)
+and creates a new one to the same nREPL server with ~cider-restart~
+
+** hard restart
+restart the underlying nREPL server and re-create all connections within the
+same CIDER session with ~sesman-restart~
+
+[fn:1] https://metaredux.com/tags/#hard-cider
+[fn:2] https://metaredux.com/posts/2019/10/07/hard-cider-navigating-cider-buffers-ninja-style.html
+[fn:3] https://metaredux.com/posts/2019/11/07/hard-cider-hard-restart.html

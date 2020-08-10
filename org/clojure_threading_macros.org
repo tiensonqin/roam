@@ -1,0 +1,6 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: Clojure Threading Macros
+#+DATE: 2020-08-03
+
+- tags :: [[file:clojure.org][Clojure]]

@@ -1,0 +1,17 @@
+#+HUGO_SECTION: zettels
+#+SETUPFILE:./hugo_setup.org
+#+TITLE: ClojureScript REPL
+#+DATE: 2020-08-03
+
+- tags :: [[file:clojure.org][Clojure]]
+ 
+* Using namespaces at the REPL
+The ~ns~ form will not work in the ClojureScript REPL (either the Rhino REPL or
+the browser REPL). To switch namespace in the REPL, can use ~in-ns~ special form
+with *quoted* namespace [fn:1]
+
+#+BEGIN_SRC clojure
+cljs.user> (in-ns 'foo.bar)
+#+END_SRC
+
+[fn:1] [[file:clojurescript_up_and_running.org][ClojureScript: Up and Running]]
